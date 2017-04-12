@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7969EB1-8FD3-4430-A54C-1FD3C61CD013}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DesarrollosPyC.Com.Facturacion</RootNamespace>
+    <AssemblyName>DesarrollosPyC.Com.Facturacion</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CerManager.cs" />
+    <Compile Include="CfdiV32Manager.cs" />
+    <Compile Include="Comprobantes\Complementos\catNomina.cs" />
+    <Compile Include="Comprobantes\Complementos\iedu.cs" />
+    <Compile Include="Comprobantes\Complementos\implocal.cs" />
+    <Compile Include="Comprobantes\Complementos\ine.cs" />
+    <Compile Include="Comprobantes\Complementos\nomina.cs" />
+    <Compile Include="Comprobantes\Complementos\Old\ine.cs" />
+    <Compile Include="Comprobantes\Complementos\Old\nomina.cs" />
+    <Compile Include="Comprobantes\Complementos\notariospublicos.cs" />
+    <Compile Include="Comprobantes\Complementos\TimbreFiscalDigital.cs" />
+    <Compile Include="Comprobantes\Complementos\leyendasFisc.cs" />
+    <Compile Include="Comprobantes\V30\Comprobante.cs" />
+    <Compile Include="Comprobantes\V32\Comprobante.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Xsd\catNomina.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\cfdv2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\cfdv22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\cfdv3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\cfdv32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\iedu.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\implocal.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\ine10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\INE11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\LAMOSA_Factura.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\leyendasFisc.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\nomina11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\nomina12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\notariospublicos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\tdCFDI.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\terceros11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\TimbreFiscalDigital.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Xslt\cadenaoriginal_3_0.xslt" />
+    <Content Include="Xslt\cadenaoriginal_3_2.xslt" />
+    <Content Include="Xslt\cadenaoriginal_3_2_l.xslt" />
+    <Content Include="Xslt\cadenaoriginal_TFD_1_0.xslt" />
+    <Content Include="Xslt\detallista.xslt" />
+    <Content Include="Xslt\divisas.xslt" />
+    <Content Include="Xslt\donat.xslt" />
+    <Content Include="Xslt\donat11.xslt" />
+    <Content Include="Xslt\ecb.xslt" />
+    <Content Include="Xslt\ecc.xslt" />
+    <Content Include="Xslt\iedu.xslt" />
+    <Content Include="Xslt\implocal.xslt" />
+    <Content Include="Xslt\ine10.xslt" />
+    <Content Include="Xslt\INE11.xslt" />
+    <Content Include="Xslt\leyendasFisc.xslt" />
+    <Content Include="Xslt\nomina11.xslt" />
+    <Content Include="Xslt\nomina12.xslt" />
+    <Content Include="Xslt\notariospublicos.xslt" />
+    <Content Include="Xslt\pfic.xslt" />
+    <Content Include="Xslt\psgecfd.xslt" />
+    <Content Include="Xslt\reporteo.xslt" />
+    <Content Include="Xslt\terceros.xslt" />
+    <Content Include="Xslt\terceros11.xslt" />
+    <Content Include="Xslt\TuristaPasajeroExtranjero.xslt" />
+    <Content Include="Xslt\utilerias.xslt" />
+    <Content Include="Xslt\ventavehiculos.xslt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

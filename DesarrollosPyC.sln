@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesarrollosPyC.Com.Controles", "DesarrollosPyC.Com.Controles\DesarrollosPyC.Com.Controles.csproj", "{3A3424CC-AE65-454B-A57F-D9A6846E3073}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesarrollosPyC.Com.Facturacion", "DesarrollosPyC.Com.Facturacion\DesarrollosPyC.Com.Facturacion.csproj", "{B7969EB1-8FD3-4430-A54C-1FD3C61CD013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesarrollosPyC.Com.Utilidades", "DesarrollosPyC.Com.Utilidades\DesarrollosPyC.Com.Utilidades.csproj", "{A8119225-B3EE-4979-855F-F83FA8D2DD11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesarrollosPyC.Test", "DesarrollosPyC.Test\DesarrollosPyC.Test.csproj", "{1EB3810B-D925-4CA6-BE09-D61DFACFF2A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A3424CC-AE65-454B-A57F-D9A6846E3073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3424CC-AE65-454B-A57F-D9A6846E3073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3424CC-AE65-454B-A57F-D9A6846E3073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3424CC-AE65-454B-A57F-D9A6846E3073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7969EB1-8FD3-4430-A54C-1FD3C61CD013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7969EB1-8FD3-4430-A54C-1FD3C61CD013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7969EB1-8FD3-4430-A54C-1FD3C61CD013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7969EB1-8FD3-4430-A54C-1FD3C61CD013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8119225-B3EE-4979-855F-F83FA8D2DD11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8119225-B3EE-4979-855F-F83FA8D2DD11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8119225-B3EE-4979-855F-F83FA8D2DD11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8119225-B3EE-4979-855F-F83FA8D2DD11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EB3810B-D925-4CA6-BE09-D61DFACFF2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB3810B-D925-4CA6-BE09-D61DFACFF2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB3810B-D925-4CA6-BE09-D61DFACFF2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB3810B-D925-4CA6-BE09-D61DFACFF2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

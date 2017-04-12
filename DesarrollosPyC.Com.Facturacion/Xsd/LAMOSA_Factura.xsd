@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by Tadeo Arce (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:if="https://www.interfactura.com/Schemas/Documentos" targetNamespace="https://www.interfactura.com/Schemas/Documentos" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="FacturaInterfactura">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Emisor">
+					<xs:annotation>
+						<xs:documentation>Nodo requerido para definir la información del contribuyente emisor del comprobante</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="RI" type="if:t_RI" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo que define el numero de registro de Interfactura (RI) del proveedor</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="NumProveedor" use="required">
+							<xs:annotation>
+								<xs:documentation>Elemento que indica el numero de proveedor en Lamosa</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="11"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:anyAttribute namespace="##any" processContents="skip"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Receptor">
+					<xs:annotation>
+						<xs:documentation>Nodo requerido para definir la información del contribuyente receptor del comprobante</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="RI" type="if:t_RI" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo que define el numero de registro de Interfactura (RI) del cliente.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:anyAttribute namespace="##any" processContents="skip"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Encabezado">
+					<xs:annotation>
+						<xs:documentation>Nodo requerido para definir la información del encabezado del documento</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Cuerpo" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Nodo requerido para definir el detalle del documento</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="Cantidad" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo que indica la canitidad de productos o servicios</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:integer">
+												<xs:minInclusive value="0"/>
+												<xs:maxInclusive value="999999999999"/>
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="Concepto" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo que indica la descripción del producto o servicio</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minLength value="1"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="PUnitario" type="if:t_Importe" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo que indica el precio unitario de producto o servicio</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Importe" type="if:t_Importe" use="required">
+										<xs:annotation>
+											<xs:documentation>Atributo que indica el importe del producto o servicio (cantidad multiplicada por precio unitario)</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="LineaOC">
+										<xs:annotation>
+											<xs:documentation>Numero de linea referencia de la orden de compra facturada</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="SKU">
+										<xs:annotation>
+											<xs:documentation>Codigo del producto</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="UdeM">
+										<xs:annotation>
+											<xs:documentation>Unidad de Medida del producto</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:anyAttribute namespace="##any" processContents="skip"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="formaDePago" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para precisar la forma de pago que aplica para este comprobante fiscal digital. Se utiliza para expresar Pago en una sola exhibición o número de parcialidad pagada contra el total de parcialidades, Parcialidad 1 de X. </xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="SubTotal" type="if:t_Importe" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido que indica el SubTotal del documento.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="IVAPCT" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido que indica la tasa de IVA trasladado que se manejará en el documento</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:enumeration value="0"/>
+									<xs:enumeration value="16"/>
+									<xs:enumeration value="11"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="Iva" type="if:t_Importe" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido que indica el importe o monto del impuesto al valor agregado</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="ISRPCT" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido que indica la tasa de ISR retenido que se manejará en el documento</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:minInclusive value="0.00"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="ISR" type="if:t_Importe" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido que indica el importe o monto del ISR aplicado</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="IvaRetPCT" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido que indica la tasa de IVA retenido que se manejará en el documento</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:minInclusive value="0.00"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="IvaRet" type="if:t_Importe" use="optional">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido que indica el importe o monto de la retención al IVA aplicada</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Total" type="if:t_Importe" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo que indica el importe total del documento.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Moneda" use="required">
+							<xs:annotation>
+								<xs:documentation>Moneda en que se emite el documento, si se especifica cualquier otro valor se asumen que son pesos mexicanos. Los valores son MXN o USD</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="MXN"/>
+									<xs:enumeration value="USD"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="TipoCambio" type="if:t_Importe" use="optional">
+							<xs:annotation>
+								<xs:documentation>Importe en pesos mexicanos que indica la paridad </xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="CondicionPago" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation>Condiciones comerciales aplicables para el pago del CFD</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="TipoDocumento" type="if:t_TipoDocumento" use="required">
+							<xs:annotation>
+								<xs:documentation>Atributo requerido para definir el tipo de documento</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="FolioReferencia" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation>Aquí se asignará el folio del estado de cuenta del cual se genera el CFD</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Observaciones" type="if:t_Observaciones" use="optional">
+							<xs:annotation>
+								<xs:documentation>Disponible para hacer aclaraciones sobre el documento</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="FolioOrdenCompra" use="required">
+							<xs:annotation>
+								<xs:documentation>Folio de referencia de la orden de compra que se esta facturando</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="PlantaEmite">
+							<xs:annotation>
+								<xs:documentation>Numero de planta en la cual se emitio el documento</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="FolioNotaRecepcion">
+							<xs:annotation>
+								<xs:documentation>Folio de referencia de la nota de recepción que se esta facturando</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="NumProveedor" use="required">
+							<xs:annotation>
+								<xs:documentation>Elemento que indica el numero de proveedor en Lamosa</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="11"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="Sociedad">
+							<xs:annotation>
+								<xs:documentation>Elemento que indica el numero de sociedad de lamosa</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="11"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="ProcesoId" use="required">
+							<xs:annotation>
+								<xs:documentation>Identificador del tipo de
+									proveedor (área) que está factura. En este caso proveedor de
+									Materias primas</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:enumeration value="1"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:anyAttribute namespace="##any" processContents="skip"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="TipoDocumento" type="if:t_TipoDocumento" use="required">
+				<xs:annotation>
+					<xs:documentation>Atributo requerido para definir el tipo de documento</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:anyAttribute namespace="##any" processContents="skip"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="t_NumProveedor">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar el identificador del proveedor en el sistema (cliente)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_TipoDocumento">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar el tipo de documento</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Factura"/>
+			<xs:enumeration value="ReciboHonorarios"/>
+			<xs:enumeration value="NotaCredito"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_RI">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar el identificador del cliente para Interfactura</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{4,12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_Folio">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar el numero de identificación de la orden de compra</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_Observaciones">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar la longitud máxima de las observaciones</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="8000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_Concepto">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar el concepto</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_Cantidad">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar un valor numérico entero</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999999999999"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_Importe">
+		<xs:annotation>
+			<xs:documentation>Tipo definido para expresar un valor numérico típicamente un monetario</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-999999999.99"/>
+			<xs:maxInclusive value="999999999.99"/>
+			<xs:fractionDigits value="2"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
