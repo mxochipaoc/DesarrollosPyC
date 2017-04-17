@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panWebBrowser = new DevExpress.XtraEditors.PanelControl();
+            this.pgpCargaDatos = new DevExpress.XtraWaitForm.ProgressPanel();
             this.panDatosContribuyente = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblRFC = new DevExpress.XtraEditors.LabelControl();
             this.lblRazonSocial = new DevExpress.XtraEditors.LabelControl();
-            this.lblCfdiADescargar = new DevExpress.XtraEditors.LabelControl();
             this.txtRazonSocial = new DevExpress.XtraEditors.MemoEdit();
             this.txtRFC = new DevExpress.XtraEditors.TextEdit();
-            this.rdgTipoCfdiDescarga = new DevExpress.XtraEditors.RadioGroup();
             this.btnDescargarCfdi = new DevExpress.XtraEditors.SimpleButton();
             this.panDatosGuardado = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,23 +49,23 @@
             this.txtRutaPrincipal = new DevExpress.XtraEditors.ButtonEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panRutaDisponible = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAnio = new DevExpress.XtraEditors.SimpleButton();
-            this.btnMes = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRutaAnio = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRutaMes = new DevExpress.XtraEditors.SimpleButton();
             this.btnRutaRFCEmisor = new DevExpress.XtraEditors.SimpleButton();
-            this.btnRFCReceptor = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRutaRFCReceptor = new DevExpress.XtraEditors.SimpleButton();
             this.btnSerieFolio = new DevExpress.XtraEditors.SimpleButton();
             this.btnUUID = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.pgrPorcentajeCargaBrowser = new DevExpress.XtraEditors.ProgressBarControl();
-            this.lblEstatusBrowser = new DevExpress.XtraEditors.LabelControl();
+            this.panEstatusGeneral = new DevExpress.XtraEditors.PanelControl();
+            this.lblEstatusGeneral = new DevExpress.XtraEditors.LabelControl();
+            this.tmrTemporizador = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panWebBrowser)).BeginInit();
+            this.panWebBrowser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panDatosContribuyente)).BeginInit();
             this.panDatosContribuyente.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRazonSocial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRFC.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdgTipoCfdiDescarga.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panDatosGuardado)).BeginInit();
             this.panDatosGuardado.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -74,9 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.panRutaDisponible.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pgrPorcentajeCargaBrowser.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panEstatusGeneral)).BeginInit();
+            this.panEstatusGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -89,7 +89,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panWebBrowser, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.panDatosContribuyente, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.panDatosGuardado, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panelControl3, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panEstatusGeneral, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -105,11 +105,28 @@
             // panWebBrowser
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panWebBrowser, 2);
+            this.panWebBrowser.Controls.Add(this.pgpCargaDatos);
             this.panWebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panWebBrowser.Location = new System.Drawing.Point(8, 138);
             this.panWebBrowser.Name = "panWebBrowser";
             this.panWebBrowser.Size = new System.Drawing.Size(963, 330);
             this.panWebBrowser.TabIndex = 0;
+            // 
+            // pgpCargaDatos
+            // 
+            this.pgpCargaDatos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pgpCargaDatos.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.pgpCargaDatos.Appearance.Options.UseBackColor = true;
+            this.pgpCargaDatos.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.pgpCargaDatos.Caption = "Procesando información";
+            this.pgpCargaDatos.Description = "Espere por favor ...";
+            this.pgpCargaDatos.Location = new System.Drawing.Point(339, 112);
+            this.pgpCargaDatos.Name = "pgpCargaDatos";
+            this.pgpCargaDatos.Padding = new System.Windows.Forms.Padding(3);
+            this.pgpCargaDatos.Size = new System.Drawing.Size(284, 89);
+            this.pgpCargaDatos.TabIndex = 0;
+            this.pgpCargaDatos.UseWaitCursor = true;
+            this.pgpCargaDatos.WaitAnimationType = DevExpress.Utils.Animation.WaitingAnimatorType.Line;
             // 
             // panDatosContribuyente
             // 
@@ -132,10 +149,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
             this.tableLayoutPanel2.Controls.Add(this.lblRFC, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.lblRazonSocial, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lblCfdiADescargar, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.txtRazonSocial, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtRFC, 2, 4);
-            this.tableLayoutPanel2.Controls.Add(this.rdgTipoCfdiDescarga, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.btnDescargarCfdi, 4, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 20);
@@ -171,16 +186,6 @@
             this.lblRazonSocial.TabIndex = 0;
             this.lblRazonSocial.Text = "Razón social: ";
             // 
-            // lblCfdiADescargar
-            // 
-            this.lblCfdiADescargar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblCfdiADescargar.Location = new System.Drawing.Point(8, 76);
-            this.lblCfdiADescargar.Name = "lblCfdiADescargar";
-            this.lblCfdiADescargar.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.lblCfdiADescargar.Size = new System.Drawing.Size(76, 13);
-            this.lblCfdiADescargar.TabIndex = 2;
-            this.lblCfdiADescargar.Text = "Cfdi descarga: ";
-            // 
             // txtRazonSocial
             // 
             this.txtRazonSocial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -195,33 +200,25 @@
             // 
             // txtRFC
             // 
-            this.txtRFC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRFC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtRFC.EditValue = "";
             this.txtRFC.Location = new System.Drawing.Point(86, 47);
             this.txtRFC.Name = "txtRFC";
+            this.txtRFC.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
+            this.txtRFC.Properties.Appearance.Options.UseFont = true;
+            this.txtRFC.Properties.AutoHeight = false;
             this.txtRFC.Properties.Mask.EditMask = "[A-Z&]{3,4}[0-9]{6}[A-Z0-9]{3}";
             this.txtRFC.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.txtRFC.Size = new System.Drawing.Size(176, 20);
+            this.tableLayoutPanel2.SetRowSpan(this.txtRFC, 2);
+            this.txtRFC.Size = new System.Drawing.Size(176, 46);
             this.txtRFC.TabIndex = 4;
-            // 
-            // rdgTipoCfdiDescarga
-            // 
-            this.rdgTipoCfdiDescarga.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rdgTipoCfdiDescarga.Location = new System.Drawing.Point(86, 72);
-            this.rdgTipoCfdiDescarga.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rdgTipoCfdiDescarga.Name = "rdgTipoCfdiDescarga";
-            this.rdgTipoCfdiDescarga.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(0)), "Egresos"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "Ingresos")});
-            this.rdgTipoCfdiDescarga.Size = new System.Drawing.Size(176, 22);
-            this.rdgTipoCfdiDescarga.TabIndex = 5;
             // 
             // btnDescargarCfdi
             // 
             this.btnDescargarCfdi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDescargarCfdi.Image = global::DesarrollosPyC.DescargaCfdiSat.Properties.Resources.Save;
             this.btnDescargarCfdi.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnDescargarCfdi.Location = new System.Drawing.Point(273, 47);
             this.btnDescargarCfdi.Name = "btnDescargarCfdi";
@@ -244,12 +241,12 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 7;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
             this.tableLayoutPanel3.Controls.Add(this.btnOrganizaDatos, 5, 3);
             this.tableLayoutPanel3.Controls.Add(this.panelControl2, 3, 3);
             this.tableLayoutPanel3.Controls.Add(this.lblRutaGuardado, 1, 3);
@@ -273,8 +270,9 @@
             this.btnOrganizaDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrganizaDatos.Image = global::DesarrollosPyC.DescargaCfdiSat.Properties.Resources.Content_reorder;
             this.btnOrganizaDatos.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnOrganizaDatos.Location = new System.Drawing.Point(563, 47);
+            this.btnOrganizaDatos.Location = new System.Drawing.Point(564, 47);
             this.btnOrganizaDatos.Name = "btnOrganizaDatos";
             this.tableLayoutPanel3.SetRowSpan(this.btnOrganizaDatos, 2);
             this.btnOrganizaDatos.Size = new System.Drawing.Size(46, 46);
@@ -285,11 +283,11 @@
             // 
             this.panelControl2.Controls.Add(this.panRutaAgregada);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(281, 45);
+            this.panelControl2.Location = new System.Drawing.Point(286, 45);
             this.panelControl2.Margin = new System.Windows.Forms.Padding(1);
             this.panelControl2.Name = "panelControl2";
             this.tableLayoutPanel3.SetRowSpan(this.panelControl2, 2);
-            this.panelControl2.Size = new System.Drawing.Size(273, 50);
+            this.panelControl2.Size = new System.Drawing.Size(269, 50);
             this.panelControl2.TabIndex = 7;
             // 
             // panRutaAgregada
@@ -297,7 +295,7 @@
             this.panRutaAgregada.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panRutaAgregada.Location = new System.Drawing.Point(2, 2);
             this.panRutaAgregada.Name = "panRutaAgregada";
-            this.panRutaAgregada.Size = new System.Drawing.Size(269, 46);
+            this.panRutaAgregada.Size = new System.Drawing.Size(265, 46);
             this.panRutaAgregada.TabIndex = 6;
             // 
             // lblRutaGuardado
@@ -313,12 +311,12 @@
             // txtRutaPrincipal
             // 
             this.txtRutaPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRutaPrincipal.Location = new System.Drawing.Point(107, 47);
+            this.txtRutaPrincipal.Location = new System.Drawing.Point(108, 47);
             this.txtRutaPrincipal.Name = "txtRutaPrincipal";
             this.txtRutaPrincipal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtRutaPrincipal.Properties.ReadOnly = true;
-            this.txtRutaPrincipal.Size = new System.Drawing.Size(170, 20);
+            this.txtRutaPrincipal.Size = new System.Drawing.Size(174, 20);
             this.txtRutaPrincipal.TabIndex = 4;
             // 
             // panelControl1
@@ -326,7 +324,7 @@
             this.tableLayoutPanel3.SetColumnSpan(this.panelControl1, 4);
             this.panelControl1.Controls.Add(this.panRutaDisponible);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(105, 6);
+            this.panelControl1.Location = new System.Drawing.Point(106, 6);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(1);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(506, 32);
@@ -334,10 +332,10 @@
             // 
             // panRutaDisponible
             // 
-            this.panRutaDisponible.Controls.Add(this.btnAnio);
-            this.panRutaDisponible.Controls.Add(this.btnMes);
+            this.panRutaDisponible.Controls.Add(this.btnRutaAnio);
+            this.panRutaDisponible.Controls.Add(this.btnRutaMes);
             this.panRutaDisponible.Controls.Add(this.btnRutaRFCEmisor);
-            this.panRutaDisponible.Controls.Add(this.btnRFCReceptor);
+            this.panRutaDisponible.Controls.Add(this.btnRutaRFCReceptor);
             this.panRutaDisponible.Controls.Add(this.btnSerieFolio);
             this.panRutaDisponible.Controls.Add(this.btnUUID);
             this.panRutaDisponible.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -346,53 +344,65 @@
             this.panRutaDisponible.Size = new System.Drawing.Size(502, 28);
             this.panRutaDisponible.TabIndex = 5;
             // 
-            // btnAnio
+            // btnRutaAnio
             // 
-            this.btnAnio.Location = new System.Drawing.Point(3, 3);
-            this.btnAnio.Name = "btnAnio";
-            this.btnAnio.Size = new System.Drawing.Size(75, 23);
-            this.btnAnio.TabIndex = 2;
-            this.btnAnio.Text = "Año";
-            this.btnAnio.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
+            this.btnRutaAnio.Image = ((System.Drawing.Image)(resources.GetObject("btnRutaAnio.Image")));
+            this.btnRutaAnio.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnRutaAnio.Location = new System.Drawing.Point(3, 3);
+            this.btnRutaAnio.Name = "btnRutaAnio";
+            this.btnRutaAnio.Size = new System.Drawing.Size(62, 23);
+            this.btnRutaAnio.TabIndex = 2;
+            this.btnRutaAnio.Text = "Año";
+            this.btnRutaAnio.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
             // 
-            // btnMes
+            // btnRutaMes
             // 
-            this.btnMes.Location = new System.Drawing.Point(84, 3);
-            this.btnMes.Name = "btnMes";
-            this.btnMes.Size = new System.Drawing.Size(75, 23);
-            this.btnMes.TabIndex = 3;
-            this.btnMes.Text = "Mes";
-            this.btnMes.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
+            this.btnRutaMes.Image = ((System.Drawing.Image)(resources.GetObject("btnRutaMes.Image")));
+            this.btnRutaMes.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnRutaMes.Location = new System.Drawing.Point(71, 3);
+            this.btnRutaMes.Name = "btnRutaMes";
+            this.btnRutaMes.Size = new System.Drawing.Size(62, 23);
+            this.btnRutaMes.TabIndex = 3;
+            this.btnRutaMes.Text = "Mes";
+            this.btnRutaMes.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
             // 
             // btnRutaRFCEmisor
             // 
-            this.btnRutaRFCEmisor.Location = new System.Drawing.Point(165, 3);
+            this.btnRutaRFCEmisor.Image = ((System.Drawing.Image)(resources.GetObject("btnRutaRFCEmisor.Image")));
+            this.btnRutaRFCEmisor.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnRutaRFCEmisor.Location = new System.Drawing.Point(139, 3);
             this.btnRutaRFCEmisor.Name = "btnRutaRFCEmisor";
-            this.btnRutaRFCEmisor.Size = new System.Drawing.Size(75, 23);
+            this.btnRutaRFCEmisor.Size = new System.Drawing.Size(88, 23);
             this.btnRutaRFCEmisor.TabIndex = 0;
-            this.btnRutaRFCEmisor.Text = "RFC emisor";
+            this.btnRutaRFCEmisor.Text = "Rfc emisor";
             this.btnRutaRFCEmisor.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
             // 
-            // btnRFCReceptor
+            // btnRutaRFCReceptor
             // 
-            this.btnRFCReceptor.Location = new System.Drawing.Point(246, 3);
-            this.btnRFCReceptor.Name = "btnRFCReceptor";
-            this.btnRFCReceptor.Size = new System.Drawing.Size(75, 23);
-            this.btnRFCReceptor.TabIndex = 1;
-            this.btnRFCReceptor.Text = "RFC receptor";
-            this.btnRFCReceptor.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
+            this.btnRutaRFCReceptor.Image = ((System.Drawing.Image)(resources.GetObject("btnRutaRFCReceptor.Image")));
+            this.btnRutaRFCReceptor.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnRutaRFCReceptor.Location = new System.Drawing.Point(233, 3);
+            this.btnRutaRFCReceptor.Name = "btnRutaRFCReceptor";
+            this.btnRutaRFCReceptor.Size = new System.Drawing.Size(88, 23);
+            this.btnRutaRFCReceptor.TabIndex = 1;
+            this.btnRutaRFCReceptor.Text = "Rfc receptor";
+            this.btnRutaRFCReceptor.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
             // 
             // btnSerieFolio
             // 
+            this.btnSerieFolio.Image = ((System.Drawing.Image)(resources.GetObject("btnSerieFolio.Image")));
+            this.btnSerieFolio.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
             this.btnSerieFolio.Location = new System.Drawing.Point(327, 3);
             this.btnSerieFolio.Name = "btnSerieFolio";
             this.btnSerieFolio.Size = new System.Drawing.Size(75, 23);
             this.btnSerieFolio.TabIndex = 4;
-            this.btnSerieFolio.Text = "Serie - folio";
+            this.btnSerieFolio.Text = "Serie-folio";
             this.btnSerieFolio.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
             // 
             // btnUUID
             // 
+            this.btnUUID.Image = ((System.Drawing.Image)(resources.GetObject("btnUUID.Image")));
+            this.btnUUID.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
             this.btnUUID.Location = new System.Drawing.Point(408, 3);
             this.btnUUID.Name = "btnUUID";
             this.btnUUID.Size = new System.Drawing.Size(75, 23);
@@ -400,33 +410,29 @@
             this.btnUUID.Text = "UUID";
             this.btnUUID.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
             // 
-            // panelControl3
+            // panEstatusGeneral
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panelControl3, 2);
-            this.panelControl3.Controls.Add(this.pgrPorcentajeCargaBrowser);
-            this.panelControl3.Controls.Add(this.lblEstatusBrowser);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(8, 471);
-            this.panelControl3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(963, 25);
-            this.panelControl3.TabIndex = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.panEstatusGeneral, 2);
+            this.panEstatusGeneral.Controls.Add(this.lblEstatusGeneral);
+            this.panEstatusGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panEstatusGeneral.Location = new System.Drawing.Point(8, 474);
+            this.panEstatusGeneral.Name = "panEstatusGeneral";
+            this.panEstatusGeneral.Size = new System.Drawing.Size(963, 19);
+            this.panEstatusGeneral.TabIndex = 3;
             // 
-            // pgrPorcentajeCargaBrowser
+            // lblEstatusGeneral
             // 
-            this.pgrPorcentajeCargaBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pgrPorcentajeCargaBrowser.Location = new System.Drawing.Point(624, 7);
-            this.pgrPorcentajeCargaBrowser.Name = "pgrPorcentajeCargaBrowser";
-            this.pgrPorcentajeCargaBrowser.Size = new System.Drawing.Size(334, 12);
-            this.pgrPorcentajeCargaBrowser.TabIndex = 1;
+            this.lblEstatusGeneral.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblEstatusGeneral.Location = new System.Drawing.Point(8, 3);
+            this.lblEstatusGeneral.Name = "lblEstatusGeneral";
+            this.lblEstatusGeneral.Size = new System.Drawing.Size(4, 13);
+            this.lblEstatusGeneral.TabIndex = 0;
+            this.lblEstatusGeneral.Text = ".";
             // 
-            // lblEstatusBrowser
+            // tmrTemporizador
             // 
-            this.lblEstatusBrowser.Location = new System.Drawing.Point(5, 6);
-            this.lblEstatusBrowser.Name = "lblEstatusBrowser";
-            this.lblEstatusBrowser.Size = new System.Drawing.Size(108, 13);
-            this.lblEstatusBrowser.TabIndex = 0;
-            this.lblEstatusBrowser.Text = "Estatus del navegador";
+            this.tmrTemporizador.Enabled = true;
+            this.tmrTemporizador.Tick += new System.EventHandler(this.tmrTemporizador_Tick);
             // 
             // MainForm
             // 
@@ -442,13 +448,13 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panWebBrowser)).EndInit();
+            this.panWebBrowser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panDatosContribuyente)).EndInit();
             this.panDatosContribuyente.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRazonSocial.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRFC.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdgTipoCfdiDescarga.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panDatosGuardado)).EndInit();
             this.panDatosGuardado.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -459,10 +465,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panRutaDisponible.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
-            this.panelControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pgrPorcentajeCargaBrowser.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panEstatusGeneral)).EndInit();
+            this.panEstatusGeneral.ResumeLayout(false);
+            this.panEstatusGeneral.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -476,10 +481,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private DevExpress.XtraEditors.LabelControl lblRFC;
         private DevExpress.XtraEditors.LabelControl lblRazonSocial;
-        private DevExpress.XtraEditors.LabelControl lblCfdiADescargar;
         private DevExpress.XtraEditors.MemoEdit txtRazonSocial;
         private DevExpress.XtraEditors.TextEdit txtRFC;
-        private DevExpress.XtraEditors.RadioGroup rdgTipoCfdiDescarga;
         private DevExpress.XtraEditors.SimpleButton btnDescargarCfdi;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private DevExpress.XtraEditors.LabelControl lblRutaGuardado;
@@ -489,15 +492,16 @@
         private System.Windows.Forms.FlowLayoutPanel panRutaAgregada;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnRFCReceptor;
-        private DevExpress.XtraEditors.SimpleButton btnAnio;
-        private DevExpress.XtraEditors.SimpleButton btnMes;
+        private DevExpress.XtraEditors.SimpleButton btnRutaRFCReceptor;
+        private DevExpress.XtraEditors.SimpleButton btnRutaAnio;
+        private DevExpress.XtraEditors.SimpleButton btnRutaMes;
         private DevExpress.XtraEditors.SimpleButton btnSerieFolio;
         private DevExpress.XtraEditors.SimpleButton btnUUID;
         private DevExpress.XtraEditors.SimpleButton btnOrganizaDatos;
-        private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.ProgressBarControl pgrPorcentajeCargaBrowser;
-        private DevExpress.XtraEditors.LabelControl lblEstatusBrowser;
+        private DevExpress.XtraWaitForm.ProgressPanel pgpCargaDatos;
+        private System.Windows.Forms.Timer tmrTemporizador;
+        private DevExpress.XtraEditors.PanelControl panEstatusGeneral;
+        private DevExpress.XtraEditors.LabelControl lblEstatusGeneral;
     }
 }
 

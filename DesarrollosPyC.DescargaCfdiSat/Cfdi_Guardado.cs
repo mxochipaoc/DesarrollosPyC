@@ -15,7 +15,7 @@ namespace DesarrollosPyC.DescargaCfdiSat
         RFC_Receptor,
         Anhio,
         Mes,
-        Folio_Serie,
+        Serie_Folio,
         UUID
     }
 }

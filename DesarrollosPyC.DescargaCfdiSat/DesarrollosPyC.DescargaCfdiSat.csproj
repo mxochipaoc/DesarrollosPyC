@@ -104,7 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cfdi_Guardado.cs" />
-    <Compile Include="DesarrollosPycDownloadHandler.cs" />
+    <Compile Include="Helper_Cfdi.cs" />
+    <Compile Include="Helper_HtmlElements.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +127,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -146,6 +148,35 @@
       <Project>{3a3424cc-ae65-454b-a57f-d9a6846e3073}</Project>
       <Name>DesarrollosPyC.Com.Controles</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DesarrollosPyC.Com.Facturacion\DesarrollosPyC.Com.Facturacion.csproj">
+      <Project>{b7969eb1-8fd3-4430-a54c-1fd3c61cd013}</Project>
+      <Name>DesarrollosPyC.Com.Facturacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DesarrollosPyC.Com.Utilidades\DesarrollosPyC.Com.Utilidades.csproj">
+      <Project>{a8119225-b3ee-4979-855f-f83fa8d2dd11}</Project>
+      <Name>DesarrollosPyC.Com.Utilidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Xml-tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Content-reorder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\File-explorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Xml-tool1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\cef.redist.x64.3.2883.1552\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2883.1552\build\cef.redist.x64.targets')" />

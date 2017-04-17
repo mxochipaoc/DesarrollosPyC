@@ -11,6 +11,7 @@ namespace DesarrollosPyC.DescargaCfdiSat
     /// </summary>
     public enum Tipo_Cfdi_Descarga : short
     {
+        No_definido = -1,
         Egresos = 0,
         Ingresos = 1
     }
