@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
@@ -61,6 +60,7 @@
             this.tbIngresos = new DevExpress.XtraTab.XtraTabPage();
             this.grdIngresos = new DevExpress.XtraGrid.GridControl();
             this.grdViewBandIngresos = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.tbNomina11 = new DevExpress.XtraTab.XtraTabPage();
             this.grdNominas11 = new DevExpress.XtraGrid.GridControl();
             this.grdViewBandNominas11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
@@ -70,9 +70,9 @@
             this.tbEgresos = new DevExpress.XtraTab.XtraTabPage();
             this.grdEgresos = new DevExpress.XtraGrid.GridControl();
             this.grdViewBandEgresos = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.imlIngresosTipoReporte = new System.Windows.Forms.ImageList(this.components);
-            this.tmrTemporizador = new System.Windows.Forms.Timer(this.components);
-            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.imlIngresosTipoReporte = new System.Windows.Forms.ImageList();
+            this.tmrTemporizador = new System.Windows.Forms.Timer();
+            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panEstatusGeneral)).BeginInit();
             this.panEstatusGeneral.SuspendLayout();
@@ -93,6 +93,7 @@
             this.tbIngresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandIngresos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.tbNomina11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdNominas11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandNominas11)).BeginInit();
@@ -102,7 +103,6 @@
             this.tbEgresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEgresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandEgresos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -428,6 +428,13 @@
             this.grdViewBandIngresos.Name = "grdViewBandIngresos";
             this.grdViewBandIngresos.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
             // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            // 
             // tbNomina11
             // 
             this.tbNomina11.Controls.Add(this.grdNominas11);
@@ -516,13 +523,6 @@
             this.tmrTemporizador.Enabled = true;
             this.tmrTemporizador.Tick += new System.EventHandler(this.tmrTemporizador_Tick);
             // 
-            // repositoryItemImageComboBox1
-            // 
-            this.repositoryItemImageComboBox1.AutoHeight = false;
-            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -557,6 +557,7 @@
             this.tbIngresos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdIngresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandIngresos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.tbNomina11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdNominas11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandNominas11)).EndInit();
@@ -566,7 +567,6 @@
             this.tbEgresos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEgresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandEgresos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -608,6 +608,7 @@
         private DevExpress.XtraEditors.PanelControl panContenedorAnalisis;
         private DevExpress.XtraWaitForm.ProgressPanel pgpCargaDatos;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel DefaultLookAndFeel;
     }
 }
 

@@ -16,7 +16,12 @@ namespace DesarrollosPyC.DescargaCfdiSat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            var form = new MainForm();
+            form.FormClosing += (s, e) =>
+            {
+                CefSharp.Cef.Shutdown();
+            };
+            Application.Run(form);
         }
     }
 }

@@ -63,9 +63,19 @@ namespace DesarrollosPyC.CfdiSat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Bulb {
+        internal static System.Drawing.Bitmap Computer {
             get {
-                object obj = ResourceManager.GetObject("Bulb", resourceCulture);
+                object obj = ResourceManager.GetObject("Computer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Glossary {
+            get {
+                object obj = ResourceManager.GetObject("Glossary", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,19 +113,9 @@ namespace DesarrollosPyC.CfdiSat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Wizard {
+        internal static System.Drawing.Bitmap xlsx_24x24 {
             get {
-                object obj = ResourceManager.GetObject("Wizard", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap xlsx_16x16 {
-            get {
-                object obj = ResourceManager.GetObject("xlsx 16x16", resourceCulture);
+                object obj = ResourceManager.GetObject("xlsx_24x24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panWebBrowser = new DevExpress.XtraEditors.PanelControl();
@@ -57,7 +56,8 @@
             this.btnUUID = new DevExpress.XtraEditors.SimpleButton();
             this.panEstatusGeneral = new DevExpress.XtraEditors.PanelControl();
             this.lblEstatusGeneral = new DevExpress.XtraEditors.LabelControl();
-            this.tmrTemporizador = new System.Windows.Forms.Timer(this.components);
+            this.tmrTemporizador = new System.Windows.Forms.Timer();
+            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panWebBrowser)).BeginInit();
             this.panWebBrowser.SuspendLayout();
@@ -146,7 +146,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
             this.tableLayoutPanel2.Controls.Add(this.lblRFC, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.lblRazonSocial, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtRazonSocial, 2, 1);
@@ -246,7 +246,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
             this.tableLayoutPanel3.Controls.Add(this.btnOrganizaDatos, 5, 3);
             this.tableLayoutPanel3.Controls.Add(this.panelControl2, 3, 3);
             this.tableLayoutPanel3.Controls.Add(this.lblRutaGuardado, 1, 3);
@@ -272,7 +272,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOrganizaDatos.Image = global::DesarrollosPyC.DescargaCfdiSat.Properties.Resources.Content_reorder;
             this.btnOrganizaDatos.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnOrganizaDatos.Location = new System.Drawing.Point(564, 47);
+            this.btnOrganizaDatos.Location = new System.Drawing.Point(563, 47);
             this.btnOrganizaDatos.Name = "btnOrganizaDatos";
             this.tableLayoutPanel3.SetRowSpan(this.btnOrganizaDatos, 2);
             this.btnOrganizaDatos.Size = new System.Drawing.Size(46, 46);
@@ -287,7 +287,7 @@
             this.panelControl2.Margin = new System.Windows.Forms.Padding(1);
             this.panelControl2.Name = "panelControl2";
             this.tableLayoutPanel3.SetRowSpan(this.panelControl2, 2);
-            this.panelControl2.Size = new System.Drawing.Size(269, 50);
+            this.panelControl2.Size = new System.Drawing.Size(268, 50);
             this.panelControl2.TabIndex = 7;
             // 
             // panRutaAgregada
@@ -295,7 +295,7 @@
             this.panRutaAgregada.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panRutaAgregada.Location = new System.Drawing.Point(2, 2);
             this.panRutaAgregada.Name = "panRutaAgregada";
-            this.panRutaAgregada.Size = new System.Drawing.Size(265, 46);
+            this.panRutaAgregada.Size = new System.Drawing.Size(264, 46);
             this.panRutaAgregada.TabIndex = 6;
             // 
             // lblRutaGuardado
@@ -327,7 +327,7 @@
             this.panelControl1.Location = new System.Drawing.Point(106, 6);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(1);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(506, 32);
+            this.panelControl1.Size = new System.Drawing.Size(505, 32);
             this.panelControl1.TabIndex = 5;
             // 
             // panRutaDisponible
@@ -341,7 +341,7 @@
             this.panRutaDisponible.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panRutaDisponible.Location = new System.Drawing.Point(2, 2);
             this.panRutaDisponible.Name = "panRutaDisponible";
-            this.panRutaDisponible.Size = new System.Drawing.Size(502, 28);
+            this.panRutaDisponible.Size = new System.Drawing.Size(501, 28);
             this.panRutaDisponible.TabIndex = 5;
             // 
             // btnRutaAnio
@@ -444,7 +444,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Descarga de Cfdi SAT";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panWebBrowser)).EndInit();
@@ -502,6 +501,7 @@
         private System.Windows.Forms.Timer tmrTemporizador;
         private DevExpress.XtraEditors.PanelControl panEstatusGeneral;
         private DevExpress.XtraEditors.LabelControl lblEstatusGeneral;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel DefaultLookAndFeel;
     }
 }
 

@@ -16,7 +16,7 @@ namespace DesarrollosPyC.DescargaCfdiSat
     /// <summary>
     /// Formulario principal de lanzado de descarga masiva e Cfdi desde portal del SAT
     /// </summary>
-    public partial class MainForm : Form, CefSharp.IDownloadHandler
+    public partial class MainForm : DevExpress.XtraEditors.XtraForm, CefSharp.IDownloadHandler
     {
         /// <summary>
         /// Constructor de la clase
@@ -71,22 +71,11 @@ namespace DesarrollosPyC.DescargaCfdiSat
             Browser = new ChromiumWebBrowser("https://portalcfdi.facturaelectronica.sat.gob.mx/?id=SATUPCFDiCon&sid=0&option=credential&sid=0");
             this.panWebBrowser.Controls.Add(Browser);
             Browser.Dock = DockStyle.Fill;
-
             // Manejo de descarga de datos
             Browser.DownloadHandler = this;
-
             // Visualziación de estatus del navegador    
             Browser.LoadingStateChanged += Browser_LoadingStateChanged;
             //TareaDescarga = TaskScheduler.FromCurrentSynchronizationContext();
-        }
-        /// <summary>
-        /// Cierre del formulario
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Cef.Shutdown();
         }
         #endregion
 
@@ -482,9 +471,16 @@ namespace DesarrollosPyC.DescargaCfdiSat
                         string cfdi_xml = r.Result.ToString();
                         string uuid = cfdi.UUID;
 
-                        System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-                        doc.LoadXml(cfdi_xml);
-                        doc.Save(txtRutaPrincipal.Text + "\\" + uuid + ".xml");
+                        try
+                        {
+                            System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                            doc.LoadXml(cfdi_xml);
+                            doc.Save(txtRutaPrincipal.Text + "\\" + uuid + ".xml");
+                        }
+                        finally
+                        {
+                            // No hace nada
+                        }
                     }
                     /*task.ContinueWith(t =>
                     {

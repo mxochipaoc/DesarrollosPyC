@@ -13,7 +13,7 @@ namespace DesarrollosPyC.CfdiSat
     /// <summary>
     /// Formulario de apertura de aplicaciones de análisis de Cfdi
     /// </summary>
-    public partial class MainForm : Form
+    public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
         /// <summary>
         /// Constructor de la clase
@@ -21,28 +21,75 @@ namespace DesarrollosPyC.CfdiSat
         public MainForm()
         {
             InitializeComponent();
+
+            DevExpress.UserSkins.BonusSkins.Register();
+            tniLoockAndFeel.SubItems.Clear();
+            DevExpress.Skins.SkinContainerCollection skins = DevExpress.Skins.SkinManager.Default.Skins;
+            for (int i = 0; i < skins.Count; i++)
+            {
+                var sk = new DevExpress.XtraBars.Navigation.TileNavSubItem()
+                {
+                    Alignment= DevExpress.XtraBars.Navigation.NavButtonAlignment.Default,
+                    Caption= skins[i].SkinName,
+                    TileText= skins[i].SkinName,
+                    Name= skins[i].SkinName,
+                    GroupName ="Skins"
+                };
+                
+                sk.Tile.Elements.Add(new DevExpress.XtraEditors.TileItemElement()
+                {
+                    Image = DevExpress.Skins.SkinCollectionHelper.GetSkinIcon(skins[i].SkinName, DevExpress.Skins.SkinIconsSize.Small),
+                });
+                //sk.Tile.DropDownOptions.BeakColor = skins[i].CommonSkin.BaseColor;
+                sk.ElementClick += (s, e) =>
+                 {
+                     DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = e.Element.Name;
+                 };
+                tniLoockAndFeel.SubItems.Add(sk);
+            }
         }
+                       
         /// <summary>
-        /// Apertura de formulario de descarga masiva
+        /// Ejecución durante el cierre del formulario
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        private void nvbDescargaMasiva_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DesarrollosPyC.DescargaCfdiSat.MainForm form = new DescargaCfdiSat.MainForm();
-            form.MdiParent = this;
-            form.Show();
+            CefSharp.Cef.Shutdown();
         }
+
         /// <summary>
-        /// Apertura de formulario de analisis de elementos descargados
+        /// Selección de elemento en menu
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        private void nvbAnalisis_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        private void tnpMenu_ElementClick(object sender, DevExpress.XtraBars.Navigation.NavElementEventArgs e)
         {
-            DesarrollosPyC.AnalisisCfdiSat.MainForm form = new AnalisisCfdiSat.MainForm();
-            form.MdiParent = this;
-            form.Show();
+            if (e.Element == tniDescargaMasiva)
+            {
+                var form = this.MdiChildren.Where(i => i is DesarrollosPyC.DescargaCfdiSat.MainForm).FirstOrDefault();
+                if (form == null)
+                {
+                    form = new DesarrollosPyC.DescargaCfdiSat.MainForm();
+                    form.MdiParent = this;
+                    form.Show();
+                }
+                else
+                    form.Focus();
+            }
+            if (e.Element == tniAnalisis)
+            {
+                var form = this.MdiChildren.Where(i => i is DesarrollosPyC.AnalisisCfdiSat.MainForm).FirstOrDefault();
+                if (form == null)
+                {
+                    form = new DesarrollosPyC.AnalisisCfdiSat.MainForm();
+                    form.MdiParent = this;
+                    form.Show();
+                }
+                else
+                    form.Focus();
+            }
         }
     }
 }
