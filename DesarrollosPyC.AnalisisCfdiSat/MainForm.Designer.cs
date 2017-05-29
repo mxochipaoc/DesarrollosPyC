@@ -50,10 +50,14 @@
             this.btnRecargarEgresos = new DevExpress.XtraEditors.SimpleButton();
             this.panDatosContribuyente = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lookUpEdit4 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.lblRFC = new DevExpress.XtraEditors.LabelControl();
             this.lblRazonSocial = new DevExpress.XtraEditors.LabelControl();
-            this.txtRazonSocial = new DevExpress.XtraEditors.MemoEdit();
             this.txtRFC = new DevExpress.XtraEditors.TextEdit();
+            this.lkpRazonSocial = new DevExpress.XtraEditors.LookUpEdit();
             this.panContenedorAnalisis = new DevExpress.XtraEditors.PanelControl();
             this.pgpCargaDatos = new DevExpress.XtraWaitForm.ProgressPanel();
             this.tabAnalisis = new DevExpress.XtraTab.XtraTabControl();
@@ -84,8 +88,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panDatosContribuyente)).BeginInit();
             this.panDatosContribuyente.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRazonSocial.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRFC.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpRazonSocial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panContenedorAnalisis)).BeginInit();
             this.panContenedorAnalisis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabAnalisis)).BeginInit();
@@ -274,13 +282,17 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel2.Controls.Add(this.lookUpEdit4, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.lookUpEdit3, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.lookUpEdit2, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.lookUpEdit1, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.lblRFC, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.lblRazonSocial, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.txtRazonSocial, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtRFC, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this.lkpRazonSocial, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 20);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -293,6 +305,94 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(374, 102);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // lookUpEdit4
+            // 
+            this.lookUpEdit4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit4.Location = new System.Drawing.Point(3, 99);
+            this.lookUpEdit4.Name = "lookUpEdit4";
+            this.lookUpEdit4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12.5F);
+            this.lookUpEdit4.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit4.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Rfc", 100, "RFC"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RazonSocial", 300, "Razón social")});
+            this.lookUpEdit4.Properties.DisplayMember = "RazonSocial";
+            this.lookUpEdit4.Properties.NullText = "";
+            this.lookUpEdit4.Properties.PopupWidth = 400;
+            this.lookUpEdit4.Properties.ShowHeader = false;
+            this.lookUpEdit4.Properties.ValueMember = "Rfc";
+            this.lookUpEdit4.Size = new System.Drawing.Size(1, 28);
+            this.lookUpEdit4.TabIndex = 8;
+            // 
+            // lookUpEdit3
+            // 
+            this.lookUpEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit3.Location = new System.Drawing.Point(8, 99);
+            this.lookUpEdit3.Name = "lookUpEdit3";
+            this.lookUpEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12.5F);
+            this.lookUpEdit3.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit3.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Rfc", 100, "RFC"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RazonSocial", 300, "Razón social")});
+            this.lookUpEdit3.Properties.DisplayMember = "RazonSocial";
+            this.lookUpEdit3.Properties.NullText = "";
+            this.lookUpEdit3.Properties.PopupWidth = 400;
+            this.lookUpEdit3.Properties.ShowHeader = false;
+            this.lookUpEdit3.Properties.ValueMember = "Rfc";
+            this.lookUpEdit3.Size = new System.Drawing.Size(69, 28);
+            this.lookUpEdit3.TabIndex = 7;
+            // 
+            // lookUpEdit2
+            // 
+            this.lookUpEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit2.Location = new System.Drawing.Point(83, 99);
+            this.lookUpEdit2.Name = "lookUpEdit2";
+            this.lookUpEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12.5F);
+            this.lookUpEdit2.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Rfc", 100, "RFC"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RazonSocial", 300, "Razón social")});
+            this.lookUpEdit2.Properties.DisplayMember = "RazonSocial";
+            this.lookUpEdit2.Properties.NullText = "";
+            this.lookUpEdit2.Properties.PopupWidth = 400;
+            this.lookUpEdit2.Properties.ShowHeader = false;
+            this.lookUpEdit2.Properties.ValueMember = "Rfc";
+            this.lookUpEdit2.Size = new System.Drawing.Size(283, 28);
+            this.lookUpEdit2.TabIndex = 6;
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit1.Location = new System.Drawing.Point(372, 99);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12.5F);
+            this.lookUpEdit1.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Rfc", 100, "RFC"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RazonSocial", 300, "Razón social")});
+            this.lookUpEdit1.Properties.DisplayMember = "RazonSocial";
+            this.lookUpEdit1.Properties.NullText = "";
+            this.lookUpEdit1.Properties.PopupWidth = 400;
+            this.lookUpEdit1.Properties.ShowHeader = false;
+            this.lookUpEdit1.Properties.ValueMember = "Rfc";
+            this.lookUpEdit1.Size = new System.Drawing.Size(1, 28);
+            this.lookUpEdit1.TabIndex = 5;
             // 
             // lblRFC
             // 
@@ -314,30 +414,44 @@
             this.lblRazonSocial.TabIndex = 0;
             this.lblRazonSocial.Text = "Razón social: ";
             // 
-            // txtRazonSocial
-            // 
-            this.txtRazonSocial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRazonSocial.Location = new System.Drawing.Point(88, 8);
-            this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(278, 28);
-            this.txtRazonSocial.TabIndex = 3;
-            // 
             // txtRFC
             // 
             this.txtRFC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtRFC.EditValue = "";
-            this.txtRFC.Location = new System.Drawing.Point(88, 47);
+            this.txtRFC.Location = new System.Drawing.Point(83, 47);
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
             this.txtRFC.Properties.Appearance.Options.UseFont = true;
             this.txtRFC.Properties.AutoHeight = false;
             this.txtRFC.Properties.Mask.EditMask = "[A-Z&]{3,4}[0-9]{6}[A-Z0-9]{3}";
             this.txtRFC.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtRFC.Properties.ReadOnly = true;
             this.tableLayoutPanel2.SetRowSpan(this.txtRFC, 2);
-            this.txtRFC.Size = new System.Drawing.Size(278, 46);
+            this.txtRFC.Size = new System.Drawing.Size(283, 46);
             this.txtRFC.TabIndex = 4;
+            // 
+            // lkpRazonSocial
+            // 
+            this.lkpRazonSocial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lkpRazonSocial.Location = new System.Drawing.Point(83, 8);
+            this.lkpRazonSocial.Name = "lkpRazonSocial";
+            this.lkpRazonSocial.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12.5F);
+            this.lkpRazonSocial.Properties.Appearance.Options.UseFont = true;
+            this.lkpRazonSocial.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkpRazonSocial.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Receptor.Rfc", 100, "RFC"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Receptor.RazonSocial", 300, "Razón social")});
+            this.lkpRazonSocial.Properties.DisplayMember = "Receptor.RazonSocial";
+            this.lkpRazonSocial.Properties.NullText = "";
+            this.lkpRazonSocial.Properties.PopupWidth = 400;
+            this.lkpRazonSocial.Properties.ShowHeader = false;
+            this.lkpRazonSocial.Properties.ValueMember = "Receptor.Rfc";
+            this.lkpRazonSocial.Size = new System.Drawing.Size(283, 28);
+            this.lkpRazonSocial.TabIndex = 3;
+            this.lkpRazonSocial.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.lkpRazonSocial_EditValueChanging);
             // 
             // panContenedorAnalisis
             // 
@@ -548,8 +662,12 @@
             this.panDatosContribuyente.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRazonSocial.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRFC.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpRazonSocial.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panContenedorAnalisis)).EndInit();
             this.panContenedorAnalisis.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabAnalisis)).EndInit();
@@ -579,7 +697,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private DevExpress.XtraEditors.LabelControl lblRFC;
         private DevExpress.XtraEditors.LabelControl lblRazonSocial;
-        private DevExpress.XtraEditors.MemoEdit txtRazonSocial;
         private DevExpress.XtraEditors.TextEdit txtRFC;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private DevExpress.XtraEditors.LabelControl lblCfdiIngresos;
@@ -609,6 +726,11 @@
         private DevExpress.XtraWaitForm.ProgressPanel pgpCargaDatos;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.LookAndFeel.DefaultLookAndFeel DefaultLookAndFeel;
+        private DevExpress.XtraEditors.LookUpEdit lkpRazonSocial;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit4;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
     }
 }
 

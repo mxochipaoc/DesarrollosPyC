@@ -22,6 +22,7 @@ namespace DesarrollosPyC.CfdiSat
         {
             InitializeComponent();
 
+            // Estilos de los formularios
             DevExpress.UserSkins.BonusSkins.Register();
             tniLoockAndFeel.SubItems.Clear();
             DevExpress.Skins.SkinContainerCollection skins = DevExpress.Skins.SkinManager.Default.Skins;
@@ -46,6 +47,33 @@ namespace DesarrollosPyC.CfdiSat
                      DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = e.Element.Name;
                  };
                 tniLoockAndFeel.SubItems.Add(sk);
+            }
+
+            // Licencias del sistema
+            DesarrollosPyC.CfdiSat.Environment.Manejador.CargaLicencias();
+            if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.Licencias != null)
+            {
+                tlnLicencias.Items.Clear();
+                foreach (var l in DesarrollosPyC.CfdiSat.Environment.Aplicacion.Licencias)
+                {
+                    var sk = new DevExpress.XtraBars.Navigation.TileNavItem()
+                    {
+                        Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Default,
+                        Caption = l.Receptor.RazonSocial,
+                        TileText = l.Receptor.RazonSocial,
+                        Name = "Lic_" + l.Receptor.Rfc,
+                        GroupName = "Licencias"
+                    };
+                    sk.Tile.Elements.Add(new DevExpress.XtraEditors.TileItemElement()
+                    {
+                        Text = l.Receptor.Rfc,
+                        TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight,
+                        Image = Properties.Resources.Ticket,
+                        ImageAlignment= DevExpress.XtraEditors.TileItemContentAlignment.TopLeft,
+                    });
+
+                    tlnLicencias.Items.Add(sk);
+                }
             }
         }
                        

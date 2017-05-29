@@ -47,11 +47,13 @@
             this.cldFechaVigencia = new DevExpress.XtraEditors.DateEdit();
             this.cldFechaCargaSistema = new DevExpress.XtraEditors.DateEdit();
             this.txtDiasTranscurridos = new DevExpress.XtraEditors.TextEdit();
-            this.btnGenerar = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtDiccionario = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txtMatriz = new DevExpress.XtraEditors.MemoEdit();
+            this.btnGenerar = new DevExpress.XtraEditors.SimpleButton();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtGuardaLicencia = new DevExpress.XtraEditors.ButtonEdit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -73,6 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMatriz.Properties)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGuardaLicencia.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -101,9 +105,9 @@
             this.tableLayoutPanel1.Controls.Add(this.cldFechaVigencia, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.cldFechaCargaSistema, 2, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtDiasTranscurridos, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.btnGenerar, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.groupControl1, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.groupControl2, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.btnGenerar, 3, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -127,7 +131,7 @@
             // 
             // groupControl3
             // 
-            this.groupControl3.Controls.Add(this.txtResultado);
+            this.groupControl3.Controls.Add(this.tableLayoutPanel2);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(368, 8);
             this.groupControl3.Name = "groupControl3";
@@ -139,10 +143,12 @@
             // txtResultado
             // 
             this.txtResultado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResultado.Location = new System.Drawing.Point(2, 20);
+            this.txtResultado.Location = new System.Drawing.Point(3, 3);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.Properties.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(530, 380);
+            this.txtResultado.Properties.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtResultado.Properties.WordWrap = false;
+            this.txtResultado.Size = new System.Drawing.Size(524, 344);
             this.txtResultado.TabIndex = 1;
             // 
             // labelControl1
@@ -305,18 +311,6 @@
             this.txtDiasTranscurridos.Size = new System.Drawing.Size(129, 20);
             this.txtDiasTranscurridos.TabIndex = 15;
             // 
-            // btnGenerar
-            // 
-            this.btnGenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerar.Location = new System.Drawing.Point(278, 148);
-            this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(84, 14);
-            this.btnGenerar.TabIndex = 16;
-            this.btnGenerar.Text = "Generar licencia";
-            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
-            // 
             // groupControl1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.groupControl1, 3);
@@ -359,6 +353,46 @@
             this.txtMatriz.Size = new System.Drawing.Size(350, 96);
             this.txtMatriz.TabIndex = 1;
             // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerar.Location = new System.Drawing.Point(278, 148);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(84, 14);
+            this.btnGenerar.TabIndex = 19;
+            this.btnGenerar.Text = "Generar licencia";
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.txtResultado, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtGuardaLicencia, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 20);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(530, 380);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // txtGuardaLicencia
+            // 
+            this.txtGuardaLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGuardaLicencia.Location = new System.Drawing.Point(3, 355);
+            this.txtGuardaLicencia.Name = "txtGuardaLicencia";
+            this.txtGuardaLicencia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtGuardaLicencia.Properties.ReadOnly = true;
+            this.txtGuardaLicencia.Size = new System.Drawing.Size(524, 20);
+            this.txtGuardaLicencia.TabIndex = 2;
+            this.txtGuardaLicencia.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtGuardaLicencia_ButtonClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,6 +425,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtMatriz.Properties)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtGuardaLicencia.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -414,13 +450,15 @@
         private DevExpress.XtraEditors.DateEdit cldFechaVigencia;
         private DevExpress.XtraEditors.DateEdit cldFechaCargaSistema;
         private DevExpress.XtraEditors.TextEdit txtDiasTranscurridos;
-        private DevExpress.XtraEditors.SimpleButton btnGenerar;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.MemoEdit txtResultado;
         private DevExpress.XtraEditors.MemoEdit txtDiccionario;
         private DevExpress.XtraEditors.MemoEdit txtMatriz;
+        private DevExpress.XtraEditors.MemoEdit txtResultado;
+        private DevExpress.XtraEditors.SimpleButton btnGenerar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private DevExpress.XtraEditors.ButtonEdit txtGuardaLicencia;
     }
 }
 

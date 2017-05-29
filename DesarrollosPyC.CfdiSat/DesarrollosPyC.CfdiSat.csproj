@@ -120,24 +120,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrintRibbonControllerResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PrintRibbonControllerResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XRDesignRibbonControllerResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>XRDesignRibbonControllerResources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PrintRibbonControllerResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>PrintRibbonControllerResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -150,10 +136,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="XRDesignRibbonControllerResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>XRDesignRibbonControllerResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -174,6 +156,10 @@
       <Project>{7a43806a-36e4-4b06-967d-9e6edacd03e7}</Project>
       <Name>DesarrollosPyC.AnalisisCfdiSat</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DesarrollosPyC.CfdiSat.Environment\DesarrollosPyC.CfdiSat.Environment.csproj">
+      <Project>{844cc148-22a6-4a1e-bcef-cc8e56e93f78}</Project>
+      <Name>DesarrollosPyC.CfdiSat.Environment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DesarrollosPyC.Com.Controles\DesarrollosPyC.Com.Controles.csproj">
       <Project>{3a3424cc-ae65-454b-a57f-d9a6846e3073}</Project>
       <Name>DesarrollosPyC.Com.Controles</Name>
@@ -181,6 +167,10 @@
     <ProjectReference Include="..\DesarrollosPyC.Com.Facturacion\DesarrollosPyC.Com.Facturacion.csproj">
       <Project>{b7969eb1-8fd3-4430-a54c-1fd3c61cd013}</Project>
       <Name>DesarrollosPyC.Com.Facturacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DesarrollosPyC.Com.Licencias\DesarrollosPyC.Com.Licencias.csproj">
+      <Project>{a5e0bf61-96c5-4d78-a52f-3f0f410b516d}</Project>
+      <Name>DesarrollosPyC.Com.Licencias</Name>
     </ProjectReference>
     <ProjectReference Include="..\DesarrollosPyC.Com.Utilidades\DesarrollosPyC.Com.Utilidades.csproj">
       <Project>{a8119225-b3ee-4979-855f-f83fa8d2dd11}</Project>
@@ -220,6 +210,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Glossary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ticket.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\cef.redist.x64.3.2883.1552\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2883.1552\build\cef.redist.x64.targets')" />

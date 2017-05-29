@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DesarrollosPyC.Test.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -96,6 +99,10 @@
     <ProjectReference Include="..\DesarrollosPyC.Com.Licencias\DesarrollosPyC.Com.Licencias.csproj">
       <Project>{a5e0bf61-96c5-4d78-a52f-3f0f410b516d}</Project>
       <Name>DesarrollosPyC.Com.Licencias</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DesarrollosPyC.Com.Utilidades\DesarrollosPyC.Com.Utilidades.csproj">
+      <Project>{a8119225-b3ee-4979-855f-f83fa8d2dd11}</Project>
+      <Name>DesarrollosPyC.Com.Utilidades</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -66,7 +66,34 @@ namespace DesarrollosPyC.Test
             var result = DesarrollosPyC.Com.Licencias.Managers.M_Licencia.GeneraLicenciaFile(lic);
             txtDiccionario.Text = lic.A_Ascii.Select(i => i.Key.ToString("000")).Aggregate((a, b) => a + b);
             txtMatriz.Text = lic.M_Encriptado.ToString();
-            txtResultado.Text = result.ToString();
+            txtResultado.Text = result.ToString().Trim();
+            //var retorno = DesarrollosPyC.Com.Licencias.Managers.M_Licencia.GeneraLicenciaObj(txtResultado.Lines);
+        }
+
+        /// <summary>
+        /// Guarda el archivo de liencia
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void txtGuardaLicencia_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            using (SaveFileDialog dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "*.lic|*.lic";
+                dialog.FileName = txtRFCReceptor.Text + "." + ((DateTime)cldFechaEmision.EditValue).ToShortDateString().Replace("/", "");
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    txtGuardaLicencia.Text = dialog.FileName;
+                    using (System.IO.StreamWriter writer = new System.IO.StreamWriter(dialog.FileName))
+                    {
+                        for (int i = 0; i < txtResultado.Lines.Length; i++)
+                            writer.WriteLine(txtResultado.Lines[i]);
+
+                        writer.Flush();
+                        writer.Close();
+                    }
+                }
+            }
         }
     }
 }

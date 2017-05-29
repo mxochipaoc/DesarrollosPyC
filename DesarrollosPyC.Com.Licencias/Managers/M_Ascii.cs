@@ -20,12 +20,12 @@ namespace DesarrollosPyC.Com.Licencias.Managers
             Dictionary<int, char> result = new Dictionary<int, char>();
             System.Random rand = new Random();
             int r = 0;
-            for (int c = 0; c < 256; c++)
+            for (int c = 0; c < 255; c++)
             {
                 do
                 {
                     r = rand.Next(0, 999);
-                } while (!result.ContainsKey(r));
+                } while (result.ContainsKey(r));
                 
                 result.Add(r, (char)c);
             }
@@ -38,10 +38,10 @@ namespace DesarrollosPyC.Com.Licencias.Managers
         /// </summary>
         /// <param name="dic"></param>
         /// <returns></returns>
-        static Dictionary<int, char> GeneraAlfabeto(int[] dic)
+        public static Dictionary<int, char> GeneraAlfabeto(int[] dic)
         {
             Dictionary<int, char> result = new Dictionary<int, char>();
-            for (int i = 0; i < 256; i++)
+            for (int i = 0; i < 255; i++)
             {
                 result.Add(dic[i], (char)i);
             }
@@ -96,7 +96,24 @@ namespace DesarrollosPyC.Com.Licencias.Managers
                 result.Append(_dic[arreglo[i]]);
             }
 
-            return result.ToString();
+            return result.ToString().Trim();
+        }
+
+        /// <summary>
+        /// Convierte un arreglo numerico a su valor en cadena de texto
+        /// </summary>
+        /// <param name="arreglo">Arreglo</param>
+        /// <param name="dic">Alfabeto</param>
+        /// <returns>Cadena</returns>
+        public static string ConvierteATexto(int[] arreglo, Dictionary<int, char> dic)
+        {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < arreglo.Length; i++)
+            {
+                result.Append(dic[arreglo[i]]);
+            }
+
+            return result.ToString().Trim();
         }
     }
 }

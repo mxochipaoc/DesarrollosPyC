@@ -103,6 +103,16 @@ namespace DesarrollosPyC.CfdiSat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ticket {
+            get {
+                object obj = ResourceManager.GetObject("Ticket", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tickets {
             get {
                 object obj = ResourceManager.GetObject("tickets", resourceCulture);

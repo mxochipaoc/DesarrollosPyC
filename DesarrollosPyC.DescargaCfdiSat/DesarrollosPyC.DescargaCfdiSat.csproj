@@ -144,6 +144,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DesarrollosPyC.CfdiSat.Environment\DesarrollosPyC.CfdiSat.Environment.csproj">
+      <Project>{844cc148-22a6-4a1e-bcef-cc8e56e93f78}</Project>
+      <Name>DesarrollosPyC.CfdiSat.Environment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DesarrollosPyC.Com.Controles\DesarrollosPyC.Com.Controles.csproj">
       <Project>{3a3424cc-ae65-454b-a57f-d9a6846e3073}</Project>
       <Name>DesarrollosPyC.Com.Controles</Name>
@@ -151,6 +155,10 @@
     <ProjectReference Include="..\DesarrollosPyC.Com.Facturacion\DesarrollosPyC.Com.Facturacion.csproj">
       <Project>{b7969eb1-8fd3-4430-a54c-1fd3c61cd013}</Project>
       <Name>DesarrollosPyC.Com.Facturacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DesarrollosPyC.Com.Licencias\DesarrollosPyC.Com.Licencias.csproj">
+      <Project>{a5e0bf61-96c5-4d78-a52f-3f0f410b516d}</Project>
+      <Name>DesarrollosPyC.Com.Licencias</Name>
     </ProjectReference>
     <ProjectReference Include="..\DesarrollosPyC.Com.Utilidades\DesarrollosPyC.Com.Utilidades.csproj">
       <Project>{a8119225-b3ee-4979-855f-f83fa8d2dd11}</Project>

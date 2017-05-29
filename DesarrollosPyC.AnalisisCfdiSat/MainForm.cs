@@ -86,8 +86,43 @@ namespace DesarrollosPyC.AnalisisCfdiSat
         /// <param name="e">e</param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // No hace nada, de momento
+            pgpCargaDatos.Hide();
+
+            if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.Licencias == null)
+                DesarrollosPyC.CfdiSat.Environment.Manejador.CargaLicencias();
+
+            lkpRazonSocial.Properties.DataSource = DesarrollosPyC.CfdiSat.Environment.Aplicacion.Licencias;
+            if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada != null)
+                lkpRazonSocial.EditValue = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
         }
+
+        /// <summary>
+        /// Selección de razon social, reseteo de controles
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void lkpRazonSocial_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            if (e.OldValue != null)
+            {
+                if (!e.OldValue.ToString().Equals(e.NewValue.ToString()))
+                {
+                    if (DesarrollosPyC.Com.Controles.Dialogos.ConfirmaPersonalizada("Esta acción reiniciará el análisis de datos, ¿Esta seguro de continuar con esta acción?"))
+                    {
+                        DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada = (DesarrollosPyC.Com.Licencias.Class.Licencia)lkpRazonSocial.Properties.GetDataSourceRowByKeyValue(e.NewValue);
+                        txtRFC.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+                    }
+                    else
+                        e.Cancel = true;
+                }
+            }
+            else
+            {
+                DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada = (DesarrollosPyC.Com.Licencias.Class.Licencia)lkpRazonSocial.Properties.GetDataSourceRowByKeyValue(e.NewValue);
+                txtRFC.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+            }
+        }
+
         /// <summary>
         /// Ejecución de operaciones en un tiempo determinado
         /// </summary>
