@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
@@ -74,9 +75,9 @@
             this.tbEgresos = new DevExpress.XtraTab.XtraTabPage();
             this.grdEgresos = new DevExpress.XtraGrid.GridControl();
             this.grdViewBandEgresos = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.imlIngresosTipoReporte = new System.Windows.Forms.ImageList();
-            this.tmrTemporizador = new System.Windows.Forms.Timer();
-            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.imlIngresosTipoReporte = new System.Windows.Forms.ImageList(this.components);
+            this.tmrTemporizador = new System.Windows.Forms.Timer(this.components);
+            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panEstatusGeneral)).BeginInit();
             this.panEstatusGeneral.SuspendLayout();
@@ -647,6 +648,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Anaáisis de Cfdi Sat";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panEstatusGeneral)).EndInit();

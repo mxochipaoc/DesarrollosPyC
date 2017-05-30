@@ -62,21 +62,33 @@ namespace DesarrollosPyC.CfdiSat
                         Caption = l.Receptor.RazonSocial,
                         TileText = l.Receptor.RazonSocial,
                         Name = "Lic_" + l.Receptor.Rfc,
-                        GroupName = "Licencias"
+                        GroupName = "Licencias",
+                        Tag = l
                     };
                     sk.Tile.Elements.Add(new DevExpress.XtraEditors.TileItemElement()
                     {
                         Text = l.Receptor.Rfc,
                         TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight,
                         Image = Properties.Resources.Ticket,
-                        ImageAlignment= DevExpress.XtraEditors.TileItemContentAlignment.TopLeft,
+                        ImageAlignment= DevExpress.XtraEditors.TileItemContentAlignment.TopLeft
                     });
+                    sk.ElementClick += (s, e) =>
+                    {
+                        var lic = e.Element.Tag as DesarrollosPyC.Com.Licencias.Class.Licencia;
+                        if (lic != null)
+                        {
+                            using (LicenciaViewForm form = new LicenciaViewForm(lic))
+                            {
+                                form.ShowDialog();
+                            }
+                        }
+                    };
 
                     tlnLicencias.Items.Add(sk);
                 }
             }
         }
-                       
+
         /// <summary>
         /// Ejecución durante el cierre del formulario
         /// </summary>

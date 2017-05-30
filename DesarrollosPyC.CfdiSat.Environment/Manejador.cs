@@ -45,7 +45,7 @@ namespace DesarrollosPyC.CfdiSat.Environment
                         if (lic != null)
                         {
                             lic.FechaCargaEnSistema = DateTime.Today;
-                            var d = (lic.FechaEmision - lic.FechaEmision).Days;
+                            var d = (lic.FechaCargaEnSistema.Value - lic.FechaEmision).Days;
                             if (d > lic.DiasOcupado)
                             {
                                 lic.DiasOcupado = d;

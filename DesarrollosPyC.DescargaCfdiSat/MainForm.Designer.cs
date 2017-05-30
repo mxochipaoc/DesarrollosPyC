@@ -37,27 +37,27 @@
             this.lblRFC = new DevExpress.XtraEditors.LabelControl();
             this.lblRazonSocial = new DevExpress.XtraEditors.LabelControl();
             this.txtRFC = new DevExpress.XtraEditors.TextEdit();
+            this.btnDescargarCfdi = new DevExpress.XtraEditors.SimpleButton();
             this.lkpRazonSocial = new DevExpress.XtraEditors.LookUpEdit();
             this.panDatosGuardado = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOrganizaDatos = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.panRutaAgregada = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRutaGuardado = new DevExpress.XtraEditors.LabelControl();
             this.txtRutaPrincipal = new DevExpress.XtraEditors.ButtonEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panRutaDisponible = new System.Windows.Forms.FlowLayoutPanel();
-            this.panEstatusGeneral = new DevExpress.XtraEditors.PanelControl();
-            this.lblEstatusGeneral = new DevExpress.XtraEditors.LabelControl();
-            this.tmrTemporizador = new System.Windows.Forms.Timer();
-            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            this.btnDescargarCfdi = new DevExpress.XtraEditors.SimpleButton();
-            this.btnOrganizaDatos = new DevExpress.XtraEditors.SimpleButton();
             this.btnRutaAnio = new DevExpress.XtraEditors.SimpleButton();
             this.btnRutaMes = new DevExpress.XtraEditors.SimpleButton();
             this.btnRutaRFCEmisor = new DevExpress.XtraEditors.SimpleButton();
             this.btnRutaRFCReceptor = new DevExpress.XtraEditors.SimpleButton();
             this.btnSerieFolio = new DevExpress.XtraEditors.SimpleButton();
             this.btnUUID = new DevExpress.XtraEditors.SimpleButton();
+            this.panEstatusGeneral = new DevExpress.XtraEditors.PanelControl();
+            this.lblEstatusGeneral = new DevExpress.XtraEditors.LabelControl();
+            this.tmrTemporizador = new System.Windows.Forms.Timer();
+            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panWebBrowser)).BeginInit();
             this.panWebBrowser.SuspendLayout();
@@ -146,7 +146,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel2.Controls.Add(this.lblRFC, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.lblRazonSocial, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtRFC, 2, 4);
@@ -190,7 +190,7 @@
             // 
             this.txtRFC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtRFC.EditValue = "";
-            this.txtRFC.Location = new System.Drawing.Point(85, 47);
+            this.txtRFC.Location = new System.Drawing.Point(84, 47);
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
             this.txtRFC.Properties.Appearance.Options.UseFont = true;
@@ -199,8 +199,22 @@
             this.txtRFC.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtRFC.Properties.ReadOnly = true;
             this.tableLayoutPanel2.SetRowSpan(this.txtRFC, 2);
-            this.txtRFC.Size = new System.Drawing.Size(174, 46);
+            this.txtRFC.Size = new System.Drawing.Size(172, 46);
             this.txtRFC.TabIndex = 4;
+            // 
+            // btnDescargarCfdi
+            // 
+            this.btnDescargarCfdi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDescargarCfdi.Image = global::DesarrollosPyC.DescargaCfdiSat.Properties.Resources.Save;
+            this.btnDescargarCfdi.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnDescargarCfdi.Location = new System.Drawing.Point(267, 47);
+            this.btnDescargarCfdi.Name = "btnDescargarCfdi";
+            this.tableLayoutPanel2.SetRowSpan(this.btnDescargarCfdi, 2);
+            this.btnDescargarCfdi.Size = new System.Drawing.Size(46, 46);
+            this.btnDescargarCfdi.TabIndex = 6;
+            this.btnDescargarCfdi.Click += new System.EventHandler(this.btnDescargarCfdi_Click);
             // 
             // lkpRazonSocial
             // 
@@ -208,7 +222,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.SetColumnSpan(this.lkpRazonSocial, 3);
-            this.lkpRazonSocial.Location = new System.Drawing.Point(85, 8);
+            this.lkpRazonSocial.Location = new System.Drawing.Point(84, 8);
             this.lkpRazonSocial.Name = "lkpRazonSocial";
             this.lkpRazonSocial.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12.5F);
             this.lkpRazonSocial.Properties.Appearance.Options.UseFont = true;
@@ -223,7 +237,7 @@
             this.lkpRazonSocial.Properties.ShowHeader = false;
             this.lkpRazonSocial.Properties.ValueMember = "Receptor.Rfc";
             this.tableLayoutPanel2.SetRowSpan(this.lkpRazonSocial, 2);
-            this.lkpRazonSocial.Size = new System.Drawing.Size(231, 28);
+            this.lkpRazonSocial.Size = new System.Drawing.Size(229, 28);
             this.lkpRazonSocial.TabIndex = 3;
             this.lkpRazonSocial.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.lkpRazonSocial_EditValueChanging);
             // 
@@ -246,7 +260,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel3.Controls.Add(this.btnOrganizaDatos, 5, 3);
             this.tableLayoutPanel3.Controls.Add(this.panelControl2, 3, 3);
             this.tableLayoutPanel3.Controls.Add(this.lblRutaGuardado, 1, 3);
@@ -264,6 +278,20 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(618, 102);
             this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // btnOrganizaDatos
+            // 
+            this.btnOrganizaDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrganizaDatos.Image = global::DesarrollosPyC.DescargaCfdiSat.Properties.Resources.Content_reorder;
+            this.btnOrganizaDatos.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnOrganizaDatos.Location = new System.Drawing.Point(558, 47);
+            this.btnOrganizaDatos.Name = "btnOrganizaDatos";
+            this.tableLayoutPanel3.SetRowSpan(this.btnOrganizaDatos, 2);
+            this.btnOrganizaDatos.Size = new System.Drawing.Size(46, 46);
+            this.btnOrganizaDatos.TabIndex = 7;
+            this.btnOrganizaDatos.Click += new System.EventHandler(this.btnOrganizaDatos_Click);
             // 
             // panelControl2
             // 
@@ -329,58 +357,6 @@
             this.panRutaDisponible.Name = "panRutaDisponible";
             this.panRutaDisponible.Size = new System.Drawing.Size(496, 28);
             this.panRutaDisponible.TabIndex = 5;
-            // 
-            // panEstatusGeneral
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panEstatusGeneral, 2);
-            this.panEstatusGeneral.Controls.Add(this.lblEstatusGeneral);
-            this.panEstatusGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panEstatusGeneral.Location = new System.Drawing.Point(8, 474);
-            this.panEstatusGeneral.Name = "panEstatusGeneral";
-            this.panEstatusGeneral.Size = new System.Drawing.Size(960, 19);
-            this.panEstatusGeneral.TabIndex = 3;
-            // 
-            // lblEstatusGeneral
-            // 
-            this.lblEstatusGeneral.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblEstatusGeneral.Location = new System.Drawing.Point(8, 3);
-            this.lblEstatusGeneral.Name = "lblEstatusGeneral";
-            this.lblEstatusGeneral.Size = new System.Drawing.Size(4, 13);
-            this.lblEstatusGeneral.TabIndex = 0;
-            this.lblEstatusGeneral.Text = ".";
-            // 
-            // tmrTemporizador
-            // 
-            this.tmrTemporizador.Enabled = true;
-            this.tmrTemporizador.Tick += new System.EventHandler(this.tmrTemporizador_Tick);
-            // 
-            // btnDescargarCfdi
-            // 
-            this.btnDescargarCfdi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDescargarCfdi.Image = global::DesarrollosPyC.DescargaCfdiSat.Properties.Resources.Save;
-            this.btnDescargarCfdi.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnDescargarCfdi.Location = new System.Drawing.Point(270, 47);
-            this.btnDescargarCfdi.Name = "btnDescargarCfdi";
-            this.tableLayoutPanel2.SetRowSpan(this.btnDescargarCfdi, 2);
-            this.btnDescargarCfdi.Size = new System.Drawing.Size(46, 46);
-            this.btnDescargarCfdi.TabIndex = 6;
-            this.btnDescargarCfdi.Click += new System.EventHandler(this.btnDescargarCfdi_Click);
-            // 
-            // btnOrganizaDatos
-            // 
-            this.btnOrganizaDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOrganizaDatos.Image = global::DesarrollosPyC.DescargaCfdiSat.Properties.Resources.Content_reorder;
-            this.btnOrganizaDatos.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnOrganizaDatos.Location = new System.Drawing.Point(558, 47);
-            this.btnOrganizaDatos.Name = "btnOrganizaDatos";
-            this.tableLayoutPanel3.SetRowSpan(this.btnOrganizaDatos, 2);
-            this.btnOrganizaDatos.Size = new System.Drawing.Size(46, 46);
-            this.btnOrganizaDatos.TabIndex = 7;
-            this.btnOrganizaDatos.Click += new System.EventHandler(this.btnOrganizaDatos_Click);
             // 
             // btnRutaAnio
             // 
@@ -448,6 +424,30 @@
             this.btnUUID.Text = "UUID";
             this.btnUUID.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
             // 
+            // panEstatusGeneral
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panEstatusGeneral, 2);
+            this.panEstatusGeneral.Controls.Add(this.lblEstatusGeneral);
+            this.panEstatusGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panEstatusGeneral.Location = new System.Drawing.Point(8, 474);
+            this.panEstatusGeneral.Name = "panEstatusGeneral";
+            this.panEstatusGeneral.Size = new System.Drawing.Size(960, 19);
+            this.panEstatusGeneral.TabIndex = 3;
+            // 
+            // lblEstatusGeneral
+            // 
+            this.lblEstatusGeneral.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblEstatusGeneral.Location = new System.Drawing.Point(8, 3);
+            this.lblEstatusGeneral.Name = "lblEstatusGeneral";
+            this.lblEstatusGeneral.Size = new System.Drawing.Size(4, 13);
+            this.lblEstatusGeneral.TabIndex = 0;
+            this.lblEstatusGeneral.Text = ".";
+            // 
+            // tmrTemporizador
+            // 
+            this.tmrTemporizador.Enabled = true;
+            this.tmrTemporizador.Tick += new System.EventHandler(this.tmrTemporizador_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +458,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Descarga de Cfdi SAT";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panWebBrowser)).EndInit();

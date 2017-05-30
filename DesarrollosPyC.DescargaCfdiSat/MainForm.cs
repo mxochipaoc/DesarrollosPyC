@@ -16,7 +16,7 @@ namespace DesarrollosPyC.DescargaCfdiSat
     /// <summary>
     /// Formulario principal de lanzado de descarga masiva e Cfdi desde portal del SAT
     /// </summary>
-    public partial class MainForm : DevExpress.XtraEditors.XtraForm, CefSharp.IDownloadHandler
+    public partial class MainForm : DevExpress.XtraEditors.XtraForm, CefSharp.IBrowserProcessHandler//, CefSharp.IDownloadHandler
     {
         /// <summary>
         /// Constructor de la clase
@@ -31,12 +31,17 @@ namespace DesarrollosPyC.DescargaCfdiSat
         /// Navegador de carga de datos
         /// </summary>
         public ChromiumWebBrowser Browser;
+        
+        /// <summary>
+        /// Si es apertura de nuevo navegador
+        /// </summary>
+        bool AperturaNuevoNavegador { get; set; }
 
         /// <summary>
         /// Ruta default de descarga de datos
         /// </summary>
         string DefaultDescargaCfdi { get { return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Cfdi descargados"; } }
-
+        
         /// <summary>
         /// Bandera de proceso de carga
         /// </summary>
@@ -59,30 +64,106 @@ namespace DesarrollosPyC.DescargaCfdiSat
         /// <param name="e">e</param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // Configuraciones iniciales del navegador
+            Cef.EnableHighDPISupport();
+            CefSharpSettings.ShutdownOnExit = false;
+
             // Carga de valores default
             txtRutaPrincipal.Text = DefaultDescargaCfdi;
             if (!System.IO.Directory.Exists(DefaultDescargaCfdi))
                 System.IO.Directory.CreateDirectory(DefaultDescargaCfdi);
-
-            // Carga del navegador de internet
-            CefSettings settings = new CefSettings();
-
-            Cef.Initialize(settings);
-            Browser = new ChromiumWebBrowser("https://portalcfdi.facturaelectronica.sat.gob.mx/?id=SATUPCFDiCon&sid=0&option=credential&sid=0");
-            this.panWebBrowser.Controls.Add(Browser);
-            Browser.Dock = DockStyle.Fill;
-            // Manejo de descarga de datos
-            Browser.DownloadHandler = this;
-            // Visualziación de estatus del navegador    
-            Browser.LoadingStateChanged += Browser_LoadingStateChanged;
-            //TareaDescarga = TaskScheduler.FromCurrentSynchronizationContext();
-
+            
             if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.Licencias == null)
                 DesarrollosPyC.CfdiSat.Environment.Manejador.CargaLicencias();
 
             lkpRazonSocial.Properties.DataSource = DesarrollosPyC.CfdiSat.Environment.Aplicacion.Licencias;
+        }
+
+        /// <summary>
+        /// Cuando el formulario de accesa
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
             if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada != null)
                 lkpRazonSocial.EditValue = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+        }
+
+        /// <summary>
+        /// Inicializa el navegador
+        /// </summary>
+        private void NavegadorNuevo()
+        {
+            // Carga del navegador de internet
+            if (!Cef.IsInitialized)
+            {
+                Cef.Initialize(new CefSettings(), false, null);//, true, this);
+            }
+
+            Browser = new ChromiumWebBrowser("https://portalcfdi.facturaelectronica.sat.gob.mx/?id=SATUPCFDiCon&sid=0&option=credential&sid=0");
+            this.panWebBrowser.Controls.Add(Browser);
+            Browser.Dock = DockStyle.Fill;
+            //Browser.DownloadHandler = this;
+            Browser.LoadingStateChanged += (s, e) =>
+            {
+                EnProceso = e.IsLoading;
+                EstatusProceso = "Cargando página, por favor espere ...";
+                EstatusGeneral = "En espera de operaciones ...";
+            };
+            Browser.FrameLoadEnd += (s, e) =>
+            {
+                if (e.Frame.IsMain)
+                {
+                    string rfc = txtRFC.Text;
+                    System.Threading.Thread hilo = new System.Threading.Thread(() =>
+                      {
+                          string script = @"
+                            (function() {
+                                var element = document.getElementById('rfc');
+                                if(element != undefined) {
+                                    element.value = '"+ rfc +@"';
+                                    element.readOnly = true;
+                                }
+                            })();";
+                          var task = Browser.EvaluateScriptAsync(script, TimeSpan.FromSeconds(10));
+                          task.Wait();
+                          if (!task.IsFaulted)
+                          {
+                              if (task.Result.Success)
+                                  AperturaNuevoNavegador = false;
+                          }
+                      });
+                    hilo.Start();
+                }
+            };
+            
+            AperturaNuevoNavegador = true;
+        }
+
+        /// <summary>
+        /// Elimina navegadores abiertos en el control
+        /// </summary>
+        private void ReinicaNavegador()
+        {
+            string script_close = @"
+                        (function() {
+                            window.location = '/logout.aspx?salir=y';
+                        })();";
+
+            EstatusProceso = "Cerrando sesión ...";
+            EstatusGeneral = "Cambiando razon social de descarga ...";
+            var task = Browser.EvaluateScriptAsync(script_close, TimeSpan.FromSeconds(10));
+            task.Wait();
+            if (!task.IsFaulted)
+            {
+                if (task.Result.Success)
+                {
+                    Cef.Shutdown();
+                    this.panWebBrowser.Controls.Remove(Browser);
+                    NavegadorNuevo();
+                }
+            }
         }
 
         /// <summary>
@@ -100,6 +181,8 @@ namespace DesarrollosPyC.DescargaCfdiSat
                     {
                         DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada = (DesarrollosPyC.Com.Licencias.Class.Licencia)lkpRazonSocial.Properties.GetDataSourceRowByKeyValue(e.NewValue);
                         txtRFC.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+
+                        ReinicaNavegador();
                     }
                     else
                         e.Cancel = true;
@@ -109,24 +192,12 @@ namespace DesarrollosPyC.DescargaCfdiSat
             {
                 DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada = (DesarrollosPyC.Com.Licencias.Class.Licencia)lkpRazonSocial.Properties.GetDataSourceRowByKeyValue(e.NewValue);
                 txtRFC.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+
+                NavegadorNuevo();
             }
         }
         #endregion
-
-        #region Eventos del navegador
-        /// <summary>
-        /// Cambios de estatus en la carga de páginas en el navegador
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
-        private void Browser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
-        {
-            EnProceso = e.IsLoading;
-            EstatusProceso = "Cargando página, por favor espere ...";
-            EstatusGeneral = "En espera de operaciones ...";
-        }
-        #endregion
-
+        
         #region Visualización de estatus, barra de progreso
         /// <summary>
         /// Lanzado, ocultado de mensaje de espera, visualización de estatus
@@ -860,7 +931,8 @@ namespace DesarrollosPyC.DescargaCfdiSat
 
         #endregion
 
-        #region Métodos de IDownloaderHandler
+        #region Métodos de Interfaces
+        /*
         /// <summary>
         /// Antes de la descarga de datos
         /// </summary>
@@ -881,6 +953,24 @@ namespace DesarrollosPyC.DescargaCfdiSat
         public void OnDownloadUpdated(IBrowser browser, DownloadItem downloadItem, IDownloadItemCallback callback)
         {
            
+        }
+        */
+
+        /// <summary>
+        /// Inicializa en contexto
+        /// </summary>
+        public void OnContextInitialized()
+        {
+            
+        }
+
+        /// <summary>
+        /// Programa mensaje de trabajo
+        /// </summary>
+        /// <param name="delay">Retraso</param>
+        public void OnScheduleMessagePumpWork(long delay)
+        {
+            
         }
         #endregion
     }

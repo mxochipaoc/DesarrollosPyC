@@ -92,6 +92,15 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 DesarrollosPyC.CfdiSat.Environment.Manejador.CargaLicencias();
 
             lkpRazonSocial.Properties.DataSource = DesarrollosPyC.CfdiSat.Environment.Aplicacion.Licencias;
+        }
+
+        /// <summary>
+        /// Cuando el formulario de accesa
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
             if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada != null)
                 lkpRazonSocial.EditValue = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
         }
@@ -111,6 +120,8 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                     {
                         DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada = (DesarrollosPyC.Com.Licencias.Class.Licencia)lkpRazonSocial.Properties.GetDataSourceRowByKeyValue(e.NewValue);
                         txtRFC.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+
+                        InicializaControlesAnalisis();
                     }
                     else
                         e.Cancel = true;
@@ -120,7 +131,25 @@ namespace DesarrollosPyC.AnalisisCfdiSat
             {
                 DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada = (DesarrollosPyC.Com.Licencias.Class.Licencia)lkpRazonSocial.Properties.GetDataSourceRowByKeyValue(e.NewValue);
                 txtRFC.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+
+                InicializaControlesAnalisis();
             }
+        }
+
+        /// <summary>
+        /// Inicializa controles de análisis
+        /// </summary>
+        void InicializaControlesAnalisis()
+        {
+            grdIngresos.DataSource = null;
+            grdNominas11.DataSource = null;
+            grdNominas12.DataSource = null;
+            grdEgresos.DataSource = null;
+
+            Facturas_Ingresos = null;
+            Facturas_Nomima11 = null;
+            Facturas_Nomima12 = null;
+            Facturas_Egresos = null;
         }
 
         /// <summary>
