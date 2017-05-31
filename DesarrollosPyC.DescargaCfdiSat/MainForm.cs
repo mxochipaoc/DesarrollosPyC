@@ -36,12 +36,11 @@ namespace DesarrollosPyC.DescargaCfdiSat
         /// Si es apertura de nuevo navegador
         /// </summary>
         bool AperturaNuevoNavegador { get; set; }
-
         /// <summary>
-        /// Ruta default de descarga de datos
+        /// Cierra el navegador
         /// </summary>
-        string DefaultDescargaCfdi { get { return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Cfdi descargados"; } }
-        
+        bool CierraNavegador { get; set; }
+                
         /// <summary>
         /// Bandera de proceso de carga
         /// </summary>
@@ -65,13 +64,13 @@ namespace DesarrollosPyC.DescargaCfdiSat
         private void MainForm_Load(object sender, EventArgs e)
         {
             // Configuraciones iniciales del navegador
-            Cef.EnableHighDPISupport();
-            CefSharpSettings.ShutdownOnExit = false;
+            //Cef.EnableHighDPISupport();
+            //CefSharpSettings.ShutdownOnExit = false;
 
-            // Carga de valores default
-            txtRutaPrincipal.Text = DefaultDescargaCfdi;
-            if (!System.IO.Directory.Exists(DefaultDescargaCfdi))
-                System.IO.Directory.CreateDirectory(DefaultDescargaCfdi);
+            CefSettings settings = new CefSettings();
+            settings.MultiThreadedMessageLoop = true;
+            if (!Cef.IsInitialized)
+                Cef.Initialize(settings);//, true, this);
             
             if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.Licencias == null)
                 DesarrollosPyC.CfdiSat.Environment.Manejador.CargaLicencias();
@@ -88,6 +87,8 @@ namespace DesarrollosPyC.DescargaCfdiSat
         {
             if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada != null)
                 lkpRazonSocial.EditValue = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+
+            txtRutaPrincipal.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.DirectorioDescargaCfdiAnalisisCfdi;
         }
 
         /// <summary>
@@ -96,14 +97,11 @@ namespace DesarrollosPyC.DescargaCfdiSat
         private void NavegadorNuevo()
         {
             // Carga del navegador de internet
-            if (!Cef.IsInitialized)
-            {
-                Cef.Initialize(new CefSettings(), false, null);//, true, this);
-            }
-
             Browser = new ChromiumWebBrowser("https://portalcfdi.facturaelectronica.sat.gob.mx/?id=SATUPCFDiCon&sid=0&option=credential&sid=0");
             this.panWebBrowser.Controls.Add(Browser);
             Browser.Dock = DockStyle.Fill;
+            AperturaNuevoNavegador = true;
+
             //Browser.DownloadHandler = this;
             Browser.LoadingStateChanged += (s, e) =>
             {
@@ -115,55 +113,76 @@ namespace DesarrollosPyC.DescargaCfdiSat
             {
                 if (e.Frame.IsMain)
                 {
-                    string rfc = txtRFC.Text;
-                    System.Threading.Thread hilo = new System.Threading.Thread(() =>
-                      {
-                          string script = @"
+                    if (AperturaNuevoNavegador)
+                    {
+                        string rfc = txtRFC.Text;
+                        System.Threading.Thread hilo = new System.Threading.Thread(() =>
+                        {
+                            System.Threading.Thread.Sleep(1000);
+                            string script = @"
                             (function() {
                                 var element = document.getElementById('rfc');
                                 if(element != undefined) {
-                                    element.value = '"+ rfc +@"';
+                                    element.value = '" + rfc + @"';
                                     element.readOnly = true;
                                 }
                             })();";
-                          var task = Browser.EvaluateScriptAsync(script, TimeSpan.FromSeconds(10));
-                          task.Wait();
-                          if (!task.IsFaulted)
-                          {
-                              if (task.Result.Success)
-                                  AperturaNuevoNavegador = false;
-                          }
-                      });
-                    hilo.Start();
+                            var task = Browser.EvaluateScriptAsync(script, TimeSpan.FromSeconds(10));
+                            task.Wait();
+                            if (!task.IsFaulted)
+                            {
+                                if (task.Result.Success)
+                                    AperturaNuevoNavegador = false;
+                            }
+                        });
+                        hilo.Start();
+                    }
+                    else if (CierraNavegador)
+                    {
+                        if (Browser.Address.Equals("https://cfdiau.sat.gob.mx/nidp/lofc.jsp"))
+                        {
+                            string script_reload = @"
+                                (function() {
+                                    window.location = 'https://portalcfdi.facturaelectronica.sat.gob.mx/?id=SATUPCFDiCon&sid=0&option=credential&sid=0';
+                                })();";
+
+                            Browser.ExecuteScriptAsync(script_reload);
+                            CierraNavegador = false;
+                            AperturaNuevoNavegador = true;
+                        }
+                    }
                 }
             };
-            
-            AperturaNuevoNavegador = true;
         }
-
+        
         /// <summary>
         /// Elimina navegadores abiertos en el control
         /// </summary>
         private void ReinicaNavegador()
         {
-            string script_close = @"
+            /*string script_close = @"
                         (function() {
-                            window.location = '/logout.aspx?salir=y';
+                            window.location = '/logout.aspx';
                         })();";
 
             EstatusProceso = "Cerrando sesión ...";
             EstatusGeneral = "Cambiando razon social de descarga ...";
+            
             var task = Browser.EvaluateScriptAsync(script_close, TimeSpan.FromSeconds(10));
             task.Wait();
             if (!task.IsFaulted)
             {
                 if (task.Result.Success)
                 {
-                    Cef.Shutdown();
+                    //Browser.Dispose();
+                    //Cef.Shutdown();
+                    //GC.Collect();
                     this.panWebBrowser.Controls.Remove(Browser);
                     NavegadorNuevo();
                 }
-            }
+            }*/
+            Browser.Load("https://portalcfdi.facturaelectronica.sat.gob.mx/logout.aspx");
+            CierraNavegador = true;
         }
 
         /// <summary>
@@ -196,8 +215,29 @@ namespace DesarrollosPyC.DescargaCfdiSat
                 NavegadorNuevo();
             }
         }
+
+        /// <summary>
+        /// Cambio de ruta de guardado de cfdi descargados
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void txtRutaPrincipal_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            string path = string.Empty;
+            using (FolderBrowserDialog dialog = new FolderBrowserDialog())
+            {
+                dialog.SelectedPath = txtRutaPrincipal.Text;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    path = dialog.SelectedPath;
+            }
+            if (!string.IsNullOrEmpty(path))
+            {
+                txtRutaPrincipal.Text = path;
+                DesarrollosPyC.CfdiSat.Environment.Aplicacion.DirectorioDescargaCfdiAnalisisCfdi = path;
+            }
+        }
         #endregion
-        
+
         #region Visualización de estatus, barra de progreso
         /// <summary>
         /// Lanzado, ocultado de mensaje de espera, visualización de estatus

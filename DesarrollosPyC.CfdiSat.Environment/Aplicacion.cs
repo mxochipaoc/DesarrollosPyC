@@ -17,6 +17,11 @@ namespace DesarrollosPyC.CfdiSat.Environment
         public static string DirectorioLicencias { get; set; }
 
         /// <summary>
+        /// Directorio default de descarga de facturas y analisis de datos
+        /// </summary>
+        public static string DirectorioDescargaCfdiAnalisisCfdi { get; set; }
+
+        /// <summary>
         /// Licencias cargadas a sistema
         /// </summary>
         public static DesarrollosPyC.Com.Licencias.Class.Licencia[] Licencias { get; set; }

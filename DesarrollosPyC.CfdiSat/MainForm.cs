@@ -87,6 +87,12 @@ namespace DesarrollosPyC.CfdiSat
                     tlnLicencias.Items.Add(sk);
                 }
             }
+
+            // Carga de valores default
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Descarga, análisis Cfdi";
+            if (!System.IO.Directory.Exists(path))
+                System.IO.Directory.CreateDirectory(path);
+            DesarrollosPyC.CfdiSat.Environment.Aplicacion.DirectorioDescargaCfdiAnalisisCfdi = path;
         }
 
         /// <summary>

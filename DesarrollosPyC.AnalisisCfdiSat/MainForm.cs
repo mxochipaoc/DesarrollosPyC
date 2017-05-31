@@ -103,6 +103,9 @@ namespace DesarrollosPyC.AnalisisCfdiSat
         {
             if (DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada != null)
                 lkpRazonSocial.EditValue = DesarrollosPyC.CfdiSat.Environment.Aplicacion.LicenciaSeleccionada.Receptor.Rfc;
+
+            txtRutaIngresos.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.DirectorioDescargaCfdiAnalisisCfdi;
+            txtRutaEgresos.Text = DesarrollosPyC.CfdiSat.Environment.Aplicacion.DirectorioDescargaCfdiAnalisisCfdi;
         }
 
         /// <summary>

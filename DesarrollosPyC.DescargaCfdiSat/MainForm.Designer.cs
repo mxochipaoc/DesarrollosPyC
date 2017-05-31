@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panWebBrowser = new DevExpress.XtraEditors.PanelControl();
@@ -56,8 +57,8 @@
             this.btnUUID = new DevExpress.XtraEditors.SimpleButton();
             this.panEstatusGeneral = new DevExpress.XtraEditors.PanelControl();
             this.lblEstatusGeneral = new DevExpress.XtraEditors.LabelControl();
-            this.tmrTemporizador = new System.Windows.Forms.Timer();
-            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.tmrTemporizador = new System.Windows.Forms.Timer(this.components);
+            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panWebBrowser)).BeginInit();
             this.panWebBrowser.SuspendLayout();
@@ -146,7 +147,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel2.Controls.Add(this.lblRFC, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.lblRazonSocial, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtRFC, 2, 4);
@@ -199,7 +200,7 @@
             this.txtRFC.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtRFC.Properties.ReadOnly = true;
             this.tableLayoutPanel2.SetRowSpan(this.txtRFC, 2);
-            this.txtRFC.Size = new System.Drawing.Size(172, 46);
+            this.txtRFC.Size = new System.Drawing.Size(171, 46);
             this.txtRFC.TabIndex = 4;
             // 
             // btnDescargarCfdi
@@ -209,7 +210,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDescargarCfdi.Image = global::DesarrollosPyC.DescargaCfdiSat.Properties.Resources.Save;
             this.btnDescargarCfdi.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnDescargarCfdi.Location = new System.Drawing.Point(267, 47);
+            this.btnDescargarCfdi.Location = new System.Drawing.Point(266, 47);
             this.btnDescargarCfdi.Name = "btnDescargarCfdi";
             this.tableLayoutPanel2.SetRowSpan(this.btnDescargarCfdi, 2);
             this.btnDescargarCfdi.Size = new System.Drawing.Size(46, 46);
@@ -237,7 +238,7 @@
             this.lkpRazonSocial.Properties.ShowHeader = false;
             this.lkpRazonSocial.Properties.ValueMember = "Receptor.Rfc";
             this.tableLayoutPanel2.SetRowSpan(this.lkpRazonSocial, 2);
-            this.lkpRazonSocial.Size = new System.Drawing.Size(229, 28);
+            this.lkpRazonSocial.Size = new System.Drawing.Size(228, 28);
             this.lkpRazonSocial.TabIndex = 3;
             this.lkpRazonSocial.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.lkpRazonSocial_EditValueChanging);
             // 
@@ -332,6 +333,7 @@
             this.txtRutaPrincipal.Properties.ReadOnly = true;
             this.txtRutaPrincipal.Size = new System.Drawing.Size(172, 20);
             this.txtRutaPrincipal.TabIndex = 4;
+            this.txtRutaPrincipal.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtRutaPrincipal_ButtonClick);
             // 
             // panelControl1
             // 
