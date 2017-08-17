@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtResultado = new DevExpress.XtraEditors.MemoEdit();
+            this.txtGuardaLicencia = new DevExpress.XtraEditors.ButtonEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -52,12 +55,12 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txtMatriz = new DevExpress.XtraEditors.MemoEdit();
             this.btnGenerar = new DevExpress.XtraEditors.SimpleButton();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtGuardaLicencia = new DevExpress.XtraEditors.ButtonEdit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtResultado.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGuardaLicencia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEntidadEmisora.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAplicacionLicencia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRFCReceptor.Properties)).BeginInit();
@@ -75,8 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMatriz.Properties)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGuardaLicencia.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -140,6 +141,22 @@
             this.groupControl3.TabIndex = 18;
             this.groupControl3.Text = "Resultado";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.txtResultado, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtGuardaLicencia, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 20);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(530, 380);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
             // txtResultado
             // 
             this.txtResultado.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,6 +167,18 @@
             this.txtResultado.Properties.WordWrap = false;
             this.txtResultado.Size = new System.Drawing.Size(524, 344);
             this.txtResultado.TabIndex = 1;
+            // 
+            // txtGuardaLicencia
+            // 
+            this.txtGuardaLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGuardaLicencia.Location = new System.Drawing.Point(3, 355);
+            this.txtGuardaLicencia.Name = "txtGuardaLicencia";
+            this.txtGuardaLicencia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtGuardaLicencia.Properties.ReadOnly = true;
+            this.txtGuardaLicencia.Size = new System.Drawing.Size(524, 20);
+            this.txtGuardaLicencia.TabIndex = 2;
+            this.txtGuardaLicencia.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtGuardaLicencia_ButtonClick);
             // 
             // labelControl1
             // 
@@ -365,40 +394,13 @@
             this.btnGenerar.Text = "Generar licencia";
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.txtResultado, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtGuardaLicencia, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 20);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(530, 380);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // txtGuardaLicencia
-            // 
-            this.txtGuardaLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGuardaLicencia.Location = new System.Drawing.Point(3, 355);
-            this.txtGuardaLicencia.Name = "txtGuardaLicencia";
-            this.txtGuardaLicencia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtGuardaLicencia.Properties.ReadOnly = true;
-            this.txtGuardaLicencia.Size = new System.Drawing.Size(524, 20);
-            this.txtGuardaLicencia.TabIndex = 2;
-            this.txtGuardaLicencia.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtGuardaLicencia_ButtonClick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 427);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Pruebas de licencia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -407,7 +409,9 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtResultado.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGuardaLicencia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEntidadEmisora.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAplicacionLicencia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRFCReceptor.Properties)).EndInit();
@@ -425,8 +429,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtMatriz.Properties)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtGuardaLicencia.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

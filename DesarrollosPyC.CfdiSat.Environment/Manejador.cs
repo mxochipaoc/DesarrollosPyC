@@ -58,7 +58,7 @@ namespace DesarrollosPyC.CfdiSat.Environment
                                 }
                             }
 
-                            if (lic.FechaVigencia <= DateTime.Today || lic.DiasOcupado <= (lic.FechaVigencia - lic.FechaEmision).Days)
+                            if (lic.FechaVigencia >= DateTime.Today && lic.DiasOcupado <= (lic.FechaVigencia - lic.FechaEmision).Days)
                             {
                                 finds.Add(lic);
                             }

@@ -324,12 +324,7 @@ namespace DesarrollosPyC.DescargaCfdiSat
                     DesarrollosPyC.Com.Facturacion.Comprobantes.V32.Comprobante cfdi = DesarrollosPyC.Com.Facturacion.Comprobantes.V32.Comprobante.LoadFromFile(x);
                     if (cfdi != null)
                     {
-                        DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.TimbreFiscalDigital timbre = null;
-                        System.Xml.XmlElement impL = cfdi.Complemento.Any.Where(j => j.LocalName.Equals("TimbreFiscalDigital")).FirstOrDefault();
-                        if (impL != null)
-                        {
-                            timbre = DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.TimbreFiscalDigital.Deserialize(impL.OuterXml);
-                        }
+                        DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.Tfd.V10.TimbreFiscalDigital timbre = DesarrollosPyC.Com.Facturacion.Cfdi32Decode.RecuperaTimbreFiscalDigital(cfdi);
                         if (timbre == null)
                             continue;
 

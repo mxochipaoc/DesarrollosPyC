@@ -190,7 +190,7 @@
             <xsl:with-param name="valor" select="./@Nombre"/>
           </xsl:call-template>
 
-          <xsl:call-template name="Requerido">
+          <xsl:call-template name="Opcional">
             <xsl:with-param name="valor" select="./@ApellidoPaterno"/>
           </xsl:call-template>
 
@@ -202,7 +202,7 @@
             <xsl:with-param name="valor" select="./@RFC"/>
           </xsl:call-template>
 
-          <xsl:call-template name="Requerido">
+          <xsl:call-template name="Opcional">
             <xsl:with-param name="valor" select="./@CURP"/>
           </xsl:call-template>
 
@@ -239,7 +239,7 @@
           <xsl:with-param name="valor" select="./@Nombre"/>
         </xsl:call-template>
 
-        <xsl:call-template name="Requerido">
+        <xsl:call-template name="Opcional">
           <xsl:with-param name="valor" select="./@ApellidoPaterno"/>
         </xsl:call-template>
 
@@ -251,7 +251,7 @@
           <xsl:with-param name="valor" select="./@RFC"/>
         </xsl:call-template>
 
-        <xsl:call-template name="Requerido">
+        <xsl:call-template name="Opcional">
           <xsl:with-param name="valor" select="./@CURP"/>
         </xsl:call-template>
 
@@ -275,7 +275,7 @@
             <xsl:with-param name="valor" select="./@Nombre"/>
           </xsl:call-template>
 
-          <xsl:call-template name="Requerido">
+          <xsl:call-template name="Opcional">
             <xsl:with-param name="valor" select="./@ApellidoPaterno"/>
           </xsl:call-template>
 
@@ -287,7 +287,7 @@
             <xsl:with-param name="valor" select="./@RFC"/>
           </xsl:call-template>
 
-          <xsl:call-template name="Requerido">
+          <xsl:call-template name="Opcional">
             <xsl:with-param name="valor" select="./@CURP"/>
           </xsl:call-template>
 

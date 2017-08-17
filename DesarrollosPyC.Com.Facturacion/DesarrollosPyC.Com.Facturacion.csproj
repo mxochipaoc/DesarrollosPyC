@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icono boceto.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,26 +62,50 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CerManager.cs" />
+    <Compile Include="Cfdi33Decode.cs" />
+    <Compile Include="Cfdi32Decode.cs" />
+    <Compile Include="CfdiV33Manager.cs" />
     <Compile Include="CfdiV32Manager.cs" />
-    <Compile Include="Comprobantes\Complementos\catNomina.cs" />
+    <Compile Include="Comprobantes\Complementos\Nomina\V12\catNomina.cs" />
     <Compile Include="Comprobantes\Complementos\iedu.cs" />
     <Compile Include="Comprobantes\Complementos\implocal.cs" />
-    <Compile Include="Comprobantes\Complementos\ine.cs" />
-    <Compile Include="Comprobantes\Complementos\nomina.cs" />
-    <Compile Include="Comprobantes\Complementos\Old\ine.cs" />
-    <Compile Include="Comprobantes\Complementos\Old\nomina.cs" />
+    <Compile Include="Comprobantes\Complementos\Ine\V11\ine.cs" />
+    <Compile Include="Comprobantes\Complementos\Nomina\V12\nomina.cs" />
+    <Compile Include="Comprobantes\Complementos\Ine\V10\ine.cs" />
+    <Compile Include="Comprobantes\Complementos\Nomina\V11\nomina.cs" />
     <Compile Include="Comprobantes\Complementos\notariospublicos.cs" />
-    <Compile Include="Comprobantes\Complementos\TimbreFiscalDigital.cs" />
+    <Compile Include="Comprobantes\Complementos\Tfd\V10\TimbreFiscalDigital.cs" />
     <Compile Include="Comprobantes\Complementos\leyendasFisc.cs" />
     <Compile Include="Comprobantes\V30\Comprobante.cs" />
     <Compile Include="Comprobantes\V32\Comprobante.cs" />
+    <Compile Include="Comprobantes\V33\Comprobante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StringWriterWithEncoding.cs" />
+    <Compile Include="Comprobantes\Complementos\Tfd\V11\TimbreFiscalDigital.cs" />
+    <Compile Include="Comprobantes\Complementos\Pagos.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Xsd\aerolineas.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\catCFDI.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xsd\catNomina.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\certificadodedestruccion.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\cfdiregistrofiscal.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Xsd\cfdv2.xsd">
@@ -93,6 +120,24 @@
     <None Include="Xsd\cfdv32.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Xsd\cfdv33.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\ComercioExterior11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\consumodecombustibles.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\divisas.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\donat11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\ecc11.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xsd\iedu.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -103,9 +148,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Xsd\INE11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Xsd\LAMOSA_Factura.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Xsd\leyendasFisc.xsd">
@@ -120,6 +162,24 @@
     <None Include="Xsd\notariospublicos.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Xsd\obrasarteantiguedades.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\pagoenespecie.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\Pagos10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\pfic.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\renovacionysustitucionvehiculos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\servicioparcialconstruccion.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xsd\tdCFDI.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -129,35 +189,80 @@
     <None Include="Xsd\TimbreFiscalDigital.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Xsd\TimbreFiscalDigitalv11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\TuristaPasajeroExtranjero.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\valesdedespensa.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\vehiculousado.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd\ventavehiculos11.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Xslt\cadenaoriginal_3_0.xslt" />
-    <Content Include="Xslt\cadenaoriginal_3_2.xslt" />
-    <Content Include="Xslt\cadenaoriginal_3_2_l.xslt" />
-    <Content Include="Xslt\cadenaoriginal_TFD_1_0.xslt" />
-    <Content Include="Xslt\detallista.xslt" />
-    <Content Include="Xslt\divisas.xslt" />
-    <Content Include="Xslt\donat.xslt" />
-    <Content Include="Xslt\donat11.xslt" />
-    <Content Include="Xslt\ecb.xslt" />
-    <Content Include="Xslt\ecc.xslt" />
-    <Content Include="Xslt\iedu.xslt" />
-    <Content Include="Xslt\implocal.xslt" />
-    <Content Include="Xslt\ine10.xslt" />
-    <Content Include="Xslt\INE11.xslt" />
-    <Content Include="Xslt\leyendasFisc.xslt" />
-    <Content Include="Xslt\nomina11.xslt" />
-    <Content Include="Xslt\nomina12.xslt" />
-    <Content Include="Xslt\notariospublicos.xslt" />
-    <Content Include="Xslt\pfic.xslt" />
-    <Content Include="Xslt\psgecfd.xslt" />
-    <Content Include="Xslt\reporteo.xslt" />
-    <Content Include="Xslt\terceros.xslt" />
-    <Content Include="Xslt\terceros11.xslt" />
-    <Content Include="Xslt\TuristaPasajeroExtranjero.xslt" />
-    <Content Include="Xslt\utilerias.xslt" />
-    <Content Include="Xslt\ventavehiculos.xslt" />
+    <Content Include="Icono boceto.ico" />
+    <EmbeddedResource Include="Xslt\aerolineas.xslt" />
+    <EmbeddedResource Include="Xslt\cadenaoriginal_2_0_l.xslt" />
+    <EmbeddedResource Include="Xslt\cadenaoriginal_2_2_l.xslt" />
+    <EmbeddedResource Include="Xslt\cadenaoriginal_3_3_l.xslt" />
+    <EmbeddedResource Include="Xslt\cadenaoriginal_TFD_1_1.xslt" />
+    <EmbeddedResource Include="Xslt\certificadodedestruccion.xslt" />
+    <EmbeddedResource Include="Xslt\cfdiregistrofiscal.xslt" />
+    <EmbeddedResource Include="Xslt\ComercioExterior11.xslt" />
+    <EmbeddedResource Include="Xslt\consumodecombustibles.xslt" />
+    <EmbeddedResource Include="Xslt\ecc11.xslt" />
+    <EmbeddedResource Include="Xslt\obrasarteantiguedades.xslt" />
+    <EmbeddedResource Include="Xslt\pagoenespecie.xslt" />
+    <EmbeddedResource Include="Xslt\Pagos10.xslt" />
+    <EmbeddedResource Include="Xslt\renovacionysustitucionvehiculos.xslt" />
+    <EmbeddedResource Include="Xslt\servicioparcialconstruccion.xslt" />
+    <EmbeddedResource Include="Xslt\valesdedespensa.xslt" />
+    <EmbeddedResource Include="Xslt\vehiculousado.xslt" />
+    <EmbeddedResource Include="Xslt\ventavehiculos11.xslt" />
+    <EmbeddedResource Include="Xslt\cadenaoriginal_3_2_l.xslt" />
+    <EmbeddedResource Include="Xslt\cadenaoriginal_TFD_1_0.xslt" />
+    <EmbeddedResource Include="Xslt\detallista.xslt" />
+    <EmbeddedResource Include="Xslt\divisas.xslt" />
+    <EmbeddedResource Include="Xslt\donat.xslt" />
+    <EmbeddedResource Include="Xslt\donat11.xslt" />
+    <EmbeddedResource Include="Xslt\ecb.xslt" />
+    <EmbeddedResource Include="Xslt\ecc.xslt" />
+    <EmbeddedResource Include="Xslt\iedu.xslt" />
+    <EmbeddedResource Include="Xslt\implocal.xslt" />
+    <EmbeddedResource Include="Xslt\ine10.xslt" />
+    <EmbeddedResource Include="Xslt\INE11.xslt" />
+    <EmbeddedResource Include="Xslt\leyendasFisc.xslt" />
+    <EmbeddedResource Include="Xslt\nomina11.xslt" />
+    <EmbeddedResource Include="Xslt\nomina12.xslt" />
+    <EmbeddedResource Include="Xslt\notariospublicos.xslt" />
+    <EmbeddedResource Include="Xslt\pfic.xslt" />
+    <EmbeddedResource Include="Xslt\psgecfd.xslt" />
+    <EmbeddedResource Include="Xslt\reporteo.xslt" />
+    <EmbeddedResource Include="Xslt\terceros.xslt" />
+    <EmbeddedResource Include="Xslt\terceros11.xslt" />
+    <EmbeddedResource Include="Xslt\TuristaPasajeroExtranjero.xslt" />
+    <EmbeddedResource Include="Xslt\utilerias.xslt" />
+    <EmbeddedResource Include="Xslt\ventavehiculos.xslt" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DesarrollosPyC.Com.Utilidades\DesarrollosPyC.Com.Utilidades.csproj">
+      <Project>{a8119225-b3ee-4979-855f-f83fa8d2dd11}</Project>
+      <Name>DesarrollosPyC.Com.Utilidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

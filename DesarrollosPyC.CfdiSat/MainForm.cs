@@ -136,6 +136,11 @@ namespace DesarrollosPyC.CfdiSat
                 else
                     form.Focus();
             }
+
+            if (e.IsTile)
+            {
+                tnpMenu.HideDropDownWindow();
+            }
         }
     }
 }

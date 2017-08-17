@@ -73,8 +73,17 @@
             this.grdNominas12 = new DevExpress.XtraGrid.GridControl();
             this.grdViewBandNominas12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.tbEgresos = new DevExpress.XtraTab.XtraTabPage();
+            this.tabCfdiErgesos = new DevExpress.XtraTab.XtraTabControl();
+            this.tbEgresosCfdi = new DevExpress.XtraTab.XtraTabPage();
             this.grdEgresos = new DevExpress.XtraGrid.GridControl();
             this.grdViewBandEgresos = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.tbEgresosNomina11 = new DevExpress.XtraTab.XtraTabPage();
+            this.grdEgresosNomina11 = new DevExpress.XtraGrid.GridControl();
+            this.grdViewBandEgresosNomina11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.tbEgresosNomina12 = new DevExpress.XtraTab.XtraTabPage();
+            this.grdEgresosNomina12 = new DevExpress.XtraGrid.GridControl();
+            this.grdViewBandEgresosNomina12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.imlIngresosTipoReporte = new System.Windows.Forms.ImageList(this.components);
             this.tmrTemporizador = new System.Windows.Forms.Timer(this.components);
             this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
@@ -110,8 +119,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdNominas12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandNominas12)).BeginInit();
             this.tbEgresos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabCfdiErgesos)).BeginInit();
+            this.tabCfdiErgesos.SuspendLayout();
+            this.tbEgresosCfdi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEgresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandEgresos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            this.tbEgresosNomina11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdEgresosNomina11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewBandEgresosNomina11)).BeginInit();
+            this.tbEgresosNomina12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdEgresosNomina12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewBandEgresosNomina12)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -600,10 +619,35 @@
             // 
             // tbEgresos
             // 
-            this.tbEgresos.Controls.Add(this.grdEgresos);
+            this.tbEgresos.Controls.Add(this.tabCfdiErgesos);
             this.tbEgresos.Name = "tbEgresos";
             this.tbEgresos.Size = new System.Drawing.Size(950, 307);
             this.tbEgresos.Text = "Cfdi Egresos";
+            // 
+            // tabCfdiErgesos
+            // 
+            this.tabCfdiErgesos.AppearancePage.Header.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.tabCfdiErgesos.AppearancePage.Header.Options.UseFont = true;
+            this.tabCfdiErgesos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabCfdiErgesos.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
+            this.tabCfdiErgesos.HeaderOrientation = DevExpress.XtraTab.TabOrientation.Vertical;
+            this.tabCfdiErgesos.Location = new System.Drawing.Point(0, 0);
+            this.tabCfdiErgesos.Name = "tabCfdiErgesos";
+            this.tabCfdiErgesos.SelectedTabPage = this.tbEgresosCfdi;
+            this.tabCfdiErgesos.ShowHeaderFocus = DevExpress.Utils.DefaultBoolean.True;
+            this.tabCfdiErgesos.Size = new System.Drawing.Size(950, 307);
+            this.tabCfdiErgesos.TabIndex = 3;
+            this.tabCfdiErgesos.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.tbEgresosCfdi,
+            this.tbEgresosNomina11,
+            this.tbEgresosNomina12});
+            // 
+            // tbEgresosCfdi
+            // 
+            this.tbEgresosCfdi.Controls.Add(this.grdEgresos);
+            this.tbEgresosCfdi.Name = "tbEgresosCfdi";
+            this.tbEgresosCfdi.Size = new System.Drawing.Size(918, 301);
+            this.tbEgresosCfdi.Text = "Comprobantes";
             // 
             // grdEgresos
             // 
@@ -611,8 +655,10 @@
             this.grdEgresos.Location = new System.Drawing.Point(0, 0);
             this.grdEgresos.MainView = this.grdViewBandEgresos;
             this.grdEgresos.Name = "grdEgresos";
-            this.grdEgresos.Size = new System.Drawing.Size(950, 307);
-            this.grdEgresos.TabIndex = 3;
+            this.grdEgresos.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox2});
+            this.grdEgresos.Size = new System.Drawing.Size(918, 301);
+            this.grdEgresos.TabIndex = 2;
             this.grdEgresos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdViewBandEgresos});
             // 
@@ -621,6 +667,61 @@
             this.grdViewBandEgresos.GridControl = this.grdEgresos;
             this.grdViewBandEgresos.Name = "grdViewBandEgresos";
             this.grdViewBandEgresos.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            // 
+            // repositoryItemImageComboBox2
+            // 
+            this.repositoryItemImageComboBox2.AutoHeight = false;
+            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
+            // 
+            // tbEgresosNomina11
+            // 
+            this.tbEgresosNomina11.Controls.Add(this.grdEgresosNomina11);
+            this.tbEgresosNomina11.Name = "tbEgresosNomina11";
+            this.tbEgresosNomina11.Size = new System.Drawing.Size(918, 301);
+            this.tbEgresosNomina11.Text = "Nómina v 1.1";
+            // 
+            // grdEgresosNomina11
+            // 
+            this.grdEgresosNomina11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdEgresosNomina11.Location = new System.Drawing.Point(0, 0);
+            this.grdEgresosNomina11.MainView = this.grdViewBandEgresosNomina11;
+            this.grdEgresosNomina11.Name = "grdEgresosNomina11";
+            this.grdEgresosNomina11.Size = new System.Drawing.Size(918, 301);
+            this.grdEgresosNomina11.TabIndex = 3;
+            this.grdEgresosNomina11.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdViewBandEgresosNomina11});
+            // 
+            // grdViewBandEgresosNomina11
+            // 
+            this.grdViewBandEgresosNomina11.GridControl = this.grdEgresosNomina11;
+            this.grdViewBandEgresosNomina11.Name = "grdViewBandEgresosNomina11";
+            this.grdViewBandEgresosNomina11.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            // 
+            // tbEgresosNomina12
+            // 
+            this.tbEgresosNomina12.Controls.Add(this.grdEgresosNomina12);
+            this.tbEgresosNomina12.Name = "tbEgresosNomina12";
+            this.tbEgresosNomina12.Size = new System.Drawing.Size(918, 301);
+            this.tbEgresosNomina12.Text = "Nómina v 1.2";
+            // 
+            // grdEgresosNomina12
+            // 
+            this.grdEgresosNomina12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdEgresosNomina12.Location = new System.Drawing.Point(0, 0);
+            this.grdEgresosNomina12.MainView = this.grdViewBandEgresosNomina12;
+            this.grdEgresosNomina12.Name = "grdEgresosNomina12";
+            this.grdEgresosNomina12.Size = new System.Drawing.Size(918, 301);
+            this.grdEgresosNomina12.TabIndex = 4;
+            this.grdEgresosNomina12.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdViewBandEgresosNomina12});
+            // 
+            // grdViewBandEgresosNomina12
+            // 
+            this.grdViewBandEgresosNomina12.GridControl = this.grdEgresosNomina12;
+            this.grdViewBandEgresosNomina12.Name = "grdViewBandEgresosNomina12";
+            this.grdViewBandEgresosNomina12.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
             // 
             // imlIngresosTipoReporte
             // 
@@ -644,9 +745,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 514);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Anaáisis de Cfdi Sat";
+            this.Text = "Análisis de Cfdi Sat";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -685,8 +787,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdNominas12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandNominas12)).EndInit();
             this.tbEgresos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabCfdiErgesos)).EndInit();
+            this.tabCfdiErgesos.ResumeLayout(false);
+            this.tbEgresosCfdi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEgresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewBandEgresos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            this.tbEgresosNomina11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdEgresosNomina11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewBandEgresosNomina11)).EndInit();
+            this.tbEgresosNomina12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdEgresosNomina12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewBandEgresosNomina12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -718,8 +830,6 @@
         private System.Windows.Forms.ImageList imlIngresosTipoReporte;
         private DevExpress.XtraGrid.GridControl grdIngresos;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView grdViewBandIngresos;
-        private DevExpress.XtraGrid.GridControl grdEgresos;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView grdViewBandEgresos;
         private DevExpress.XtraGrid.GridControl grdNominas11;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView grdViewBandNominas11;
         private DevExpress.XtraGrid.GridControl grdNominas12;
@@ -733,6 +843,17 @@
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraTab.XtraTabControl tabCfdiErgesos;
+        private DevExpress.XtraTab.XtraTabPage tbEgresosCfdi;
+        private DevExpress.XtraGrid.GridControl grdEgresos;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView grdViewBandEgresos;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
+        private DevExpress.XtraTab.XtraTabPage tbEgresosNomina11;
+        private DevExpress.XtraGrid.GridControl grdEgresosNomina11;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView grdViewBandEgresosNomina11;
+        private DevExpress.XtraTab.XtraTabPage tbEgresosNomina12;
+        private DevExpress.XtraGrid.GridControl grdEgresosNomina12;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView grdViewBandEgresosNomina12;
     }
 }
 

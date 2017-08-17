@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement7 = new DevExpress.XtraEditors.TileItemElement();
-            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.tnpMenu = new DevExpress.XtraBars.Navigation.TileNavPane();
             this.tncAplicacionesCFDi = new DevExpress.XtraBars.Navigation.TileNavCategory();
             this.tniDescargaMasiva = new DevExpress.XtraBars.Navigation.TileNavItem();
@@ -45,7 +45,7 @@
             this.tlnSistema = new DevExpress.XtraBars.Navigation.TileNavCategory();
             this.tniAcercaDe = new DevExpress.XtraBars.Navigation.TileNavItem();
             this.tniLoockAndFeel = new DevExpress.XtraBars.Navigation.TileNavItem();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
             this.tileNavSubItem1 = new DevExpress.XtraBars.Navigation.TileNavSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -83,19 +83,6 @@
             this.tncAplicacionesCFDi.Caption = "Aplicaciones de Cfdi";
             this.tncAplicacionesCFDi.Glyph = global::DesarrollosPyC.CfdiSat.Properties.Resources.Xml_tool;
             this.tncAplicacionesCFDi.GroupName = "";
-            this.tncAplicacionesCFDi.Items.AddRange(new DevExpress.XtraBars.Navigation.TileNavItem[] {
-            this.tniDescargaMasiva,
-            this.tniAnalisis});
-            this.tncAplicacionesCFDi.Name = "tncAplicacionesCFDi";
-            this.tncAplicacionesCFDi.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
-            this.tncAplicacionesCFDi.OwnerCollection = null;
-            // 
-            // 
-            // 
-            this.tncAplicacionesCFDi.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Left;
-            this.tncAplicacionesCFDi.Tile.Elements.Add(tileItemElement3);
-            this.tncAplicacionesCFDi.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // tniDescargaMasiva
             // 
@@ -112,6 +99,19 @@
             this.tniDescargaMasiva.Tile.Elements.Add(tileItemElement1);
             this.tniDescargaMasiva.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.tniDescargaMasiva.Tile.Name = "tileBarItem1";
+            this.tncAplicacionesCFDi.Items.AddRange(new DevExpress.XtraBars.Navigation.TileNavItem[] {
+            this.tniDescargaMasiva,
+            this.tniAnalisis});
+            this.tncAplicacionesCFDi.Name = "tncAplicacionesCFDi";
+            this.tncAplicacionesCFDi.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
+            this.tncAplicacionesCFDi.OwnerCollection = null;
+            // 
+            // 
+            // 
+            this.tncAplicacionesCFDi.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
+            tileItemElement3.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Left;
+            this.tncAplicacionesCFDi.Tile.Elements.Add(tileItemElement3);
+            this.tncAplicacionesCFDi.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // tniAnalisis
             // 
@@ -148,6 +148,18 @@
             this.tlnSistema.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Right;
             this.tlnSistema.Caption = "Sistema";
             this.tlnSistema.Glyph = global::DesarrollosPyC.CfdiSat.Properties.Resources.Computer;
+            this.tlnSistema.Items.AddRange(new DevExpress.XtraBars.Navigation.TileNavItem[] {
+            this.tniAcercaDe,
+            this.tniLoockAndFeel});
+            this.tlnSistema.Name = "tlnSistema";
+            this.tlnSistema.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
+            this.tlnSistema.OwnerCollection = null;
+            // 
+            // 
+            // 
+            this.tlnSistema.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
+            this.tlnSistema.Tile.Elements.Add(tileItemElement6);
+            this.tlnSistema.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // tniAcercaDe
             // 
@@ -181,18 +193,6 @@
             this.tniLoockAndFeel.Tile.Elements.Add(tileItemElement5);
             this.tniLoockAndFeel.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.tniLoockAndFeel.Tile.Name = "tileBarItem2";
-            this.tlnSistema.Items.AddRange(new DevExpress.XtraBars.Navigation.TileNavItem[] {
-            this.tniAcercaDe,
-            this.tniLoockAndFeel});
-            this.tlnSistema.Name = "tlnSistema";
-            this.tlnSistema.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
-            this.tlnSistema.OwnerCollection = null;
-            // 
-            // 
-            // 
-            this.tlnSistema.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            this.tlnSistema.Tile.Elements.Add(tileItemElement6);
-            this.tlnSistema.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // xtraTabbedMdiManager1
             // 
@@ -217,6 +217,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 492);
             this.Controls.Add(this.tnpMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Text = "Descarga masiva y análisis de Cfdi";
@@ -234,11 +235,11 @@
         private DevExpress.XtraBars.Navigation.TileNavCategory tncAplicacionesCFDi;
         private DevExpress.XtraBars.Navigation.TileNavCategory tlnLicencias;
         private DevExpress.XtraBars.Navigation.TileNavCategory tlnSistema;
-        private DevExpress.XtraBars.Navigation.TileNavItem tniDescargaMasiva;
         private DevExpress.XtraBars.Navigation.TileNavItem tniAnalisis;
         private DevExpress.XtraBars.Navigation.TileNavSubItem tileNavSubItem1;
         private DevExpress.XtraBars.Navigation.TileNavItem tniLoockAndFeel;
         private DevExpress.XtraBars.Navigation.TileNavItem tniAcercaDe;
+        private DevExpress.XtraBars.Navigation.TileNavItem tniDescargaMasiva;
     }
 }
 

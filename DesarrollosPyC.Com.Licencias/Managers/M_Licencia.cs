@@ -105,7 +105,9 @@ namespace DesarrollosPyC.Com.Licencias.Managers
 
             // Señuelos de diccionarios
             string sen1 = M_Ascii.GeneraAlfabeto().Select(i => i.Key.ToString("000")).Aggregate((a, b) => a + b);
+            GC.Collect();
             string sen2 = M_Ascii.GeneraAlfabeto().Select(i => i.Key.ToString("000")).Aggregate((a, b) => a + b);
+            GC.Collect();
             string sen3 = M_Ascii.GeneraAlfabeto().Select(i => i.Key.ToString("000")).Aggregate((a, b) => a + b);
 
             MathNet.Numerics.LinearAlgebra.Matrix<double> senhuelo = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.Random(n, n);
