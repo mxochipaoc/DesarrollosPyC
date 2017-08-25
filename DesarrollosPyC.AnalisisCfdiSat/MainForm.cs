@@ -59,7 +59,11 @@ namespace DesarrollosPyC.AnalisisCfdiSat
         /// <summary>
         /// Facturas de ingreso
         /// </summary>
-        Helper_DataTable Facturas_Ingresos { get; set; }
+        Helper_DataTable Facturas_Ingresos_Detallado { get; set; }
+        /// <summary>
+        /// Facturas de ingreso
+        /// </summary>
+        Helper_DataTable Facturas_Ingresos_Concentrado { get; set; }
         /// <summary>
         /// Recibos de nómina 1.1
         /// </summary>
@@ -71,7 +75,11 @@ namespace DesarrollosPyC.AnalisisCfdiSat
         /// <summary>
         /// Facturas de egreso
         /// </summary>
-        Helper_DataTable Facturas_Egresos { get; set; }
+        Helper_DataTable Facturas_Egresos_Detallado { get; set; }
+        /// <summary>
+        /// Facturas de egreso
+        /// </summary>
+        Helper_DataTable Facturas_Egresos_Concentrado { get; set; }
         /// <summary>
         /// Facturas de egreso, nomina 11 recibida
         /// </summary>
@@ -164,11 +172,13 @@ namespace DesarrollosPyC.AnalisisCfdiSat
             grdEgresosNomina11.DataSource = null;
             grdEgresosNomina12.DataSource = null;
 
-            Facturas_Ingresos = null;
+            Facturas_Ingresos_Detallado = null;
+            Facturas_Ingresos_Concentrado = null;
             Facturas_Nomima11 = null;
             Facturas_Nomima12 = null;
 
-            Facturas_Egresos = null;
+            Facturas_Egresos_Detallado = null;
+            Facturas_Egresos_Concentrado = null;
             Facturas_Egresos_Nomina11 = null;
             Facturas_Egresos_Nomina12 = null;
 
@@ -199,8 +209,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 // Visualización de facturas de ingresos
                 if (EstatusFormulario == Estado_Formulario.Carga_Ingresos)
                 {
-                    GeneraCamposBandasCmposFacturas(grdViewBandIngresos, Facturas_Ingresos);
-                    grdIngresos.DataSource = Facturas_Ingresos;
+                    chkIngresosConcentradoDetallado_Toggled(chkIngresosConcentradoDetallado, EventArgs.Empty);
 
                     GeneraCamposBandasCmposFacturas(grdViewBandNominas11, Facturas_Nomima11);
                     grdNominas11.DataSource = Facturas_Nomima11;
@@ -214,8 +223,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 // Visualización de facturas de egresos
                 if (EstatusFormulario == Estado_Formulario.Carga_Egresos)
                 {
-                    GeneraCamposBandasCmposFacturas(grdViewBandEgresos, Facturas_Egresos);
-                    grdEgresos.DataSource = Facturas_Egresos;
+                    chkEgresosConcentradoDetallado_Toggled(chkEgresosConcentradoDetallado, EventArgs.Empty);
 
                     GeneraCamposBandasCmposFacturas(grdViewBandEgresosNomina11, Facturas_Egresos_Nomina11);
                     grdEgresosNomina11.DataSource = Facturas_Egresos_Nomina11;
@@ -357,7 +365,8 @@ namespace DesarrollosPyC.AnalisisCfdiSat
 
                       // Formado de columnas de tabla de ingresos
                       EstatusProceso = "Generando tabla de visualización de datos...";
-                      Facturas_Ingresos = GeneraTablaDatosCfdiPuro(cfdis);
+                      Facturas_Ingresos_Detallado = GeneraTablaDatosCfdiPuroDetallado(cfdis);
+                      Facturas_Ingresos_Concentrado = GeneraTablaDatosCfdiPuroConcentrado(cfdis);
                       Facturas_Nomima11 = GeneraTablaDatosCfdiNomina11(nominas11);
                       Facturas_Nomima12 = GeneraTablaDatosCfdiNomina12(nominas12);
                       
@@ -368,6 +377,24 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                       EstatusGeneral = string.Format("{0} elementos procesados en {1:00}:{2:00}:{3:00}", files.Length, duracion.Hours, duracion.Minutes, duracion.Seconds);
                   });
                 hilo.Start();
+            }
+        }
+        /// <summary>
+        /// Variación de presentación de datos, concentrado, detallado
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void chkIngresosConcentradoDetallado_Toggled(object sender, EventArgs e)
+        {
+            if (!chkIngresosConcentradoDetallado.IsOn)
+            {
+                GeneraCamposBandasCmposFacturas(grdViewBandIngresos, Facturas_Ingresos_Detallado);
+                grdIngresos.DataSource = Facturas_Ingresos_Detallado;
+            }
+            else
+            {
+                GeneraCamposBandasCmposFacturas(grdViewBandIngresos, Facturas_Ingresos_Concentrado);
+                grdIngresos.DataSource = Facturas_Ingresos_Concentrado;
             }
         }
         #endregion
@@ -501,7 +528,8 @@ namespace DesarrollosPyC.AnalisisCfdiSat
 
                     // Formado de columnas de tabla de ingresos
                     EstatusProceso = "Generando tabla de visualización de datos...";
-                    Facturas_Egresos = GeneraTablaDatosCfdiPuro(cfdis);
+                    Facturas_Egresos_Detallado = GeneraTablaDatosCfdiPuroDetallado(cfdis);
+                    Facturas_Egresos_Concentrado = GeneraTablaDatosCfdiPuroConcentrado(cfdis);
                     Facturas_Egresos_Nomina11 = GeneraTablaDatosCfdiNomina11(nominas11);
                     Facturas_Egresos_Nomina12 = GeneraTablaDatosCfdiNomina12(nominas12);
 
@@ -514,15 +542,33 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 hilo.Start();
             }
         }
+        /// <summary>
+        /// Variación de presentación de datos, concentrado, detallado
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void chkEgresosConcentradoDetallado_Toggled(object sender, EventArgs e)
+        {
+            if (!chkEgresosConcentradoDetallado.IsOn)
+            {
+                GeneraCamposBandasCmposFacturas(grdViewBandEgresos, Facturas_Egresos_Detallado);
+                grdEgresos.DataSource = Facturas_Ingresos_Detallado;
+            }
+            else
+            {
+                GeneraCamposBandasCmposFacturas(grdViewBandEgresos, Facturas_Egresos_Concentrado);
+                grdEgresos.DataSource = Facturas_Ingresos_Concentrado;
+            }
+        }
         #endregion
 
         #region Formado de tablas de datos a ser visualizadas
         /// <summary>
-        /// Genera la tabla de visualización de datos
+        /// Genera la tabla de visualización de datos en formato detallado
         /// </summary>
         /// <param name="cfdis">Facturas recuepradas</param>
         /// <returns></returns>
-        public Helper_DataTable GeneraTablaDatosCfdiPuro(List<object> cfdis)
+        public Helper_DataTable GeneraTablaDatosCfdiPuroDetallado(List<object> cfdis)
         {
             var tabla = new Helper_DataTable();
             EstatusProceso = "Generando columnas principales ...";
@@ -1218,6 +1264,507 @@ namespace DesarrollosPyC.AnalisisCfdiSat
             return tabla;
         }
         /// <summary>
+        /// Genera la tabla de visualización de datos en formato concentrado
+        /// </summary>
+        /// <param name="cfdis">Facturas recuepradas</param>
+        /// <returns></returns>
+        public Helper_DataTable GeneraTablaDatosCfdiPuroConcentrado(List<object> cfdis)
+        {
+            var tabla = new Helper_DataTable();
+            EstatusProceso = "Generando columnas principales ...";
+            var datosGenerales = tabla.NewGroupDataColumn("Datos principales");
+            datosGenerales.NewDataColumn("ID", "ID", typeof(int), false);
+            datosGenerales.NewDataColumn("Version", "Versión", typeof(string), false);
+            datosGenerales.NewDataColumn("Emisor", "Emisor", typeof(string), true);
+            datosGenerales.NewDataColumn("EmisorRFC", "Emisor RFC", typeof(string), false);
+            datosGenerales.NewDataColumn("Receptor", "Receptor", typeof(string), true);
+            datosGenerales.NewDataColumn("ReceptorRFC", "Receptor RFC", typeof(string), false);
+            datosGenerales.NewDataColumn("Serie", "Serie", typeof(string), true);
+            datosGenerales.NewDataColumn("Folio", "Folio", typeof(string), true);
+            datosGenerales.NewDataColumn("UUID", "UUID", typeof(string), false);
+            datosGenerales.NewDataColumn("Fecha", "Fecha", typeof(DateTime), false, DevExpress.Utils.FormatType.DateTime, "d");
+            datosGenerales.NewDataColumn("Anhio", "Año", typeof(int), false, DevExpress.Utils.FormatType.Numeric, "0000");
+            datosGenerales.NewDataColumn("Mes", "Mes", typeof(int), false, DevExpress.Utils.FormatType.Numeric, "00");
+            datosGenerales.NewDataColumn("Semana", "Semana", typeof(int), false, DevExpress.Utils.FormatType.Numeric, "00");
+
+            var importesTotales = tabla.NewGroupDataColumn("Importes totales");
+            EstatusProceso = "Generando columnas de importes totales ...";
+            var importes = importesTotales.NewGroupDataColumn("Importes");
+            importes.NewDataColumn("TipoComprobante", "T. comprobante", typeof(string), true);
+            importes.NewDataColumn("MetodoPago", "M. pago", typeof(string), true);
+            importes.NewDataColumn("NoCuentaPago", "Cta. pago", typeof(string), true);
+            importes.NewDataColumn("FactOriginal", "Fact. original", typeof(string), true);
+            importes.NewDataColumn("Moneda", "Moneda", typeof(string), true);
+            importes.NewDataColumn("TipoCambio", "T. cambio", typeof(string), true);
+            importes.NewDataColumn("Subtotal", "Subtotal", typeof(decimal), false, DevExpress.Utils.FormatType.Numeric, "c2");
+            importes.NewDataColumn("Descuento", "Descuento", typeof(decimal), false, DevExpress.Utils.FormatType.Numeric, "c2");
+            importes.NewDataColumn("MotivoDescuento", "M. descuento", typeof(string), true);
+            importes.NewDataColumn("Total", "Total", typeof(decimal), false, DevExpress.Utils.FormatType.Numeric, "c2");
+
+            EstatusProceso = "Generando columnas de impuestos ...";
+            List<Impuestos_Encontrados> imps = new List<Impuestos_Encontrados>();
+            //-------------------------------------------------------------------   CFDi 3.2
+            foreach (var cfdi in cfdis.Where(c => c is DesarrollosPyC.Com.Facturacion.Comprobantes.V32.Comprobante).Select(c => (DesarrollosPyC.Com.Facturacion.Comprobantes.V32.Comprobante)c).ToList())
+            {
+                // Recuperación de impuestos federales
+                if (cfdi.Impuestos.Traslados != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Traslados)
+                    {
+                        if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal &&
+                         i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado &&
+                         i.Impuesto.Equals(imp.impuesto.ToString()) &&
+                         i.Tasa == imp.tasa).Count() == 0)
+                            imps.Add(new Impuestos_Encontrados()
+                            {
+                                Tipo = Tipo_Impuestos.Federal,
+                                Aplicacion = Tipo_Impuesto_Aplicacion.Trasladado,
+                                Impuesto = imp.impuesto.ToString(),
+                                Tasa = imp.tasa
+                            });
+                    }
+                }
+                if (cfdi.Impuestos.Retenciones != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Retenciones)
+                    {
+                        if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal &&
+                         i.Aplicacion == Tipo_Impuesto_Aplicacion.Retenido &&
+                         i.Impuesto.Equals(imp.impuesto.ToString())).Count() == 0)
+                            imps.Add(new Impuestos_Encontrados()
+                            {
+                                Tipo = Tipo_Impuestos.Federal,
+                                Aplicacion = Tipo_Impuesto_Aplicacion.Retenido,
+                                Impuesto = imp.impuesto.ToString(),
+                                Tasa = imp.impuesto == Com.Facturacion.Comprobantes.V32.ComprobanteImpuestosRetencionImpuesto.ISR ? 10M :
+                                    imp.impuesto == Com.Facturacion.Comprobantes.V32.ComprobanteImpuestosRetencionImpuesto.IVA ? 10.67M : 0
+                            });
+                    }
+                }
+                // Recuperación de impuestos locales
+                DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocales implocal = DesarrollosPyC.Com.Facturacion.Cfdi32Decode.RecuperaImpuestosLocales(cfdi);
+                if (implocal != null)
+                {
+                    if (implocal.Items != null)
+                    {
+                        foreach (var imp in implocal.Items)
+                        {
+                            if (imp is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales)
+                            {
+                                var im = imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales;
+                                if (imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal &&
+                                    i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado &&
+                                    i.Impuesto.Equals(im.ImpLocTrasladado) &&
+                                    i.Tasa == im.TasadeTraslado).Count() == 0)
+                                    imps.Add(new Impuestos_Encontrados()
+                                    {
+                                        Tipo = Tipo_Impuestos.Estatal,
+                                        Aplicacion = Tipo_Impuesto_Aplicacion.Trasladado,
+                                        Impuesto = im.ImpLocTrasladado,
+                                        Tasa = im.TasadeTraslado
+                                    });
+                            }
+                            if (imp is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales)
+                            {
+                                var im = imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales;
+                                if (imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal &&
+                                    i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado &&
+                                    i.Impuesto.Equals(im.ImpLocRetenido) &&
+                                    i.Tasa == im.TasadeRetencion).Count() == 0)
+                                    imps.Add(new Impuestos_Encontrados()
+                                    {
+                                        Tipo = Tipo_Impuestos.Estatal,
+                                        Aplicacion = Tipo_Impuesto_Aplicacion.Trasladado,
+                                        Impuesto = im.ImpLocRetenido,
+                                        Tasa = im.TasadeRetencion
+                                    });
+                            }
+                        }
+                    }
+                }
+            }
+            //------------------------------------------------------------------------------
+            //-------------------------------------------------------------------   CFDi 3.3
+            foreach (var cfdi in cfdis.Where(c => c is DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Comprobante).Select(c => (DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Comprobante)c).ToList())
+            {
+                // Recuperación de impuestos federales
+                if (cfdi.Impuestos.Traslados != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Traslados)
+                    {
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+
+                        if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal &&
+                         i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado &&
+                         i.Impuesto.Equals(c_imp.Descripcion) &&
+                         i.Tasa == imp.TasaOCuota * 100M).Count() == 0)
+                            imps.Add(new Impuestos_Encontrados()
+                            {
+                                Tipo = Tipo_Impuestos.Federal,
+                                Aplicacion = Tipo_Impuesto_Aplicacion.Trasladado,
+                                Impuesto = c_imp.Descripcion,
+                                Tasa = imp.TasaOCuota * 100M
+                            });
+                    }
+                }
+                if (cfdi.Impuestos.Retenciones != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Retenciones)
+                    {
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+
+                        if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal &&
+                         i.Aplicacion == Tipo_Impuesto_Aplicacion.Retenido &&
+                         i.Impuesto.Equals(c_imp.Descripcion)).Count() == 0)
+                            imps.Add(new Impuestos_Encontrados()
+                            {
+                                Tipo = Tipo_Impuestos.Federal,
+                                Aplicacion = Tipo_Impuesto_Aplicacion.Retenido,
+                                Impuesto = c_imp.Descripcion,
+                                Tasa = imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item001 ? 10M :
+                                    imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item002 ? 10.67M : 0
+                            });
+                    }
+                }
+                // Recuperación de impuestos locales
+                DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocales implocal = DesarrollosPyC.Com.Facturacion.Cfdi33Decode.RecuperaImpuestosLocales(cfdi);
+                if (implocal != null)
+                {
+                    if (implocal.Items != null)
+                    {
+                        foreach (var imp in implocal.Items)
+                        {
+                            if (imp is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales)
+                            {
+                                var im = imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales;
+                                if (imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal &&
+                                    i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado &&
+                                    i.Impuesto.Equals(im.ImpLocTrasladado) &&
+                                    i.Tasa == im.TasadeTraslado).Count() == 0)
+                                    imps.Add(new Impuestos_Encontrados()
+                                    {
+                                        Tipo = Tipo_Impuestos.Estatal,
+                                        Aplicacion = Tipo_Impuesto_Aplicacion.Trasladado,
+                                        Impuesto = im.ImpLocTrasladado,
+                                        Tasa = im.TasadeTraslado
+                                    });
+                            }
+                            if (imp is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales)
+                            {
+                                var im = imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales;
+                                if (imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal &&
+                                    i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado &&
+                                    i.Impuesto.Equals(im.ImpLocRetenido) &&
+                                    i.Tasa == im.TasadeRetencion).Count() == 0)
+                                    imps.Add(new Impuestos_Encontrados()
+                                    {
+                                        Tipo = Tipo_Impuestos.Estatal,
+                                        Aplicacion = Tipo_Impuesto_Aplicacion.Trasladado,
+                                        Impuesto = im.ImpLocRetenido,
+                                        Tasa = im.TasadeRetencion
+                                    });
+                            }
+                        }
+                    }
+                }
+            }
+            // Grupos y clumnas de impuestos
+            if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal).Count() > 0)
+            {
+                var impuestosFederales = importesTotales.NewGroupDataColumn("Imp. Federales");
+                if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal && i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado).Count() > 0)
+                {
+                    var impuestosFederalesTraslados = impuestosFederales.NewGroupDataColumn("Trasladados");
+                    foreach (var c in imps.Where(i => i.Tipo == Tipo_Impuestos.Federal && i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado))
+                    {
+                        impuestosFederalesTraslados.NewDataColumn(c.Impuesto.Replace(" ", "").Replace(".", "") + "_" + c.Tasa.ToString("n2").Replace(".", "_"),
+                            c.Impuesto + " " + c.Tasa.ToString("n2") + "%",
+                            typeof(decimal),
+                            true,
+                            DevExpress.Utils.FormatType.Numeric,
+                            "c2");
+                    }
+                }
+                if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal && i.Aplicacion == Tipo_Impuesto_Aplicacion.Retenido).Count() > 0)
+                {
+                    var impuestosFederalesTraslados = impuestosFederales.NewGroupDataColumn("Retenidos");
+                    foreach (var c in imps.Where(i => i.Tipo == Tipo_Impuestos.Federal && i.Aplicacion == Tipo_Impuesto_Aplicacion.Retenido))
+                    {
+                        impuestosFederalesTraslados.NewDataColumn(c.Impuesto.Replace(" ", "").Replace(".", "") + "_" + c.Tasa.ToString("n2").Replace(".", "_"),
+                            c.Impuesto,
+                            typeof(decimal),
+                            true,
+                            DevExpress.Utils.FormatType.Numeric,
+                            "c2");
+                    }
+                }
+            }
+            if (imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal).Count() > 0)
+            {
+                var impuestosEstatales = importesTotales.NewGroupDataColumn("Imp. Estatales");
+                if (imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal && i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado).Count() > 0)
+                {
+                    var impuestosEstatalesTraslados = impuestosEstatales.NewGroupDataColumn("Trasladados");
+                    foreach (var c in imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal && i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado))
+                    {
+                        impuestosEstatalesTraslados.NewDataColumn(c.Impuesto.Replace(" ", "").Replace(".", "") + "_" + c.Tasa.ToString("n2").Replace(".", "_"),
+                            c.Impuesto + " " + c.Tasa.ToString("n2") + "%",
+                            typeof(decimal),
+                            true,
+                            DevExpress.Utils.FormatType.Numeric,
+                            "c2");
+                    }
+                }
+                if (imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal && i.Aplicacion == Tipo_Impuesto_Aplicacion.Retenido).Count() > 0)
+                {
+                    var impuestosEstatalesRetenidos = impuestosEstatales.NewGroupDataColumn("Retenidos");
+                    foreach (var c in imps.Where(i => i.Tipo == Tipo_Impuestos.Estatal && i.Aplicacion == Tipo_Impuesto_Aplicacion.Retenido))
+                    {
+                        impuestosEstatalesRetenidos.NewDataColumn(c.Impuesto.Replace(" ", "").Replace(".", "") + "_" + c.Tasa.ToString("n2").Replace(".", "_"),
+                            c.Impuesto + " " + c.Tasa.ToString("n2") + "%",
+                            typeof(decimal),
+                            true,
+                            DevExpress.Utils.FormatType.Numeric,
+                            "c2");
+                    }
+                }
+            }
+
+            //------------------------------------------------------------------------------            
+
+            EstatusProceso = "Generando columnas de validaciones ...";
+            var validaciones = tabla.NewGroupDataColumn("Validación de datos");
+            validaciones.NewDataColumn("ValidaSAT", "SAT", typeof(string), true);
+            validaciones.NewDataColumn("Reimprimir", "PDF", typeof(string), true);
+            //------------------------------------------------------------------------------
+
+            // paso de datos a ser mostrados
+            EstatusProceso = "Paso de datos a ser mostrados ...";
+            decimal imp_cal = decimal.Zero;
+            bool find_isr = false;
+            //-------------------------------------------------------------------   CFDi 3.2
+            foreach (var cfdi in cfdis.Where(c => c is DesarrollosPyC.Com.Facturacion.Comprobantes.V32.Comprobante).Select(c => (DesarrollosPyC.Com.Facturacion.Comprobantes.V32.Comprobante)c).ToList())
+            {
+                Dictionary<object, Impuestos_Analisis32> imps_cfdi = new Dictionary<object, Impuestos_Analisis32>();
+                if (cfdi.Impuestos.Traslados != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Traslados)
+                    {
+                        var imp_tr = new Impuestos_Analisis32();
+                        imp_tr.Impuesto = imp;
+                        imp_tr.Importe = imp.importe;
+                        imp_tr.Tasa = imp.tasa / 100M;
+                        imp_tr.AddConceptos(cfdi.Conceptos);
+                        imps_cfdi.Add(imp, imp_tr);
+                    }
+                }
+                if (cfdi.Impuestos.Retenciones != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Retenciones.Where(i => i.impuesto != Com.Facturacion.Comprobantes.V32.ComprobanteImpuestosRetencionImpuesto.ISR).ToList())
+                    {
+                        var imp_tr = new Impuestos_Analisis32();
+                        imp_tr.Impuesto = imp;
+                        imp_tr.Importe = imp.importe;
+                        imp_tr.Tasa = 0.1067M;
+                        imp_tr.AddConceptos(cfdi.Conceptos);
+                        imps_cfdi.Add(imp, imp_tr);
+                    }
+                }
+                var implocal = DesarrollosPyC.Com.Facturacion.Cfdi32Decode.RecuperaImpuestosLocales(cfdi);
+                if (implocal != null)
+                {
+                    foreach (var imp in implocal.Items.Where(i => i is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).ToList())
+                    {
+                        var imp_tr = new Impuestos_Analisis32();
+                        imp_tr.Impuesto = imp;
+                        imp_tr.Importe = (imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).Importe;
+                        imp_tr.Tasa = (imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).TasadeTraslado / 100M;
+                        imp_tr.AddConceptos(cfdi.Conceptos);
+                        imps_cfdi.Add(imp, imp_tr);
+                    }
+                    foreach (var imp in implocal.Items.Where(i => i is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).ToList())
+                    {
+                        var imp_tr = new Impuestos_Analisis32();
+                        imp_tr.Impuesto = imp;
+                        imp_tr.Importe = (imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).Importe;
+                        imp_tr.Tasa = (imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).TasadeRetencion / 100M;
+                        imp_tr.AddConceptos(cfdi.Conceptos);
+                        imps_cfdi.Add(imp, imp_tr);
+                    }
+                }
+
+                var row = tabla.NewRow();
+                row["ID"] = tabla.Rows.Count + 1;
+                row["Version"] = "3.2";
+                row["Emisor"] = cfdi.Emisor.nombre;
+                row["EmisorRFC"] = cfdi.Emisor.rfc;
+                row["Receptor"] = cfdi.Receptor.nombre;
+                row["ReceptorRFC"] = cfdi.Receptor.rfc;
+                row["Serie"] = cfdi.serie;
+                row["Folio"] = cfdi.folio;
+
+                var timbre = DesarrollosPyC.Com.Facturacion.Cfdi32Decode.RecuperaTimbreFiscalDigital(cfdi);
+                row["UUID"] = timbre.UUID;
+
+                row["Fecha"] = cfdi.fecha;
+                row["Anhio"] = cfdi.fecha.Year;
+                row["Mes"] = cfdi.fecha.Month;
+                row["Semana"] = System.Globalization.CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(cfdi.fecha, System.Globalization.CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+
+                row["TipoComprobante"] = cfdi.tipoDeComprobante.ToString();
+                row["MetodoPago"] = cfdi.metodoDePago;
+                row["NoCuentaPago"] = cfdi.NumCtaPago;
+                row["FactOriginal"] = cfdi.FolioFiscalOrig;
+                row["Moneda"] = cfdi.Moneda;
+                row["TipoCambio"] = cfdi.TipoCambio;
+                row["Subtotal"] = cfdi.subTotal;
+                row["Descuento"] = cfdi.descuento;
+                row["MotivoDescuento"] = cfdi.motivoDescuento;
+                row["Total"] = cfdi.total;
+
+                // Recuperación de impuestos
+                if (cfdi.Impuestos.Traslados != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Traslados)
+                    {
+                        row[imp.impuesto.ToString().Replace(" ", "").Replace(".", "") + "_" + imp.tasa.ToString("n2").Replace(".", "_")] = imp.importe;
+                    }
+                }
+                if (cfdi.Impuestos.Retenciones != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Retenciones)
+                    {
+                        if (imp.impuesto == Com.Facturacion.Comprobantes.V32.ComprobanteImpuestosRetencionImpuesto.ISR)
+                            row[imp.impuesto.ToString().Replace(" ", "").Replace(".", "") + "_10_00"] = imp.importe;
+                        else if (imp.impuesto == Com.Facturacion.Comprobantes.V32.ComprobanteImpuestosRetencionImpuesto.IVA)
+                            row[imp.impuesto.ToString().Replace(" ", "").Replace(".", "") + "_10_67"] = imp.importe;
+                    }
+                }
+
+                if (implocal != null)
+                {
+                    foreach (var imp in implocal.Items.Where(i => i is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).Select(i => i as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).ToList())
+                    {
+                        row[imp.ImpLocTrasladado.ToString().Replace(" ", "").Replace(".", "") + "_" + imp.TasadeTraslado.ToString("n2").Replace(".", "_")] = imp.Importe;
+                    }
+                    foreach (var imp in implocal.Items.Where(i => i is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).Select(i => i as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).ToList())
+                    {
+                        row[imp.ImpLocRetenido.ToString().Replace(" ", "").Replace(".", "") + "_" + imp.TasadeRetencion.ToString("n2").Replace(".", "_")] = imp.Importe;
+                    }
+                }
+                
+                row["Reimprimir"] = "PDF";
+
+                tabla.Rows.Add(row);
+            }
+            //------------------------------------------------------------------------------
+
+            imp_cal = decimal.Zero;
+            find_isr = false;
+            //-------------------------------------------------------------------   CFDi 3.3
+            foreach (var cfdi in cfdis.Where(c => c is DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Comprobante).Select(c => (DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Comprobante)c).ToList())
+            {
+                Dictionary<object, Impuestos_Analisis33> imps_cfdi = new Dictionary<object, Impuestos_Analisis33>();
+                var implocal = DesarrollosPyC.Com.Facturacion.Cfdi33Decode.RecuperaImpuestosLocales(cfdi);
+                if (implocal != null)
+                {
+                    foreach (var imp in implocal.Items.Where(i => i is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).ToList())
+                    {
+                        var imp_tr = new Impuestos_Analisis33();
+                        imp_tr.Impuesto = imp;
+                        imp_tr.Importe = (imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).Importe;
+                        imp_tr.Tasa = (imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).TasadeTraslado / 100M;
+                        imp_tr.AddConceptos(cfdi.Conceptos);
+                        imps_cfdi.Add(imp, imp_tr);
+                    }
+                    foreach (var imp in implocal.Items.Where(i => i is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).ToList())
+                    {
+                        var imp_tr = new Impuestos_Analisis33();
+                        imp_tr.Impuesto = imp;
+                        imp_tr.Importe = (imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).Importe;
+                        imp_tr.Tasa = (imp as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).TasadeRetencion / 100M;
+                        imp_tr.AddConceptos(cfdi.Conceptos);
+                        imps_cfdi.Add(imp, imp_tr);
+                    }
+                }
+
+                var row = tabla.NewRow();
+                row["ID"] = tabla.Rows.Count + 1;
+                row["Version"] = "3.3";
+                row["Emisor"] = cfdi.Emisor.Nombre;
+                row["EmisorRFC"] = cfdi.Emisor.Rfc;
+                row["Receptor"] = cfdi.Receptor.Nombre;
+                row["ReceptorRFC"] = cfdi.Receptor.Rfc;
+                row["Serie"] = cfdi.Serie;
+                row["Folio"] = cfdi.Folio;
+
+                var timbre = DesarrollosPyC.Com.Facturacion.Cfdi33Decode.RecuperaTimbreFiscalDigital(cfdi);
+                row["UUID"] = timbre.UUID;
+
+                row["Fecha"] = cfdi.Fecha;
+                row["Anhio"] = cfdi.Fecha.Year;
+                row["Mes"] = cfdi.Fecha.Month;
+                row["Semana"] = System.Globalization.CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(cfdi.Fecha, System.Globalization.CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+
+                var c_tipocomp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Tipodecomprobante>.GetnEntity(cfdi.TipoDeComprobante.ToString());
+                row["TipoComprobante"] = c_tipocomp.Descripcion;
+                var c_formapago = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Formapago>.GetnEntity(cfdi.FormaPago.ToString());
+                row["MetodoPago"] = c_formapago.Descripcion;
+                if (cfdi.CfdiRelacionados != null)
+                {
+                    var c_relacioncfdi = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Tiporelacion>.GetnEntity(cfdi.CfdiRelacionados.TipoRelacion.ToString());
+                    row["FactOriginal"] = c_tipocomp.Descripcion + ": " + cfdi.CfdiRelacionados.CfdiRelacionado.Select(r => r.UUID).Aggregate((a, b) => a + ", " + b);
+                }
+                row["Moneda"] = cfdi.Moneda.ToString();
+                row["TipoCambio"] = cfdi.TipoCambio;
+                row["Subtotal"] = cfdi.SubTotal;
+                row["Descuento"] = cfdi.Descuento;
+                row["Total"] = cfdi.Total;
+
+                // Recuperación de impuestos
+                if (cfdi.Impuestos.Traslados != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Traslados)
+                    {
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        row[c_imp.Descripcion + "_" + imp.TasaOCuota.ToString("n2").Replace(".", "_")] = imp.Importe;
+                    }
+                }
+                if (cfdi.Impuestos.Retenciones != null)
+                {
+                    foreach (var imp in cfdi.Impuestos.Retenciones)
+                    {
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+
+                        if (imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item001)
+                            row[c_imp.Descripcion + "_10_00"] = imp.Importe;
+                        else if (imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item002)
+                            row[c_imp.Descripcion + "_10_67"] = imp.Importe;
+
+                    }
+                }
+
+                if (implocal != null)
+                {
+                    foreach (var imp in implocal.Items.Where(i => i is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).Select(i => i as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesTrasladosLocales).ToList())
+                    {
+                        row[imp.ImpLocTrasladado.ToString().Replace(" ", "").Replace(".", "") + "_" + imp.TasadeTraslado.ToString("n2").Replace(".", "_")] = imp.Importe;
+                    }
+                    foreach (var imp in implocal.Items.Where(i => i is DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).Select(i => i as DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.ImpuestosLocalesRetencionesLocales).ToList())
+                    {
+                        row[imp.ImpLocRetenido.ToString().Replace(" ", "").Replace(".", "") + "_" + imp.TasadeRetencion.ToString("n2").Replace(".", "_")] = imp.Importe;
+                    }
+                }
+                
+                row["Reimprimir"] = "PDF";
+
+                tabla.Rows.Add(row);
+            }
+            //------------------------------------------------------------------------------
+
+            return tabla;
+        }
+        /// <summary>
         /// Genera tabla de visualización de datos de nomina 11
         /// </summary>
         /// <param name="nomina11">Cfdi de nomina</param>
@@ -1796,7 +2343,12 @@ namespace DesarrollosPyC.AnalisisCfdiSat
             else if (e.Button.Caption.Equals("Validar Cfdi encontrados"))
             {
                 if (e.ActivePage == tbIngresos)
-                    ValidaCfdiSat(Facturas_Ingresos);
+                {
+                    if (!chkIngresosConcentradoDetallado.IsOn)
+                        ValidaCfdiSat(Facturas_Ingresos_Detallado);
+                    else
+                        ValidaCfdiSat(Facturas_Ingresos_Concentrado);
+                }
                 else if (e.ActivePage == tbNomina11)
                     ValidaCfdiSat(Facturas_Nomima11);
                 else if (e.ActivePage == tbNomina12)
@@ -1804,7 +2356,12 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 else if (e.ActivePage == tbEgresos)
                 {
                     if (tabCfdiErgesos.SelectedTabPage == tbEgresosCfdi)
-                        ValidaCfdiSat(Facturas_Egresos);
+                    {
+                        if (!chkEgresosConcentradoDetallado.IsOn)
+                            ValidaCfdiSat(Facturas_Egresos_Detallado);
+                        else
+                            ValidaCfdiSat(Facturas_Egresos_Concentrado);
+                    }
                     if (tabCfdiErgesos.SelectedTabPage == tbEgresosNomina11)
                         ValidaCfdiSat(Facturas_Egresos_Nomina11);
                     if (tabCfdiErgesos.SelectedTabPage == tbEgresosNomina12)

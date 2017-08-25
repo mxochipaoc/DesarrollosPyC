@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panWebBrowser = new DevExpress.XtraEditors.PanelControl();
@@ -56,8 +57,8 @@
             this.btnUUID = new DevExpress.XtraEditors.SimpleButton();
             this.panEstatusGeneral = new DevExpress.XtraEditors.PanelControl();
             this.lblEstatusGeneral = new DevExpress.XtraEditors.LabelControl();
-            this.tmrTemporizador = new System.Windows.Forms.Timer();
-            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.tmrTemporizador = new System.Windows.Forms.Timer(this.components);
+            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panWebBrowser)).BeginInit();
             this.panWebBrowser.SuspendLayout();
@@ -146,7 +147,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel2.Controls.Add(this.lblRFC, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.lblRazonSocial, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtRFC, 2, 4);
