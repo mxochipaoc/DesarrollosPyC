@@ -479,7 +479,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
 
                         if (cfdi32 != null)
                         {
-                            if (!cfdi32.Emisor.rfc.Equals(txtRFC.Text))
+                            if (!cfdi32.Receptor.rfc.Equals(txtRFC.Text))
                                 continue;
 
                             // Complemento de timbrado
@@ -504,7 +504,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                         }
                         if (cfdi33 != null)
                         {
-                            if (!cfdi33.Emisor.Rfc.Equals(txtRFC.Text))
+                            if (!cfdi33.Receptor.Rfc.Equals(txtRFC.Text))
                                 continue;
 
                             // Complemento de timbrado
@@ -552,12 +552,12 @@ namespace DesarrollosPyC.AnalisisCfdiSat
             if (!chkEgresosConcentradoDetallado.IsOn)
             {
                 GeneraCamposBandasCmposFacturas(grdViewBandEgresos, Facturas_Egresos_Detallado);
-                grdEgresos.DataSource = Facturas_Ingresos_Detallado;
+                grdEgresos.DataSource = Facturas_Egresos_Detallado;
             }
             else
             {
                 GeneraCamposBandasCmposFacturas(grdViewBandEgresos, Facturas_Egresos_Concentrado);
-                grdEgresos.DataSource = Facturas_Ingresos_Concentrado;
+                grdEgresos.DataSource = Facturas_Egresos_Concentrado;
             }
         }
         #endregion
@@ -837,14 +837,14 @@ namespace DesarrollosPyC.AnalisisCfdiSat
             conceptoDatos.NewDataColumn("NoIdentificacion", "No. identificación", typeof(string), true);
             conceptoDatos.NewDataColumn("ClaveProdServ", "Clave prd. serv.", typeof(string), true);
             conceptoDatos.NewDataColumn("Descripcion", "Descripción", typeof(string), false);
-            conceptoDatos.NewDataColumn("UM", "U.M.", typeof(string), false);
-            conceptoDatos.NewDataColumn("ClaveUnidad", "Clave UM", typeof(string), false);
+            conceptoDatos.NewDataColumn("UM", "U.M.", typeof(string), true);
+            conceptoDatos.NewDataColumn("ClaveUnidad", "Clave UM", typeof(string), true);
 
             var conceptoImportes = conceptos.NewGroupDataColumn("Importes");
             conceptoImportes.NewDataColumn("Cantidad", "Cantidad", typeof(decimal), false, DevExpress.Utils.FormatType.Numeric, "n2");
             conceptoImportes.NewDataColumn("ValorUnitario", "V. unitario", typeof(decimal), false, DevExpress.Utils.FormatType.Numeric, "c2");
             conceptoImportes.NewDataColumn("Importe", "Importe", typeof(decimal), false, DevExpress.Utils.FormatType.Numeric, "c2");
-            conceptoImportes.NewDataColumn("C_Descuento", "C. Descuento", typeof(decimal), false, DevExpress.Utils.FormatType.Numeric, "c2");
+            conceptoImportes.NewDataColumn("C_Descuento", "C. Descuento", typeof(decimal), true, DevExpress.Utils.FormatType.Numeric, "c2");
             var conceptoImpuestos = conceptos.NewGroupDataColumn("Impuestos");
             foreach (var imp in imps)
             {
@@ -1137,7 +1137,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                         foreach (var imp in cfdi.Impuestos.Traslados)
                         {
                             var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
-                            row[c_imp.Descripcion + "_" + imp.TasaOCuota.ToString("n2").Replace(".", "_")] = imp.Importe;
+                            row[c_imp.Descripcion + "_" + (imp.TasaOCuota * 100M).ToString("n2").Replace(".", "_")] = imp.Importe;
                         }
                     }
                     if (cfdi.Impuestos.Retenciones != null)
@@ -1727,7 +1727,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                     foreach (var imp in cfdi.Impuestos.Traslados)
                     {
                         var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
-                        row[c_imp.Descripcion + "_" + imp.TasaOCuota.ToString("n2").Replace(".", "_")] = imp.Importe;
+                        row[c_imp.Descripcion + "_" + (imp.TasaOCuota * 100M).ToString("n2").Replace(".", "_")] = imp.Importe;
                     }
                 }
                 if (cfdi.Impuestos.Retenciones != null)
