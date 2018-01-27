@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model {
 
-    public class c_Claveprodserv : BaseEntidadExt<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.c_ClaveProdServ>
+    public class c_Claveprodserv : BaseEntidadExt<DesarrollosPyC.Com.Facturacion.Comprobantes.Catalogos.c_ClaveProdServ>
     {
         public virtual string Descripcion { get; set; }
         public virtual int IvaTrasladado { get; set; }

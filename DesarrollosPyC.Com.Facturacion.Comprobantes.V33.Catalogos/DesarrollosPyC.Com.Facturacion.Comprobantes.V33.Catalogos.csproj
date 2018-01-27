@@ -90,6 +90,8 @@
     <Compile Include="Model\c_Impuesto.cs" />
     <Compile Include="Model\c_Metodopago.cs" />
     <Compile Include="Model\c_Moneda.cs" />
+    <Compile Include="Model\c_Localidad.cs" />
+    <Compile Include="Model\c_Colonia.cs" />
     <Compile Include="Model\c_Municipio.cs" />
     <Compile Include="Model\c_Origenrecurso.cs" />
     <Compile Include="Model\c_Pais.cs" />
@@ -117,6 +119,8 @@
     <Compile Include="Model\Maps\c_ImpuestoMap.cs" />
     <Compile Include="Model\Maps\c_MetodopagoMap.cs" />
     <Compile Include="Model\Maps\c_MonedaMap.cs" />
+    <Compile Include="Model\Maps\c_ColoniaMap.cs" />
+    <Compile Include="Model\Maps\c_LocalidadMap.cs" />
     <Compile Include="Model\Maps\c_MunicipioMap.cs" />
     <Compile Include="Model\Maps\c_OrigenrecursoMap.cs" />
     <Compile Include="Model\Maps\c_PaisMap.cs" />

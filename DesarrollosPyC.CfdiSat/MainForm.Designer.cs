@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement7 = new DevExpress.XtraEditors.TileItemElement();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.TileItemElement tileItemElement10 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement8 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement9 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement13 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement11 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement12 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement14 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.DefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.tnpMenu = new DevExpress.XtraBars.Navigation.TileNavPane();
             this.tncAplicacionesCFDi = new DevExpress.XtraBars.Navigation.TileNavCategory();
             this.tniDescargaMasiva = new DevExpress.XtraBars.Navigation.TileNavItem();
@@ -45,7 +46,7 @@
             this.tlnSistema = new DevExpress.XtraBars.Navigation.TileNavCategory();
             this.tniAcercaDe = new DevExpress.XtraBars.Navigation.TileNavItem();
             this.tniLoockAndFeel = new DevExpress.XtraBars.Navigation.TileNavItem();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.tileNavSubItem1 = new DevExpress.XtraBars.Navigation.TileNavSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +84,19 @@
             this.tncAplicacionesCFDi.Caption = "Aplicaciones de Cfdi";
             this.tncAplicacionesCFDi.Glyph = global::DesarrollosPyC.CfdiSat.Properties.Resources.Xml_tool;
             this.tncAplicacionesCFDi.GroupName = "";
+            this.tncAplicacionesCFDi.Items.AddRange(new DevExpress.XtraBars.Navigation.TileNavItem[] {
+            this.tniDescargaMasiva,
+            this.tniAnalisis});
+            this.tncAplicacionesCFDi.Name = "tncAplicacionesCFDi";
+            this.tncAplicacionesCFDi.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
+            this.tncAplicacionesCFDi.OwnerCollection = null;
+            // 
+            // 
+            // 
+            this.tncAplicacionesCFDi.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
+            tileItemElement10.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Left;
+            this.tncAplicacionesCFDi.Tile.Elements.Add(tileItemElement10);
+            this.tncAplicacionesCFDi.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // tniDescargaMasiva
             // 
@@ -94,24 +108,11 @@
             // 
             // 
             this.tniDescargaMasiva.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement1.Image = global::DesarrollosPyC.CfdiSat.Properties.Resources.Save;
-            tileItemElement1.Text = "Descarga masiva";
-            this.tniDescargaMasiva.Tile.Elements.Add(tileItemElement1);
+            tileItemElement8.Image = global::DesarrollosPyC.CfdiSat.Properties.Resources.Save;
+            tileItemElement8.Text = "Descarga masiva";
+            this.tniDescargaMasiva.Tile.Elements.Add(tileItemElement8);
             this.tniDescargaMasiva.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.tniDescargaMasiva.Tile.Name = "tileBarItem1";
-            this.tncAplicacionesCFDi.Items.AddRange(new DevExpress.XtraBars.Navigation.TileNavItem[] {
-            this.tniDescargaMasiva,
-            this.tniAnalisis});
-            this.tncAplicacionesCFDi.Name = "tncAplicacionesCFDi";
-            this.tncAplicacionesCFDi.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
-            this.tncAplicacionesCFDi.OwnerCollection = null;
-            // 
-            // 
-            // 
-            this.tncAplicacionesCFDi.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Left;
-            this.tncAplicacionesCFDi.Tile.Elements.Add(tileItemElement3);
-            this.tncAplicacionesCFDi.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // tniAnalisis
             // 
@@ -123,9 +124,9 @@
             // 
             // 
             this.tniAnalisis.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement2.Image = global::DesarrollosPyC.CfdiSat.Properties.Resources.xlsx_24x24;
-            tileItemElement2.Text = "Análisis Cfdi";
-            this.tniAnalisis.Tile.Elements.Add(tileItemElement2);
+            tileItemElement9.Image = global::DesarrollosPyC.CfdiSat.Properties.Resources.xlsx_24x24;
+            tileItemElement9.Text = "Análisis Cfdi";
+            this.tniAnalisis.Tile.Elements.Add(tileItemElement9);
             this.tniAnalisis.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.tniAnalisis.Tile.Name = "tileBarItem2";
             // 
@@ -158,7 +159,7 @@
             // 
             // 
             this.tlnSistema.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            this.tlnSistema.Tile.Elements.Add(tileItemElement6);
+            this.tlnSistema.Tile.Elements.Add(tileItemElement13);
             this.tlnSistema.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // tniAcercaDe
@@ -172,9 +173,9 @@
             // 
             // 
             this.tniAcercaDe.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.Image = global::DesarrollosPyC.CfdiSat.Properties.Resources.Glossary;
-            tileItemElement4.Text = "Acerca de";
-            this.tniAcercaDe.Tile.Elements.Add(tileItemElement4);
+            tileItemElement11.Image = global::DesarrollosPyC.CfdiSat.Properties.Resources.Glossary;
+            tileItemElement11.Text = "Acerca de";
+            this.tniAcercaDe.Tile.Elements.Add(tileItemElement11);
             this.tniAcercaDe.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.tniAcercaDe.Tile.Name = "tileBarItem1";
             // 
@@ -188,9 +189,9 @@
             // 
             // 
             this.tniLoockAndFeel.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement5.Image = global::DesarrollosPyC.CfdiSat.Properties.Resources.Themes;
-            tileItemElement5.Text = "Loock and feel";
-            this.tniLoockAndFeel.Tile.Elements.Add(tileItemElement5);
+            tileItemElement12.Image = global::DesarrollosPyC.CfdiSat.Properties.Resources.Themes;
+            tileItemElement12.Text = "Loock and feel";
+            this.tniLoockAndFeel.Tile.Elements.Add(tileItemElement12);
             this.tniLoockAndFeel.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.tniLoockAndFeel.Tile.Name = "tileBarItem2";
             // 
@@ -207,8 +208,8 @@
             // 
             // 
             this.tileNavSubItem1.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement7.Text = "tileNavSubItem1";
-            this.tileNavSubItem1.Tile.Elements.Add(tileItemElement7);
+            tileItemElement14.Text = "tileNavSubItem1";
+            this.tileNavSubItem1.Tile.Elements.Add(tileItemElement14);
             this.tileNavSubItem1.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // MainForm

@@ -12,10 +12,13 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.Maps {
         public c_MunicipioMap() {
 			Table("c_Municipio");
 			LazyLoad();
-			Id(x => x.Id).GeneratedBy.Assigned().Column("id");
-			Map(x => x.Clave).Column("clave").Not.Nullable();
+
+            CompositeId()
+                .KeyProperty(k => k.Clave, "id")
+                .KeyProperty(k => k.IdEstado, "id_estado");
+
+            Map(x => x.Clave).Column("clave").Not.Nullable();
 			Map(x => x.Descripcion).Column("descripcion").Not.Nullable();
-			Map(x => x.IdEstado).Column("id_estado").Not.Nullable();
         }
     }
 }

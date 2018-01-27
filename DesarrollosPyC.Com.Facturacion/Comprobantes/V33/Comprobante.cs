@@ -14,8 +14,9 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
     using System.IO;
     using System.Text;
     using System.Collections.Generic;
-    
-    
+    using Catalogos;
+
+
     /// <summary>
     /// Estándar de Comprobante Fiscal Digital por Internet.
     /// </summary>
@@ -80,7 +81,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
         
         private bool metodoPagoFieldSpecified;
         
-        private c_CodigoPostal lugarExpedicionField;
+        private string lugarExpedicionField;
         
         private string confirmacionField;
         
@@ -428,7 +429,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
         /// Atributo requerido para incorporar el código postal del lugar de expedición del comprobante (domicilio de la matriz o de la sucursal).
         /// </summary>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public c_CodigoPostal LugarExpedicion {
+        public string LugarExpedicion {
             get {
                 return this.lugarExpedicionField;
             }
@@ -1457,7 +1458,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
         
         private List<ComprobanteConceptoParte> parteField;
         
-        private c_ClaveProdServ claveProdServField;
+        private string claveProdServField;
         
         private string noIdentificacionField;
         
@@ -1527,7 +1528,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
         }
         
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public c_ClaveProdServ ClaveProdServ {
+        public string ClaveProdServ {
             get {
                 return this.claveProdServField;
             }

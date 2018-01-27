@@ -72,6 +72,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            this.panRutaAgregada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRutaPrincipal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -307,6 +308,7 @@
             // 
             // panRutaAgregada
             // 
+            this.panRutaAgregada.Controls.Add(this.btnUUID);
             this.panRutaAgregada.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panRutaAgregada.Location = new System.Drawing.Point(2, 2);
             this.panRutaAgregada.Name = "panRutaAgregada";
@@ -353,7 +355,6 @@
             this.panRutaDisponible.Controls.Add(this.btnRutaRFCEmisor);
             this.panRutaDisponible.Controls.Add(this.btnRutaRFCReceptor);
             this.panRutaDisponible.Controls.Add(this.btnSerieFolio);
-            this.panRutaDisponible.Controls.Add(this.btnUUID);
             this.panRutaDisponible.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panRutaDisponible.Location = new System.Drawing.Point(2, 2);
             this.panRutaDisponible.Name = "panRutaDisponible";
@@ -419,7 +420,7 @@
             // 
             this.btnUUID.Image = ((System.Drawing.Image)(resources.GetObject("btnUUID.Image")));
             this.btnUUID.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnUUID.Location = new System.Drawing.Point(408, 3);
+            this.btnUUID.Location = new System.Drawing.Point(3, 3);
             this.btnUUID.Name = "btnUUID";
             this.btnUUID.Size = new System.Drawing.Size(75, 23);
             this.btnUUID.TabIndex = 5;
@@ -478,6 +479,7 @@
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            this.panRutaAgregada.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtRutaPrincipal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

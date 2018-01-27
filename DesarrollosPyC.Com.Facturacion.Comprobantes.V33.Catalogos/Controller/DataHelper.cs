@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using NHibernate.Criterion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,69 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller
         /// <returns>Elemento</returns>
         public static T GetnEntity(string id)
         {
-            return _Session.Get<T>(id);
+            T entity = _Session.Get<T>(id);
+
+            if (entity == null)
+            {
+                entity = _Session.CreateCriteria<T>()
+                .Add(Restrictions.Eq("Clave", id))
+                .SetMaxResults(1)
+                .UniqueResult<T>();
+            }
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Recupera una entidad mediante su id y la clave del estado
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="claveestado"></param>
+        /// <returns></returns>
+        public static T GetEntityByIdAndEstadoClave(string id, string claveestado)
+        {
+            T entity = _Session.CreateCriteria<T>()
+                .Add(Restrictions.Eq("Id", id))
+                .Add(Restrictions.Eq("IdEstado", claveestado))
+                .SetMaxResults(1)
+                .UniqueResult<T>();
+
+            if (entity == null)
+            {
+                entity = _Session.CreateCriteria<T>()
+                .Add(Restrictions.Eq("Clave", id))
+                .Add(Restrictions.Eq("IdEstado", claveestado))
+                .SetMaxResults(1)
+                .UniqueResult<T>();
+            }
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Recupera una entidad mediante su id y la clave del estado
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="codigopostal"></param>
+        /// <returns></returns>
+        public static T GetEntityByIdAndCodigoPostal(string id, string codigopostal)
+        {
+            T entity = _Session.CreateCriteria<T>()
+                .Add(Restrictions.Eq("Id", id))
+                .Add(Restrictions.Eq("IdCodigoPostal", codigopostal))
+                .SetMaxResults(1)
+                .UniqueResult<T>();
+
+            if (entity == null)
+            {
+                entity = _Session.CreateCriteria<T>()
+                .Add(Restrictions.Eq("Clave", id))
+                .Add(Restrictions.Eq("IdCodigoPostal", codigopostal))
+                .SetMaxResults(1)
+                .UniqueResult<T>();
+            }
+
+            return entity;
         }
     }
 }

@@ -603,6 +603,11 @@ namespace DesarrollosPyC.DescargaCfdiSat
                     conteo++;
                     EstatusProceso = string.Format("Descargando {0} de {1} ...", conteo, total);
                     EstatusGeneral = string.Format("Descargando: {0}", cfdi.UUID);
+
+                    // Prevención de descargas previas
+                    if (System.IO.File.Exists(txtRutaPrincipal.Text + "\\" + cfdi.UUID + ".xml"))
+                        continue;
+
                     var task = Browser.EvaluateScriptAsync(script_descarga, TimeSpan.FromSeconds(10));
                     task.Wait();
                     if (!task.IsFaulted)
@@ -617,8 +622,9 @@ namespace DesarrollosPyC.DescargaCfdiSat
                             doc.LoadXml(cfdi_xml);
                             doc.Save(txtRutaPrincipal.Text + "\\" + uuid + ".xml");
                         }
-                        finally
+                        catch(Exception ex)
                         {
+                            errores = errores + uuid + " " + ex.Message + " \n";
                             // No hace nada
                         }
                     }
@@ -690,6 +696,16 @@ namespace DesarrollosPyC.DescargaCfdiSat
             DateTime fin_descarga = DateTime.Now;
             TimeSpan duracion = fin_descarga - inicia_descarga;
             EstatusGeneral = string.Format("{0} elementos descargados en {1:00}:{2:00}:{3:00}", descargas.Count, duracion.Hours, duracion.Minutes, duracion.Seconds);
+
+            if (!string.IsNullOrWhiteSpace(errores))
+            {
+                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(txtRutaPrincipal.Text + "\\log.txt"))
+                {
+                    writer.Write(errores);
+                    writer.Flush();
+                    writer.Close();
+                }
+            }
         }
         /// <summary>
         /// Descarga masivamente las facturas de ingresos, carga execiva de archivos
@@ -727,7 +743,7 @@ namespace DesarrollosPyC.DescargaCfdiSat
                 Helper_HtmlElements.getResultScriptUpdateElementValue("ctl00_MainContent_CldFechaInicial2_Calendario_text", inicial.ToShortDateString()), 
                 10);
             Helper_HtmlElements.getJavascriptResponse_By_Js(Browser, 
-                Helper_HtmlElements.getResultScriptUpdateElementValue("ctl00_MainContent_CldFechaInicial2_DdlHora;", inicial.Hour.ToString()),
+                Helper_HtmlElements.getResultScriptUpdateElementValue("ctl00_MainContent_CldFechaInicial2_DdlHora", inicial.Hour.ToString()),
                 10);
             Helper_HtmlElements.getJavascriptResponse_By_Js(Browser, 
                 Helper_HtmlElements.getResultScriptUpdateElementValue("ctl00_MainContent_CldFechaInicial2_DdlMinuto", inicial.Minute.ToString()),
@@ -757,7 +773,7 @@ namespace DesarrollosPyC.DescargaCfdiSat
 		            var intvl = setInterval(function(){
 			            var contenedor = document.getElementById('ctl00_MainContent_tblResult');
 			            if(contenedor != undefined) {
-				            if (contenedor.style.display != 'none') {
+				            if (contenedor.style.display == 'block') {
 					            clearInterval(intvl);
 				            }
 			            }
@@ -768,8 +784,9 @@ namespace DesarrollosPyC.DescargaCfdiSat
 		            return false;
             })();";
 
-            var task = Browser.EvaluateScriptAsync(carga_pagina, TimeSpan.FromSeconds(30));
+            var task = Browser.EvaluateScriptAsync(carga_pagina, TimeSpan.FromSeconds(50));
             task.Wait();
+            System.Threading.Thread.Sleep(5000);
             if (task.IsFaulted)
             {
                 throw new Exception("Error al carga pagina de datos.");
@@ -829,6 +846,16 @@ namespace DesarrollosPyC.DescargaCfdiSat
             DateTime fin_descarga = DateTime.Now;
             TimeSpan duracion = fin_descarga - inicia_descarga;
             EstatusGeneral = string.Format("{0} elementos descargados en {1:00}:{2:00}:{3:00}", descargas.Count, duracion.Hours, duracion.Minutes, duracion.Seconds);
+
+            if (!string.IsNullOrWhiteSpace(errores))
+            {
+                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(txtRutaPrincipal.Text + "\\log.txt"))
+                {
+                    writer.Write(errores);
+                    writer.Flush();
+                    writer.Close();
+                }
+            }
         }
         /// <summary>
         /// Descarga masivamente las facturas de ingresos, carga execiva de archivos
@@ -885,6 +912,9 @@ namespace DesarrollosPyC.DescargaCfdiSat
                                 nini = ini;
                                 nfin = newFin;
                             }
+
+                            if (itera)
+                                itera = nini != nfin;
                         }
                     }
                     else
@@ -913,7 +943,7 @@ namespace DesarrollosPyC.DescargaCfdiSat
                 10);
             if (dia > 0)
                 Helper_HtmlElements.getJavascriptResponse_By_Js(Browser,
-                    Helper_HtmlElements.getResultScriptUpdateElementValue("'ctl00_MainContent_CldFecha_DdlDia", dia.ToString("00")),
+                    Helper_HtmlElements.getResultScriptUpdateElementValue("ctl00_MainContent_CldFecha_DdlDia", dia.ToString("00")),
                     10);
 
             Helper_HtmlElements.getJavascriptResponse_By_Js(Browser,
@@ -955,8 +985,9 @@ namespace DesarrollosPyC.DescargaCfdiSat
 		            return false;
             })();";
 
-            var task = Browser.EvaluateScriptAsync(carga_pagina, TimeSpan.FromSeconds(30));
+            var task = Browser.EvaluateScriptAsync(carga_pagina, TimeSpan.FromSeconds(50));
             task.Wait();
+            System.Threading.Thread.Sleep(5000);
             if (task.IsFaulted)
             {
                 throw new Exception("Error al carga pagina de datos.");

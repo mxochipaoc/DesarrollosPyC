@@ -15,6 +15,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.Nomina.V12
     using System.IO;
     using System.Text;
     using System.Collections.Generic;
+    using Catalogos;
 
 
     /// <summary>

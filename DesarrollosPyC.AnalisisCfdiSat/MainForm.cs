@@ -721,8 +721,8 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                                 Tipo = Tipo_Impuestos.Federal,
                                 Aplicacion = Tipo_Impuesto_Aplicacion.Retenido,
                                 Impuesto = c_imp.Descripcion,
-                                Tasa = imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item001 ? 10M :
-                                    imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item002 ? 10.67M : 0
+                                Tasa = imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item001 ? 10M :
+                                    imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item002 ? 10.67M : 0
                             });
                     }
                 }
@@ -1146,9 +1146,9 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                         {
                             var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
 
-                            if (imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item001)
+                            if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item001)
                                 row[c_imp.Descripcion + "_10_00"] = imp.Importe;
-                            else if (imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item002)
+                            else if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item002)
                                 row[c_imp.Descripcion + "_10_67"] = imp.Importe;
 
                         }
@@ -1206,12 +1206,12 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                         foreach (var imp in cfdi.Impuestos.Retenciones)
                         {
                             var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
-                            if (imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item001 && !find_isr)
+                            if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item001 && !find_isr)
                             {
                                 find_isr = true;
                                 row["C_" + c_imp.Descripcion.Replace(" ", "").Replace(".", "") + "_10_00"] = imp.Importe;
                             }
-                            else if (imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item002)
+                            else if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item002)
                             {
                                 if (imps_cfdi.ContainsKey(imp))
                                 {
@@ -1421,8 +1421,8 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                                 Tipo = Tipo_Impuestos.Federal,
                                 Aplicacion = Tipo_Impuesto_Aplicacion.Retenido,
                                 Impuesto = c_imp.Descripcion,
-                                Tasa = imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item001 ? 10M :
-                                    imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item002 ? 10.67M : 0
+                                Tasa = imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item001 ? 10M :
+                                    imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item002 ? 10.67M : 0
                             });
                     }
                 }
@@ -1736,9 +1736,9 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                     {
                         var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
 
-                        if (imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item001)
+                        if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item001)
                             row[c_imp.Descripcion + "_10_00"] = imp.Importe;
-                        else if (imp.Impuesto == Com.Facturacion.Comprobantes.V33.c_Impuesto.Item002)
+                        else if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item002)
                             row[c_imp.Descripcion + "_10_67"] = imp.Importe;
 
                     }
@@ -1899,11 +1899,16 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 row["PeriodicidadPago"] = cfdi.Value.PeriodicidadPago;
                 row["Puesto"] = cfdi.Value.Puesto;
                 row["Departamento"] = cfdi.Value.Departamento;
-                row["FechaIniRelLabores"] = cfdi.Value.FechaInicioRelLaboralSpecified ? (DateTime?)cfdi.Value.FechaInicioRelLaboral : null;
-                row["Antiguedad"] = cfdi.Value.AntiguedadSpecified ? (int?)cfdi.Value.Antiguedad : null;
-                row["RiesgoPuesto"] = cfdi.Value.RiesgoPuestoSpecified ? (int?)cfdi.Value.RiesgoPuesto : null;
-                row["SalarioBase"] = cfdi.Value.SalarioBaseCotAporSpecified ? (decimal?)cfdi.Value.SalarioBaseCotApor : null;
-                row["SalarioDiario"] = cfdi.Value.SalarioDiarioIntegradoSpecified ? (decimal?)cfdi.Value.SalarioDiarioIntegrado : null;
+                if (cfdi.Value.FechaInicioRelLaboralSpecified)
+                    row["FechaIniRelLabores"] = (DateTime?)cfdi.Value.FechaInicioRelLaboral;
+                if (cfdi.Value.AntiguedadSpecified)
+                    row["Antiguedad"] = (int?)cfdi.Value.Antiguedad;
+                if (cfdi.Value.RiesgoPuestoSpecified)
+                    row["RiesgoPuesto"] = (int?)cfdi.Value.RiesgoPuesto;
+                if (cfdi.Value.SalarioBaseCotAporSpecified)
+                    row["SalarioBase"] = (decimal?)cfdi.Value.SalarioBaseCotApor;
+                if (cfdi.Value.SalarioDiarioIntegradoSpecified)
+                    row["SalarioDiario"] = (decimal?)cfdi.Value.SalarioDiarioIntegrado;
 
                 row["Serie"] = cfdi.Key.serie;
                 row["Folio"] = cfdi.Key.folio;

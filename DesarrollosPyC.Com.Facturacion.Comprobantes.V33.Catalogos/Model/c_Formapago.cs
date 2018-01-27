@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model {
     
-    public class c_Formapago : BaseEntidadExt<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.c_FormaPago>
+    public class c_Formapago : BaseEntidadExt<DesarrollosPyC.Com.Facturacion.Comprobantes.Catalogos.c_FormaPago>
     {
         public virtual string Descripcion { get; set; }
         public virtual int Bancalizado { get; set; }
