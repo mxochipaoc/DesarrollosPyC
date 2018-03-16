@@ -11,5 +11,6 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model {
         public virtual int IvaTrasladado { get; set; }
         public virtual int IepsTrasladado { get; set; }
         public virtual int Complemento { get; set; }
+        public virtual string PalabrasSimilares { get; set; }
     }
 }

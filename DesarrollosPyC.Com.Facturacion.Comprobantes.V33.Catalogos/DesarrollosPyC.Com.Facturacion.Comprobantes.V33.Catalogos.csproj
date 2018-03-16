@@ -75,7 +75,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\DataHelper.cs" />
+    <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\c_BancoController.cs" />
+    <Compile Include="Controller\c_ClaveprodservController.cs" />
+    <Compile Include="Controller\c_ClaveunidadController.cs" />
+    <Compile Include="Controller\c_CodigopostalController.cs" />
+    <Compile Include="Controller\c_ColoniaController.cs" />
+    <Compile Include="Controller\c_EstadoController.cs" />
+    <Compile Include="Controller\c_FormapagoController.cs" />
+    <Compile Include="Controller\c_ImpuestoController.cs" />
+    <Compile Include="Controller\c_LocalidadController.cs" />
+    <Compile Include="Controller\c_MetodopagoController.cs" />
+    <Compile Include="Controller\c_MonedaController.cs" />
+    <Compile Include="Controller\c_MunicipioController.cs" />
+    <Compile Include="Controller\c_OrigenrecursoController.cs" />
+    <Compile Include="Controller\c_PaisController.cs" />
+    <Compile Include="Controller\c_PeriodicidadpagoController.cs" />
+    <Compile Include="Controller\c_RegimenfiscalController.cs" />
+    <Compile Include="Controller\c_RiesgopuestoController.cs" />
+    <Compile Include="Controller\c_TipocontratoController.cs" />
+    <Compile Include="Controller\c_TipodecomprobanteController.cs" />
+    <Compile Include="Controller\c_TipodeduccionController.cs" />
+    <Compile Include="Controller\c_TipohorasController.cs" />
+    <Compile Include="Controller\c_TipoincapacidadController.cs" />
+    <Compile Include="Controller\c_TipojornadaController.cs" />
+    <Compile Include="Controller\c_TiponominaController.cs" />
+    <Compile Include="Controller\c_TipootropagoController.cs" />
+    <Compile Include="Controller\c_TipopercepcionController.cs" />
+    <Compile Include="Controller\c_TiporegimenController.cs" />
+    <Compile Include="Controller\c_TiporelacionController.cs" />
+    <Compile Include="Controller\c_UsocfdiController.cs" />
     <Compile Include="Controller\MethodSaveEntity.cs" />
     <Compile Include="Controller\MethodSaveEntityHelper.cs" />
     <Compile Include="Controller\SessionHelper.cs" />

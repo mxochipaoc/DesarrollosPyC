@@ -18,6 +18,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.Maps {
 			Map(x => x.IvaTrasladado).Column("iva_trasladado").Not.Nullable();
 			Map(x => x.IepsTrasladado).Column("ieps_trasladado").Not.Nullable();
 			Map(x => x.Complemento).Column("complemento").Not.Nullable();
+            Map(x => x.PalabrasSimilares).Column("palabras_similares");
         }
     }
 }

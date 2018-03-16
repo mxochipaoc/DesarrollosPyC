@@ -14,7 +14,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.Maps {
 			LazyLoad();
 
             CompositeId()
-                .KeyProperty(k => k.Clave, "id")
+                .KeyProperty(k => k.Id, "id")
                 .KeyProperty(k => k.IdCodigoPostal, "id_codigo_postal");
             
 			Map(x => x.Clave).Column("clave").Not.Nullable();

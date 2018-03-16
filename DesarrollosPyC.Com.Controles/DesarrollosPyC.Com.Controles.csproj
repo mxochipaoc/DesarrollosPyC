@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarraProgresoAnimacion.cs" />
     <Compile Include="BarraProgresoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +95,7 @@
     <EmbeddedResource Include="BarraProgresoForm.resx">
       <DependentUpon>BarraProgresoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -101,6 +103,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icono boceto.ico" />
+    <EmbeddedResource Include="Resources\loading_circulos.gif" />
+    <EmbeddedResource Include="Resources\loading_circulo4.gif" />
+    <EmbeddedResource Include="Resources\loading_circulo3.gif" />
+    <EmbeddedResource Include="Resources\loading_circulo2.gif" />
+    <EmbeddedResource Include="Resources\loading_circulo_colores.gif" />
+    <EmbeddedResource Include="Resources\loading_circulo.gif" />
+    <EmbeddedResource Include="Resources\loading_cuadros_color.gif" />
     <EmbeddedResource Include="Resources\Flag-red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

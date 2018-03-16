@@ -13,37 +13,62 @@ namespace DesarrollosPyC.Com.Controles
     /// <summary>
     /// Barra de progreso de carga de datos
     /// </summary>
-    public partial class BarraProgresoForm : DevExpress.XtraEditors.XtraForm
+    public partial class BarraProgresoForm : Form
     {
         /// <summary>
         /// Constructor de la clase
         /// </summary>
-        public BarraProgresoForm()
+        /// <param name="animacion">Animación de la barra de progreso</param>
+        public BarraProgresoForm(BarraProgresoAnimacion animacion = BarraProgresoAnimacion.Animacion2)
         {
             InitializeComponent();
+            
+            if (animacion == BarraProgresoAnimacion.Animacion1)
+                imgLoading.Image = Properties.Resources.loading_circulo;
+            if (animacion == BarraProgresoAnimacion.Animacion2)
+                imgLoading.Image = Properties.Resources.loading_circulo2;
+            if (animacion == BarraProgresoAnimacion.Animacion3)
+                imgLoading.Image = Properties.Resources.loading_circulo3;
+            if (animacion == BarraProgresoAnimacion.Animacion4)
+                imgLoading.Image = Properties.Resources.loading_circulo4;
+            if (animacion == BarraProgresoAnimacion.Animacion5)
+                imgLoading.Image = Properties.Resources.loading_circulo_colores;
+            if (animacion == BarraProgresoAnimacion.Animacion6)
+                imgLoading.Image = Properties.Resources.loading_cuadros_color;
         }
 
         #region Propiedades del formulario
+
         /// <summary>
         /// Métodod e carga de datos
         /// </summary>
         public BarraProgresoMetodoCarga MetodoCarga { get; set; }
+
         /// <summary>
         /// Error en la carga de datos
         /// </summary>
         public Exception Ex { get; set; }
+
         /// <summary>
         /// Hilo de carga de datos
         /// </summary>
         System.Threading.Thread Hilo { get; set; }
+
+        /// <summary>
+        /// Encabezado del proceso
+        /// </summary>
+        string Encabezado { get; set; }
+
         /// <summary>
         /// Estatus del proceso
         /// </summary>
         string Estatus { get; set; }
+
         /// <summary>
         /// Inicio de la carga de datos
         /// </summary>
         DateTime InicioCarga { get; set; }
+
         /// <summary>
         /// Datos cargados
         /// </summary>
@@ -51,6 +76,7 @@ namespace DesarrollosPyC.Com.Controles
         #endregion
 
         #region Métodos del formulario
+
         /// <summary>
         /// Carga del formulario
         /// </summary>
@@ -77,6 +103,7 @@ namespace DesarrollosPyC.Com.Controles
 
             Hilo.Start();
         }
+
         /// <summary>
         /// Reporta el estatus del formulario
         /// </summary>
@@ -86,14 +113,18 @@ namespace DesarrollosPyC.Com.Controles
         {
             TimeSpan transcurrido = DateTime.Now - InicioCarga;
             lblTiempo.Text = transcurrido.ToString(@"hh\:mm\:ss");
-            txtEstatus.Text = string.IsNullOrEmpty(Estatus) ? "Cargando datos ..." : Estatus;
+            lblEncabezado.Text = string.IsNullOrEmpty(Encabezado) ? "Cargando datos" : Encabezado;
+            lblEstatus.Text = string.IsNullOrEmpty(Estatus) ? "Espere mientras la operación termina" : Estatus;
             if (!Hilo.IsAlive)
             {
                 Timer.Stop();
                 if (Ex != null)
                 {
-                    txtEstatus.Text = Ex.Message;
-                    btnCancelar.Text = "Cerrar";
+                    lblEncabezado.Text = "Error en la operación";
+                    lblEncabezado.ForeColor = System.Drawing.Color.Red;
+                    lblEstatus.Text = Ex.Message;
+                    lknVerMasDetalles.Visible = true;
+                    lknCancelar.Text = "Cerrar";
                 }
                 else
                 {
@@ -102,12 +133,25 @@ namespace DesarrollosPyC.Com.Controles
                 }
             }
         }
+
+        /// <summary>
+        /// Visualización detallada de error, si ocurre
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">e</param>
+        private void lknVerMasDetalles_Click(object sender, EventArgs e)
+        {
+            Dialogos.Error(Ex);
+            DialogResult = DialogResult.Abort;
+            Close();
+        }
+
         /// <summary>
         /// Cancelación de carga, cierre en falso
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void lknCancelar_Click(object sender, EventArgs e)
         {
             if (Hilo.ThreadState == System.Threading.ThreadState.Running)
                 Hilo.Abort();
@@ -115,12 +159,14 @@ namespace DesarrollosPyC.Com.Controles
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
             Close();
         }
+
         /// <summary>
         /// Muestra el estatus del proceso
         /// </summary>
         /// <param name="estatus">Estatus</param>
-        public void MuestraEstatusProceso(string estatus)
+        public void MuestraEstatusProceso(string encabezado = "Cargando datos", string estatus = "Espere mientras la operación termina")
         {
+            Encabezado = encabezado;
             Estatus = estatus;
         }
         #endregion

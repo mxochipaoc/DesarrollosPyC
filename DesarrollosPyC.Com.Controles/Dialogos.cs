@@ -61,7 +61,7 @@ namespace DesarrollosPyC.Com.Controles
         /// <param name="mensaje">Mensaje</param>
         public static void Error(string mensaje)
         {
-            XtraMessageBox.Show(mensaje, "Alerta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            XtraMessageBox.Show(mensaje, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
         }
         /// <summary>
         /// Visualización de error
@@ -69,7 +69,7 @@ namespace DesarrollosPyC.Com.Controles
         /// <param name="error">Exepción</param>
         public static void Error(Exception error)
         {
-            XtraMessageBox.Show(error.Message, "Alerta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            XtraMessageBox.Show(error.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
         }
     }
 }

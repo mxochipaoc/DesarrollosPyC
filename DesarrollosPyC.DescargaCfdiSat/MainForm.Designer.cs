@@ -45,6 +45,7 @@
             this.btnOrganizaDatos = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.panRutaAgregada = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnUUID = new DevExpress.XtraEditors.SimpleButton();
             this.lblRutaGuardado = new DevExpress.XtraEditors.LabelControl();
             this.txtRutaPrincipal = new DevExpress.XtraEditors.ButtonEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -54,7 +55,6 @@
             this.btnRutaRFCEmisor = new DevExpress.XtraEditors.SimpleButton();
             this.btnRutaRFCReceptor = new DevExpress.XtraEditors.SimpleButton();
             this.btnSerieFolio = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUUID = new DevExpress.XtraEditors.SimpleButton();
             this.panEstatusGeneral = new DevExpress.XtraEditors.PanelControl();
             this.lblEstatusGeneral = new DevExpress.XtraEditors.LabelControl();
             this.tmrTemporizador = new System.Windows.Forms.Timer(this.components);
@@ -315,6 +315,17 @@
             this.panRutaAgregada.Size = new System.Drawing.Size(261, 46);
             this.panRutaAgregada.TabIndex = 6;
             // 
+            // btnUUID
+            // 
+            this.btnUUID.Image = ((System.Drawing.Image)(resources.GetObject("btnUUID.Image")));
+            this.btnUUID.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnUUID.Location = new System.Drawing.Point(3, 3);
+            this.btnUUID.Name = "btnUUID";
+            this.btnUUID.Size = new System.Drawing.Size(75, 23);
+            this.btnUUID.TabIndex = 5;
+            this.btnUUID.Text = "UUID";
+            this.btnUUID.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
+            // 
             // lblRutaGuardado
             // 
             this.lblRutaGuardado.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -415,17 +426,6 @@
             this.btnSerieFolio.TabIndex = 4;
             this.btnSerieFolio.Text = "Serie-folio";
             this.btnSerieFolio.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
-            // 
-            // btnUUID
-            // 
-            this.btnUUID.Image = ((System.Drawing.Image)(resources.GetObject("btnUUID.Image")));
-            this.btnUUID.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnUUID.Location = new System.Drawing.Point(3, 3);
-            this.btnUUID.Name = "btnUUID";
-            this.btnUUID.Size = new System.Drawing.Size(75, 23);
-            this.btnUUID.TabIndex = 5;
-            this.btnUUID.Text = "UUID";
-            this.btnUUID.DoubleClick += new System.EventHandler(this.btnBotonRuta_DoubleClick);
             // 
             // panEstatusGeneral
             // 

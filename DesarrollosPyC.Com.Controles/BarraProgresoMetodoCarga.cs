@@ -9,8 +9,9 @@ namespace DesarrollosPyC.Com.Controles
     /// <summary>
     /// Mestra el estatus del progreso del método de carga
     /// </summary>
+    /// <param name="encabezado"></param>
     /// <param name="estatus"></param>
-    public delegate void BarraProgresoMuestraEstatus(string estatus);
+    public delegate void BarraProgresoMuestraEstatus(string encabezado, string estatus);
 
     /// <summary>
     /// Método de carga de datos

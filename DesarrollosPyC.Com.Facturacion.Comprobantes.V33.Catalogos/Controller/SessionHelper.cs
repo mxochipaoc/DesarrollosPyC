@@ -12,7 +12,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller
         /// Sesión fabricada
         /// </summary>
         static ISessionFactory Session { get; set; }
-
+        
         /// <summary>
         /// Constructor de la clase
         /// </summary>
@@ -44,7 +44,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller
                     .Mappings(m => m.FluentMappings.AddFromAssembly(System.Reflection.Assembly.Load("DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos")))
                     .BuildSessionFactory();
             }
-            catch
+            catch(Exception ex)
             {
             }
         }
@@ -65,6 +65,29 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller
         public static ISession GetCurrentSession()
         {
             return Session.GetCurrentSession();
+        }
+
+        /// <summary>
+        /// Sesión con base de datos
+        /// </summary>
+        static ISession session;
+        /// <summary>
+        /// Sesión con base de datos
+        /// </summary>
+        public static ISession _Session
+        {
+            get
+            {
+                if (session == null)
+                {
+                    session = GetNewSession();
+
+                    session.CacheMode = CacheMode.Normal;
+                    session.FlushMode = FlushMode.Always;
+                }
+
+                return session;
+            }
         }
     }
 }
