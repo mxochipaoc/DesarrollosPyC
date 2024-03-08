@@ -692,7 +692,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 {
                     foreach (var imp in cfdi.Impuestos.Traslados)
                     {
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
 
                         if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal &&
                          i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado &&
@@ -711,7 +711,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 {
                     foreach (var imp in cfdi.Impuestos.Retenciones)
                     {
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
 
                         if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal &&
                          i.Aplicacion == Tipo_Impuesto_Aplicacion.Retenido &&
@@ -1116,13 +1116,13 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                     row["Mes"] = cfdi.Fecha.Month;
                     row["Semana"] = System.Globalization.CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(cfdi.Fecha, System.Globalization.CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
 
-                    var c_tipocomp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Tipodecomprobante>.GetnEntity(cfdi.TipoDeComprobante.ToString());
+                    var c_tipocomp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_TipodecomprobanteController.Instance.GetEntity(cfdi.TipoDeComprobante.ToString());
                     row["TipoComprobante"] = c_tipocomp.Descripcion;
-                    var c_formapago = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Formapago>.GetnEntity(cfdi.FormaPago.ToString());
+                    var c_formapago = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_FormapagoController.Instance.GetEntity(cfdi.FormaPago.ToString());
                     row["MetodoPago"] = c_formapago.Descripcion;
                     if (cfdi.CfdiRelacionados != null)
                     {
-                        var c_relacioncfdi = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Tiporelacion>.GetnEntity(cfdi.CfdiRelacionados.TipoRelacion.ToString());
+                        var c_relacioncfdi = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_TiporelacionController.Instance.GetEntity(cfdi.CfdiRelacionados.TipoRelacion.ToString());
                         row["FactOriginal"] = c_tipocomp.Descripcion + ": " + cfdi.CfdiRelacionados.CfdiRelacionado.Select(r => r.UUID).Aggregate((a, b) => a + ", " + b);
                     }
                     row["Moneda"] = cfdi.Moneda.ToString();
@@ -1136,7 +1136,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                     {
                         foreach (var imp in cfdi.Impuestos.Traslados)
                         {
-                            var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                            var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
                             row[c_imp.Descripcion + "_" + (imp.TasaOCuota * 100M).ToString("n2").Replace(".", "_")] = imp.Importe;
                         }
                     }
@@ -1144,7 +1144,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                     {
                         foreach (var imp in cfdi.Impuestos.Retenciones)
                         {
-                            var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                            var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
 
                             if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item001)
                                 row[c_imp.Descripcion + "_10_00"] = imp.Importe;
@@ -1187,7 +1187,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                         {
                             foreach(var imp in conc.Impuestos.Traslados)
                             {
-                                var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                                var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
                                 row["C_" + c_imp.Descripcion + "_" + (imp.TasaOCuota * 100M).ToString("n2").Replace(".", "_")] = imp.Importe;
                             }
                         }
@@ -1195,7 +1195,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                         {
                             foreach (var imp in conc.Impuestos.Retenciones)
                             {
-                                var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                                var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
 
                                 row["C_" + c_imp.Descripcion + "_" + (imp.TasaOCuota * 100M).ToString("n2").Replace(".", "_")] = imp.Importe;
                             }
@@ -1205,7 +1205,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                     {
                         foreach (var imp in cfdi.Impuestos.Retenciones)
                         {
-                            var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                            var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
                             if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item001 && !find_isr)
                             {
                                 find_isr = true;
@@ -1392,7 +1392,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 {
                     foreach (var imp in cfdi.Impuestos.Traslados)
                     {
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
 
                         if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal &&
                          i.Aplicacion == Tipo_Impuesto_Aplicacion.Trasladado &&
@@ -1411,7 +1411,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 {
                     foreach (var imp in cfdi.Impuestos.Retenciones)
                     {
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
 
                         if (imps.Where(i => i.Tipo == Tipo_Impuestos.Federal &&
                          i.Aplicacion == Tipo_Impuesto_Aplicacion.Retenido &&
@@ -1706,13 +1706,13 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 row["Mes"] = cfdi.Fecha.Month;
                 row["Semana"] = System.Globalization.CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(cfdi.Fecha, System.Globalization.CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
 
-                var c_tipocomp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Tipodecomprobante>.GetnEntity(cfdi.TipoDeComprobante.ToString());
+                var c_tipocomp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_TipodecomprobanteController.Instance.GetEntity(cfdi.TipoDeComprobante.ToString());
                 row["TipoComprobante"] = c_tipocomp.Descripcion;
-                var c_formapago = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Formapago>.GetnEntity(cfdi.FormaPago.ToString());
+                var c_formapago = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_FormapagoController.Instance.GetEntity(cfdi.FormaPago.ToString());
                 row["MetodoPago"] = c_formapago.Descripcion;
                 if (cfdi.CfdiRelacionados != null)
                 {
-                    var c_relacioncfdi = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Tiporelacion>.GetnEntity(cfdi.CfdiRelacionados.TipoRelacion.ToString());
+                    var c_relacioncfdi = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_TiporelacionController.Instance.GetEntity(cfdi.CfdiRelacionados.TipoRelacion.ToString());
                     row["FactOriginal"] = c_tipocomp.Descripcion + ": " + cfdi.CfdiRelacionados.CfdiRelacionado.Select(r => r.UUID).Aggregate((a, b) => a + ", " + b);
                 }
                 row["Moneda"] = cfdi.Moneda.ToString();
@@ -1726,7 +1726,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 {
                     foreach (var imp in cfdi.Impuestos.Traslados)
                     {
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
                         row[c_imp.Descripcion + "_" + (imp.TasaOCuota * 100M).ToString("n2").Replace(".", "_")] = imp.Importe;
                     }
                 }
@@ -1734,7 +1734,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat
                 {
                     foreach (var imp in cfdi.Impuestos.Retenciones)
                     {
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
 
                         if (imp.Impuesto == Com.Facturacion.Comprobantes.Catalogos.c_Impuesto.Item001)
                             row[c_imp.Descripcion + "_10_00"] = imp.Importe;

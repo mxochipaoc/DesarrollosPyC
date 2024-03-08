@@ -20,8 +20,17 @@ namespace DesarrollosPyC.Com.Licencias.Class
         public DateTime FechaVigencia { get; set; }
         public DateTime? FechaCargaEnSistema { get; set; }
         public int DiasOcupado { get; set; }
-        public _Aplicacion_Liencia[] A_Licencia { get; set; }
+        public _Aplicacion_Licencia[] A_Licencia { get; set; }
         public Licencia LicenciaAnterior { get; set; }
+
+        public int FoliosFacturas { get; set; }
+        public int FoliosNominas { get; set; }
+        public int FoliosRecepcionPagos { get; set; }
+
+        public _Servicio_Timbrado T_ServicioTimbrado { get; set; }
+        public string T_Usuario { get; set; }
+        public string T_Pass { get; set; }
+        public string T_IdServicio { get; set; }
 
         public Dictionary<int, char> A_Ascii { get; set; }
         public MathNet.Numerics.LinearAlgebra.Matrix<double> M_Encriptado { get; set; }

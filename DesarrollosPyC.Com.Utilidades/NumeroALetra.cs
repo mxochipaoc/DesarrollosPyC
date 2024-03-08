@@ -24,7 +24,7 @@ namespace DesarrollosPyC.Com.Utilidades
             double decimales = numero - (double)entero;
 
             string result = ALetra(entero);
-            result = (result + " " + superFijo).Trim() + " " + Math.Round(decimales * 100) + "/100";
+            result = (result + " " + superFijo).Trim() + " " + Math.Round(decimales * 100).ToString("00") + "/100";
             return result;
         }
 
@@ -70,7 +70,7 @@ namespace DesarrollosPyC.Com.Utilidades
             else if (entero == 15)
                 result = "QUINCE";
             else if (entero > 15 && entero < 20)
-                result = "DIEZ " + ALetra(entero - 10);
+                result = "DIECI" + ALetra(entero - 10);
             else if (entero == 20)
                 result = "VEINTE";
             else if (entero > 20 && entero < 30)

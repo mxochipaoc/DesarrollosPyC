@@ -328,10 +328,6 @@
       <Project>{3a3424cc-ae65-454b-a57f-d9a6846e3073}</Project>
       <Name>DesarrollosPyC.Com.Controles</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos\DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.csproj">
-      <Project>{958c6fbe-c07e-42b7-99e9-6447effd9689}</Project>
-      <Name>DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DesarrollosPyC.Com.Facturacion\DesarrollosPyC.Com.Facturacion.csproj">
       <Project>{b7969eb1-8fd3-4430-a54c-1fd3c61cd013}</Project>
       <Name>DesarrollosPyC.Com.Facturacion</Name>

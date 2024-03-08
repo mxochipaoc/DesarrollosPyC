@@ -33,6 +33,11 @@ namespace DesarrollosPyC.Test
             cldFechaEmision.EditValue = DateTime.Today;
             cldFechaVigencia.EditValue = DateTime.Today.AddDays(30);
             txtDiasTranscurridos.EditValue = 0;
+
+            txtFoliosFacturas.EditValue = 0;
+            txtFoliosNominas.EditValue = 0;
+            txtFoliosRecepcionPagos.EditValue = 0;
+
         }
         /// <summary>
         /// Genera la licencia a partir de datos
@@ -45,11 +50,11 @@ namespace DesarrollosPyC.Test
             lic.EmitidoPor = new Com.Licencias.Class.EntidadEmisora();
             lic.EmitidoPor.Nombre = txtEntidadEmisora.Text;
 
-            List<DesarrollosPyC.Com.Licencias.Class._Aplicacion_Liencia> ap = new List<Com.Licencias.Class._Aplicacion_Liencia>();
+            List<DesarrollosPyC.Com.Licencias.Class._Aplicacion_Licencia> ap = new List<Com.Licencias.Class._Aplicacion_Licencia>();
             foreach (DevExpress.XtraEditors.Controls.CheckedListBoxItem i in chkAplicacionLicencia.Properties.Items)
             {
                 if (i.CheckState == CheckState.Checked)
-                    ap.Add((Com.Licencias.Class._Aplicacion_Liencia)Convert.ToInt16(i.Value));
+                    ap.Add((Com.Licencias.Class._Aplicacion_Licencia)Convert.ToInt16(i.Value));
             }
             lic.A_Licencia = ap.ToArray();
 
@@ -63,10 +68,20 @@ namespace DesarrollosPyC.Test
                 lic.FechaCargaEnSistema = (DateTime)cldFechaCargaSistema.EditValue;
             lic.DiasOcupado = Convert.ToInt32(txtDiasTranscurridos.EditValue);
 
+            lic.FoliosFacturas = Convert.ToInt32(txtFoliosFacturas.EditValue);
+            lic.FoliosNominas = Convert.ToInt32(txtFoliosNominas.EditValue);
+            lic.FoliosRecepcionPagos = Convert.ToInt32(txtFoliosRecepcionPagos.EditValue);
+
+            lic.T_ServicioTimbrado = (Com.Licencias.Class._Servicio_Timbrado)System.Enum.Parse(typeof(Com.Licencias.Class._Servicio_Timbrado), rdgTipoServicioTimbrado.EditValue.ToString());
+            lic.T_Usuario = txtUsuarioTimbrado.Text;
+            lic.T_Pass = txtPassUsuarioTiumbrado.Text;
+            lic.T_IdServicio = txtNoServicioTimbrado.Text;
+
             var result = DesarrollosPyC.Com.Licencias.Managers.M_Licencia.GeneraLicenciaFile(lic);
             txtDiccionario.Text = lic.A_Ascii.Select(i => i.Key.ToString("000")).Aggregate((a, b) => a + b);
             txtMatriz.Text = lic.M_Encriptado.ToString();
             txtResultado.Text = result.ToString().Trim();
+            
             //var retorno = DesarrollosPyC.Com.Licencias.Managers.M_Licencia.GeneraLicenciaObj(txtResultado.Lines);
         }
 

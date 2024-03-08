@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Linq;
 using DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model;
 using NHibernate.Criterion;
 
@@ -64,13 +65,13 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller {
         /// </summary>
         /// <param name="codigo_postal">Código postal</param>
         /// <returns>Colonia</returns>
-        public c_Colonia GetEntityByCodigoPostal(string codigo_postal)
+        public c_Colonia[] GetEntitiesByCodigoPostal(string codigo_postal)
         {
             DetachedCriteria criteria = DetachedCriteria.For<c_Colonia>();
             criteria.Add(Restrictions.Eq("IdCodigoPostal", codigo_postal));
-            criteria.SetMaxResults(1);
 
-            return criteria.GetExecutableCriteria(_Session).UniqueResult<c_Colonia>();
+            return criteria.GetExecutableCriteria(_Session).List<c_Colonia>()
+                .ToArray();
         }
         #endregion
     }

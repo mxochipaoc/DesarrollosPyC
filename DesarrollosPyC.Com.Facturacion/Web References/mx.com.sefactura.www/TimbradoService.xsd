@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://sefactura.com" targetNamespace="http://sefactura.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="cancelacion" type="tns:cancelacion" />
+  <xs:element name="cancelacionAcuse" type="tns:cancelacionAcuse" />
+  <xs:element name="cancelacionAcuseResponse" type="tns:cancelacionAcuseResponse" />
+  <xs:element name="cancelacionAcuseXml" type="tns:cancelacionAcuseXml" />
+  <xs:element name="cancelacionAcuseXmlResponse" type="tns:cancelacionAcuseXmlResponse" />
+  <xs:element name="cancelacionResponse" type="tns:cancelacionResponse" />
+  <xs:element name="pideConfirmacion" type="tns:pideConfirmacion" />
+  <xs:element name="pideConfirmacionResponse" type="tns:pideConfirmacionResponse" />
+  <xs:element name="timbrado" type="tns:timbrado" />
+  <xs:element name="timbradoResponse" type="tns:timbradoResponse" />
+  <xs:complexType name="cancelacionAcuseXml">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solicitud" type="xs:string" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="clave" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelacionAcuseXmlResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pideConfirmacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="clave" type="xs:string" />
+      <xs:element minOccurs="0" name="rfcEmisor" type="xs:string" />
+      <xs:element minOccurs="0" name="rfcReceptor" type="xs:string" />
+      <xs:element name="monto" type="xs:double" />
+      <xs:element name="tipoCambio" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pideConfirmacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timbrado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cfdi" type="xs:string" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="clave" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timbradoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo" type="xs:string" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element minOccurs="0" name="timbre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solicitud" type="tns:solCancelacion" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="clave" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solCancelacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certificado" type="xs:string" />
+      <xs:element minOccurs="0" name="llavePrivada" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="uuid" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelacionAcuse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solicitud" type="tns:solCancelacion" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="clave" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelacionAcuseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

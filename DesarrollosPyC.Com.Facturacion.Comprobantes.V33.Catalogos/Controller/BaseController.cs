@@ -24,7 +24,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller
         {
             get
             {
-                return SessionHelper._Session;
+                return SessionHelper.GetNewSession();
             }
         }
         #endregion
@@ -55,9 +55,12 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller
 
                 Data = Data.Except(remove)
                     .ToList();
-                
+
                 foreach (T a in data)
-                    Data.Add(a);
+                {
+                    if (a != null)
+                        Data.Add(a);
+                }
             }
         }
 

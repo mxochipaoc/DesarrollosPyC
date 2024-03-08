@@ -53,6 +53,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CerManager.cs" />
+    <Compile Include="CFDi33ComplementosManager.cs" />
     <Compile Include="Cfdi33Decode.cs" />
     <Compile Include="Cfdi32Decode.cs" />
     <Compile Include="CfdiV33Manager.cs" />
@@ -103,20 +106,95 @@
     <Compile Include="Comprobantes\Catalogos\c_TipoFactor.cs" />
     <Compile Include="Comprobantes\Catalogos\c_TipoRelacion.cs" />
     <Compile Include="Comprobantes\Catalogos\c_UsoCFDI.cs" />
+    <Compile Include="Opensslkey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="StringWriterWithEncoding.cs" />
     <Compile Include="Comprobantes\Complementos\Tfd\V11\TimbreFiscalDigital.cs" />
     <Compile Include="Comprobantes\Complementos\Pagos.cs" />
+    <Compile Include="Web References\com.facturehoy.wsprod3\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\mx.com.sefactura.pruebas\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\mx.com.sefactura.www\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\pruebas.facturehoy.com\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\com.facturehoy.wsprod3\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\com.facturehoy.wsprod3\WsEmisionTimbrado33.wsdl" />
+    <None Include="Web References\com.facturehoy.wsprod3\WsEmisionTimbrado33.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\com.facturehoy.wsprod3\wsResponseBO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mx.com.sefactura.pruebas\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\mx.com.sefactura.pruebas\resultado.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mx.com.sefactura.pruebas\TimbradoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\mx.com.sefactura.pruebas\TimbradoServiceService.wsdl" />
+    <None Include="Web References\mx.com.sefactura.www\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\mx.com.sefactura.www\resultado.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mx.com.sefactura.www\TimbradoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\mx.com.sefactura.www\TimbradoServiceService.wsdl" />
+    <None Include="Web References\pruebas.facturehoy.com\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\pruebas.facturehoy.com\WsEmisionTimbrado33.wsdl" />
+    <None Include="Web References\pruebas.facturehoy.com\WsEmisionTimbrado33.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\pruebas.facturehoy.com\wsResponseBO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Xsd\aerolineas.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -285,8 +363,60 @@
       <Project>{a8119225-b3ee-4979-855f-f83fa8d2dd11}</Project>
       <Name>DesarrollosPyC.Com.Utilidades</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sat.Cfdi.Negocio.ConsultaCfdi.Servicio\Sat.Cfdi.Negocio.ConsultaCfdi.Servicio.csproj">
+      <Project>{69d5fb25-a5c4-4893-939f-e99fde4adb91}</Project>
+      <Name>Sat.Cfdi.Negocio.ConsultaCfdi.Servicio</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://pruebas.sefactura.com.mx:3014/sefacturapac/TimbradoService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\mx.com.sefactura.pruebas\</RelPath>
+      <UpdateFromURL>http://pruebas.sefactura.com.mx:3014/sefacturapac/TimbradoService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DesarrollosPyC_Com_Facturacion_mx_com_sefactura_pruebas_TimbradoServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://pruebasclientes.facturehoy.com:8080/CFDI33/WsEmisionTimbrado33%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\pruebas.facturehoy.com\</RelPath>
+      <UpdateFromURL>http://pruebasclientes.facturehoy.com:8080/CFDI33/WsEmisionTimbrado33%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DesarrollosPyC_Com_Facturacion_pruebas_facturehoy_com_WsEmisionTimbrado33</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://wsprod3.facturehoy.com/CFDI33/WsEmisionTimbrado33%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\com.facturehoy.wsprod3\</RelPath>
+      <UpdateFromURL>http://wsprod3.facturehoy.com/CFDI33/WsEmisionTimbrado33%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DesarrollosPyC_Com_Facturacion_com_facturehoy_wsprod3_WsEmisionTimbrado33</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://www.sefactura.com.mx/sefacturapac/TimbradoService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\mx.com.sefactura.www\</RelPath>
+      <UpdateFromURL>https://www.sefactura.com.mx/sefacturapac/TimbradoService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DesarrollosPyC_Com_Facturacion_mx_com_sefactura_www_TimbradoServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

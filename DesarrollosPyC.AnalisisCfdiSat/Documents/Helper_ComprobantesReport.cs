@@ -619,14 +619,14 @@ namespace DesarrollosPyC.AnalisisCfdiSat.Documents
             row.Folio = Cfdi.Serie + "-" + Cfdi.Folio;
             row.Fecha = Cfdi.Fecha;
             row.No_Certificado = Cfdi.NoCertificado;
-            var c_mp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Metodopago>.GetnEntity(Cfdi.MetodoPago.ToString());
+            var c_mp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_MetodopagoController.Instance.GetEntity(Cfdi.MetodoPago.ToString());
             row.Metodo_Pago = c_mp.Descripcion;
-            var c_fp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Formapago>.GetnEntity(Cfdi.FormaPago.ToString());
+            var c_fp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_FormapagoController.Instance.GetEntity(Cfdi.FormaPago.ToString());
             row.Forma_Pago = c_fp.Descripcion;
 
             row.Emisor = Cfdi.Emisor.Nombre;
             row.Emisor_Rfc = Cfdi.Emisor.Rfc;
-            var c_rf = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Regimenfiscal>.GetnEntity(Cfdi.Emisor.RegimenFiscal.ToString());
+            var c_rf = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_RegimenfiscalController.Instance.GetEntity(Cfdi.Emisor.RegimenFiscal.ToString());
             row.Emisor_Regimen = c_rf.Descripcion;
             
             row.Lugar_Expedicion = Cfdi.LugarExpedicion.ToString().Replace("Item", "");
@@ -634,7 +634,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat.Documents
             row.Receptor = Cfdi.Receptor.Nombre;
             row.Receptor_Rfc = Cfdi.Receptor.Rfc;
 
-            var c_uso = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Usocfdi>.GetnEntity(Cfdi.Receptor.UsoCFDI.ToString());
+            var c_uso = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_UsocfdiController.Instance.GetEntity(Cfdi.Receptor.UsoCFDI.ToString());
             row.Receptor_Domicilio_Fiscal = "Uso de CFDi: " + c_uso.Descripcion;
             
             var timbreFiscal = DesarrollosPyC.Com.Facturacion.Cfdi33Decode.RecuperaTimbreFiscalDigital(Cfdi);
@@ -673,7 +673,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat.Documents
 
                         i.Importe = imp.Importe;
 
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
                         i.Descripcion = c_imp.Descripcion + " " + (imp.TasaOCuota * 100M).ToString("n2") + "%";
 
                         ds.Concepto_Impuestos.AddConcepto_ImpuestosRow(i);
@@ -687,7 +687,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat.Documents
 
                         i.Importe = imp.Importe;
 
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
                         i.Descripcion = "Ret. " + c_imp.Descripcion + " " + (imp.TasaOCuota * 100M).ToString("n2") + "%";
 
                         ds.Concepto_Impuestos.AddConcepto_ImpuestosRow(i);
@@ -718,7 +718,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat.Documents
                         DS.ComprobanteDS.ImportesRow impuesto = ds.Importes.NewImportesRow();
                         impuesto.ID_Comprobante = 1;
                         impuesto.ID = ds.Importes.Count + 1;
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
                         impuesto.Descripcion = c_imp.Descripcion + " " + decimal.Round(imp.TasaOCuota, 2).ToString() + "%";
                         impuesto.Importe = imp.Importe;
                         ds.Importes.AddImportesRow(impuesto);
@@ -731,7 +731,7 @@ namespace DesarrollosPyC.AnalisisCfdiSat.Documents
                         DS.ComprobanteDS.ImportesRow impuesto = ds.Importes.NewImportesRow();
                         impuesto.ID_Comprobante = 1;
                         impuesto.ID = ds.Importes.Count + 1;
-                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Impuesto>.GetnEntity(imp.Impuesto.ToString());
+                        var c_imp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_ImpuestoController.Instance.GetEntity(imp.Impuesto.ToString());
                         impuesto.Descripcion = "Ret. " + c_imp.Descripcion;
                         impuesto.Importe = imp.Importe;
                         ds.Importes.AddImportesRow(impuesto);
@@ -811,14 +811,14 @@ namespace DesarrollosPyC.AnalisisCfdiSat.Documents
             row.Folio = Cfdi.Serie + "-" + Cfdi.Folio;
             row.Fecha = Cfdi.Fecha;
             row.No_Certificado = Cfdi.NoCertificado;
-            var c_mp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Metodopago>.GetnEntity(Cfdi.MetodoPago.ToString());
+            var c_mp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_MetodopagoController.Instance.GetEntity(Cfdi.MetodoPago.ToString());
             row.Metodo_Pago = c_mp.Descripcion;
-            var c_fp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Formapago>.GetnEntity(Cfdi.FormaPago.ToString());
+            var c_fp = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_FormapagoController.Instance.GetEntity(Cfdi.FormaPago.ToString());
             row.Forma_Pago = c_fp.Descripcion;
 
             row.Emisor = Cfdi.Emisor.Nombre;
             row.Emisor_Rfc = Cfdi.Emisor.Rfc;
-            var c_rf = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.DataHelper<DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model.c_Regimenfiscal>.GetnEntity(Cfdi.Emisor.RegimenFiscal.ToString());
+            var c_rf = DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller.c_RegimenfiscalController.Instance.GetEntity(Cfdi.Emisor.RegimenFiscal.ToString());
             row.Emisor_Regimen = c_rf.Descripcion;
 
             row.Emisor_Registro_Patronal = nomina.Emisor.RegistroPatronal;

@@ -9,9 +9,12 @@ namespace DesarrollosPyC.Com.Licencias.Class
     /// <summary>
     /// Aplicaciones de la licencia
     /// </summary>
-    public enum _Aplicacion_Liencia
+    public enum _Aplicacion_Licencia
     {
         Descarga_masiva = 0,
-        Analisis_Cfdi = 1
+        Analisis_Cfdi = 1,
+        Punto_de_venta = 2,
+        Facturacion = 3,
+        Particular = 4 
     }
 }

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\_Servicio_Timbrado.cs" />
     <Compile Include="Managers\M_Ascii.cs" />
     <Compile Include="Class\EntidadEmisora.cs" />
     <Compile Include="Class\Licencia.cs" />

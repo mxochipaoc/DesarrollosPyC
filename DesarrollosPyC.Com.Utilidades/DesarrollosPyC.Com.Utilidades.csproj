@@ -64,6 +64,12 @@
   <ItemGroup>
     <Compile Include="Archivos.cs" />
     <Compile Include="Cadenas.cs" />
+    <Compile Include="EmailManager\CustomEmailMessage.cs" />
+    <Compile Include="EmailManager\InMessageAttachmentFile.cs" />
+    <Compile Include="EmailManager\InMessageAttachmentFileElement.cs" />
+    <Compile Include="EmailManager\InMessageImages.cs" />
+    <Compile Include="EmailManager\InMessageImagesElement.cs" />
+    <Compile Include="EmailManager\Sender.cs" />
     <Compile Include="EnumExtend.cs" />
     <Compile Include="NumeroALetra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

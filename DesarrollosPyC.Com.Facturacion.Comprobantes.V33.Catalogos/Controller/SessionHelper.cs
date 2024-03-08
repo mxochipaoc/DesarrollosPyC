@@ -20,8 +20,10 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller
         {
             try
             {
-                string path = System.IO.Directory.GetCurrentDirectory();
-                string datapath = path + "\\App_Data";
+                //string path = System.IO.Directory.GetCurrentDirectory() + "\\";
+                //string path = System.IO.Path.GetTempPath();
+                string path = "C:\\CFDI33\\";
+                string datapath = path + "App_Data";
                 if (!System.IO.Directory.Exists(datapath))
                 {
                     System.IO.Directory.CreateDirectory(datapath);

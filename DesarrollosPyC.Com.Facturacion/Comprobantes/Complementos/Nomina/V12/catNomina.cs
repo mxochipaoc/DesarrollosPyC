@@ -914,11 +914,11 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.Nomina.V12
         [System.Xml.Serialization.XmlEnumAttribute("064")]
         Item064,
         /// <comentarios/>
-        [Description("Ajuste en Jubilaciones, pensiones o haberes de retiro Exento")]
+        [Description("Ajuste en Jubilaciones, pensiones o haberes de retiro en una sola exhibición Exento")]
         [System.Xml.Serialization.XmlEnumAttribute("065")]
         Item065,
         /// <comentarios/>
-        [Description("Ajuste en Jubilaciones, pensiones o haberes de retiro Gravado")]
+        [Description("Ajuste en Jubilaciones, pensiones o haberes de retiro en una sola exhibición Gravado")]
         [System.Xml.Serialization.XmlEnumAttribute("066")]
         Item066,
         /// <comentarios/>
@@ -930,11 +930,11 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.Nomina.V12
         [System.Xml.Serialization.XmlEnumAttribute("068")]
         Item068,
         /// <comentarios/>
-        [Description("Ajuste en Jubilaciones, pensiones o haberes de retiro Acumulable")]
+        [Description("Ajuste en Jubilaciones, pensiones o haberes de retiro en parcialidades Exento")]
         [System.Xml.Serialization.XmlEnumAttribute("069")]
         Item069,
         /// <comentarios/>
-        [Description("Ajuste en Jubilaciones, pensiones o haberes de retiro No acumulable")]
+        [Description("Ajuste en Jubilaciones, pensiones o haberes de retiro en parcialidades Gravado")]
         [System.Xml.Serialization.XmlEnumAttribute("070")]
         Item070,
         /// <comentarios/>
@@ -1054,6 +1054,30 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.Nomina.V12
         [System.Xml.Serialization.XmlEnumAttribute("099")]
         Item099,
 
+        /// <comentarios/>
+        [Description("Ajuste a pagos por gratificaciones, primas, compensaciones, recompensas u otros a ex trabajadores derivados de jubilación en parcialidades, gravados")]
+        [System.Xml.Serialization.XmlEnumAttribute("102")]
+        Item102,
+
+        /// <comentarios/>
+        [Description("Ajuste a pagos que se realicen a ex trabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de una resolución judicial o de un laudo gravados")]
+        [System.Xml.Serialization.XmlEnumAttribute("103")]
+        Item103,
+
+        /// <comentarios/>
+        [Description("Ajuste a pagos que se realicen a ex trabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de una resolución judicial o de un laudo exentos")]
+        [System.Xml.Serialization.XmlEnumAttribute("104")]
+        Item104,
+
+        /// <comentarios/>
+        [Description("Ajuste a pagos que se realicen a ex trabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de una resolución judicial o de un laudo gravados")]
+        [System.Xml.Serialization.XmlEnumAttribute("105")]
+        Item105,
+
+        /// <comentarios/>
+        [Description("Ajuste a pagos que se realicen a ex trabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de una resolución judicial o de un laudo exentos")]
+        [System.Xml.Serialization.XmlEnumAttribute("106")]
+        Item106,
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
@@ -1414,6 +1438,21 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.Complementos.Nomina.V12
         [Description("Viaticos")]
         [System.Xml.Serialization.XmlEnumAttribute("050")]
         Item050,
+
+        /// <comentarios/>
+        [Description("Pagos por gratificaciones, primas, compensaciones, recompensas u otros a extrabajadores derivados de jubilación en parcialidades")]
+        [System.Xml.Serialization.XmlEnumAttribute("051")]
+        Item051,
+
+        /// <comentarios/>
+        [Description("Pagos que se realicen a extrabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de resoluciones judicial o de un laudo")]
+        [System.Xml.Serialization.XmlEnumAttribute("052")]
+        Item052,
+
+        /// <comentarios/>
+        [Description("Pagos que se realicen a extrabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de resoluciones judicial o de un laudo")]
+        [System.Xml.Serialization.XmlEnumAttribute("053")]
+        Item053,
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]

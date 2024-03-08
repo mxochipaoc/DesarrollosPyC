@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 using DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Model;
+using NHibernate.Criterion;
 
 namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller {
     
@@ -27,6 +29,31 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33.Catalogos.Controller {
             {
                 return instance;
             }
+        }
+        #endregion
+
+        #region Métodos propios de la clase
+
+        /// <summary>
+        /// Recupera la lista de clave de unidad paginada
+        /// </summary>
+        /// <param name="filter">Filtro</param>
+        /// <param name="size">Tamaño página</param>
+        /// <param name="page">Página</param>
+        /// <returns>Datos</returns>
+        public c_Claveunidad[] GetList(string filter, int size, int page)
+        {
+            DetachedCriteria criteria = DetachedCriteria.For<c_Claveunidad>();
+            criteria.Add(Restrictions.Disjunction()
+                .Add(Restrictions.InsensitiveLike("Clave", filter, MatchMode.Anywhere))
+                .Add(Restrictions.InsensitiveLike("Nombre", filter, MatchMode.Anywhere))
+            );
+            criteria.SetFirstResult(size * page);
+            criteria.SetMaxResults(size);
+
+            return criteria.GetExecutableCriteria(_Session)
+                .List<c_Claveunidad>()
+                .ToArray();
         }
         #endregion
     }

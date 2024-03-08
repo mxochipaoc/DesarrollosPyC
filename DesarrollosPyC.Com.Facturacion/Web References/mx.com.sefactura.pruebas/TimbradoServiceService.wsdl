@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sefactura.com" name="TimbradoServiceService" targetNamespace="http://sefactura.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://pruebas.sefactura.com.mx:3014/sefacturapac/TimbradoService?xsd=1" namespace="http://sefactura.com" />
+    </xsd:schema>
+  </types>
+  <message name="cancelacion">
+    <part name="parameters" element="tns:cancelacion" />
+  </message>
+  <message name="cancelacionResponse">
+    <part name="parameters" element="tns:cancelacionResponse" />
+  </message>
+  <message name="timbrado">
+    <part name="parameters" element="tns:timbrado" />
+  </message>
+  <message name="timbradoResponse">
+    <part name="parameters" element="tns:timbradoResponse" />
+  </message>
+  <message name="cancelacionAcuse">
+    <part name="parameters" element="tns:cancelacionAcuse" />
+  </message>
+  <message name="cancelacionAcuseResponse">
+    <part name="parameters" element="tns:cancelacionAcuseResponse" />
+  </message>
+  <message name="cancelacionAcuseXml">
+    <part name="parameters" element="tns:cancelacionAcuseXml" />
+  </message>
+  <message name="cancelacionAcuseXmlResponse">
+    <part name="parameters" element="tns:cancelacionAcuseXmlResponse" />
+  </message>
+  <message name="pideConfirmacion">
+    <part name="parameters" element="tns:pideConfirmacion" />
+  </message>
+  <message name="pideConfirmacionResponse">
+    <part name="parameters" element="tns:pideConfirmacionResponse" />
+  </message>
+  <portType name="TimbradoService">
+    <operation name="cancelacion">
+      <input message="tns:cancelacion" />
+      <output message="tns:cancelacionResponse" />
+    </operation>
+    <operation name="timbrado">
+      <input message="tns:timbrado" />
+      <output message="tns:timbradoResponse" />
+    </operation>
+    <operation name="cancelacionAcuse">
+      <input message="tns:cancelacionAcuse" />
+      <output message="tns:cancelacionAcuseResponse" />
+    </operation>
+    <operation name="cancelacionAcuseXml">
+      <input message="tns:cancelacionAcuseXml" />
+      <output message="tns:cancelacionAcuseXmlResponse" />
+    </operation>
+    <operation name="pideConfirmacion">
+      <input message="tns:pideConfirmacion" />
+      <output message="tns:pideConfirmacionResponse" />
+    </operation>
+  </portType>
+  <binding name="TimbradoServicePortBinding" type="tns:TimbradoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="cancelacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="timbrado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="cancelacionAcuse">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="cancelacionAcuseXml">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="pideConfirmacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="TimbradoServiceService">
+    <port name="TimbradoServicePort" binding="tns:TimbradoServicePortBinding">
+      <soap:address location="http://pruebas.sefactura.com.mx:3014/sefacturapac/TimbradoService" />
+    </port>
+  </service>
+</definitions>

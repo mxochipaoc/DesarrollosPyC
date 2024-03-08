@@ -1464,7 +1464,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
         
         private decimal cantidadField;
         
-        private c_ClaveUnidad claveUnidadField;
+        private string claveUnidadField;
         
         private string unidadField;
         
@@ -1558,7 +1558,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
         }
         
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public c_ClaveUnidad ClaveUnidad {
+        public string ClaveUnidad {
             get {
                 return this.claveUnidadField;
             }
@@ -2965,7 +2965,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
         
         private List<ComprobanteConceptoParteInformacionAduanera> informacionAduaneraField;
         
-        private c_ClaveProdServ claveProdServField;
+        private string claveProdServField;
         
         private string noIdentificacionField;
         
@@ -2996,7 +2996,7 @@ namespace DesarrollosPyC.Com.Facturacion.Comprobantes.V33 {
         }
         
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public c_ClaveProdServ ClaveProdServ {
+        public string ClaveProdServ {
             get {
                 return this.claveProdServField;
             }

@@ -59,6 +59,29 @@ namespace DesarrollosPyC.Com.Facturacion
         }
 
         /// <summary>
+        /// Recupera el complemento de pagos
+        /// </summary>
+        /// <param name="cfdi">Cfdi</param>
+        /// <returns>Pagos</returns>
+        public static Comprobantes.Complementos.Pagos RecuperaPagos(Comprobantes.V33.Comprobante cfdi)
+        {
+            Comprobantes.Complementos.Pagos pagos = null;
+            foreach (var cpl in cfdi.Complemento)
+            {
+                System.Xml.XmlElement impL = cpl.Any.Where(j => j.LocalName.Equals("Pagos")).FirstOrDefault();
+                if (impL != null)
+                {
+                    pagos = Comprobantes.Complementos.Pagos.Deserialize(impL.OuterXml);
+                }
+
+                if (pagos != null)
+                    break;
+            }
+
+            return pagos;
+        }
+
+        /// <summary>
         /// Recupera los impuestos locales del comprobante
         /// </summary>
         /// <param name="cfdi">Cfdi</param>

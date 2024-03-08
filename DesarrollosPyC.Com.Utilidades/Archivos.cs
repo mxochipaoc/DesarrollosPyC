@@ -25,6 +25,7 @@ namespace DesarrollosPyC.Com.Utilidades
             }
             return string.Empty;
         }
+
         /// <summary>
         /// Convierte una cadena en base 64 a archivo
         /// </summary>
@@ -37,38 +38,65 @@ namespace DesarrollosPyC.Com.Utilidades
             System.IO.File.WriteAllBytes(ruta, file);
             return ruta;
         }
-        /// <summary>
-        /// Convierte una cadena en b64 a imagen
-        /// </summary>
-        /// <param name="b64"></param>
-        /// <returns></returns>
-        public static System.Drawing.Image ObtenImagenByB64(string b64)
-        {
-            if (string.IsNullOrEmpty(b64))
-                return null;
-            using (System.IO.Stream stream = new System.IO.MemoryStream())
-            {
-                byte[] file = Convert.FromBase64String(b64);
-                stream.Write(file, 0, file.Length);
-                stream.Position = 0;
 
-                return System.Drawing.Bitmap.FromStream(stream);
-            }
-        }
         /// <summary>
-        /// REcupera la base 64 de una imagen
+        /// Tratado de imagenes
         /// </summary>
-        /// <param name="image">Imagen</param>
-        /// <returns></returns>
-        public static string ImagenToB64(System.Drawing.Image image)
+        public class Imagenes
         {
-            byte[] bytearray;
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            /// <summary>
+            /// Recupera una imagen desde arreglo de bytes
+            /// </summary>
+            /// <param name="data">Arreglo</param>
+            /// <returns>Imagen</returns>
+            public static System.Drawing.Image ByteArrayToImage(byte[] data)
             {
-                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                bytearray = ms.ToArray();
+                using (System.IO.Stream stream = new System.IO.MemoryStream())
+                {
+                    stream.Write(data, 0, data.Length);
+                    stream.Position = 0;
+
+                    return System.Drawing.Bitmap.FromStream(stream);
+                }
             }
-            return Convert.ToBase64String(bytearray);
+
+            /// <summary>
+            /// Convierte una cadena en b64 a imagen
+            /// </summary>
+            /// <param name="b64"></param>
+            /// <returns></returns>
+            public static System.Drawing.Image ObtenImagenByB64(string b64)
+            {
+                if (string.IsNullOrEmpty(b64))
+                    return null;
+                byte[] file = Convert.FromBase64String(b64);
+                return ByteArrayToImage(file);
+            }
+
+            /// <summary>
+            /// Convierte imagen a arreglo de bytes
+            /// </summary>
+            /// <param name="image">Imagen</param>
+            /// <returns>Byte array</returns>
+            public static byte[] ImageToByteArray(System.Drawing.Image image)
+            {
+                using(System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                {
+                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    return ms.ToArray();
+                }
+            }
+
+            /// <summary>
+            /// REcupera la base 64 de una imagen
+            /// </summary>
+            /// <param name="image">Imagen</param>
+            /// <returns></returns>
+            public static string ImagenToB64(System.Drawing.Image image)
+            {
+                byte[] bytearray = ImageToByteArray(image);
+                return Convert.ToBase64String(bytearray);
+            }
         }
     }
 }
